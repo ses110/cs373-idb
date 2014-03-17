@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url
+from mythos import views
 
 urlpatterns = patterns('',
-        url(r'^$', 'mythos.views.index'))
+        url(r'^$', views.index, name='index'))
