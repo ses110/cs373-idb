@@ -10,7 +10,7 @@ def index(request):
 def figure(request):
     context = RequestContext(request)
 
-    # Do other work
+    # Retrieve correct figure
 
     # TESTING 
     context_dict = {'title':'Test Figure'}
