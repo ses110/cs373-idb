@@ -7,6 +7,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
         url(r'^$', views.index, name='index'),
-        url(r'^figures/?$', views.figures, name='figures'),
-        url(r'^figures/(.+)$', views.figure, name='figure')
+        url(r'^figures/$', views.figures, name='figures'),
+        url(r'^figures/(\w+)/$', views.figure, name='figure')
 )

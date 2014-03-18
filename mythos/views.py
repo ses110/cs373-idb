@@ -19,7 +19,7 @@ def figures(request):
     return render_to_response('mythos/figures.html', context_dict, context)
 
 
-def figure(request):
+def figure(request, val):
     context = RequestContext(request)
 
     # Retrieve correct figure
