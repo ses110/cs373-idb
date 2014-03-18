@@ -7,6 +7,18 @@ def index(request):
     context = RequestContext(request)
     return render_to_response('mythos/index.html', None, context)
 
+
+def figures(request):
+    context = RequestContext(request)
+
+    # Get list of all figures
+
+    # TESTING
+    context_dict = {'title':'Figures'}
+
+    return render_to_response('mythos/figures.html', context_dict, context)
+
+
 def figure(request):
     context = RequestContext(request)
 
