@@ -1,0 +1,150 @@
+FORMAT: 1A
+HOST: http://cs373-mythos.herokuapp.com/api
+
+# cs373-idb-mythos
+The Mythos API allows you to get access to the **Mythos Database API** (MDB), a database for mythological **figures**, **cultures**, and **stories**.
+
+# Group Figures
+Figure related resources of the **MDB API**
+
+## Figures [/figures]
+### List all figures [GET]
++ Response 200 (application/json)
+        
+        [{
+            "id": 1,
+            "name": "Hades",
+            "kind": "God",
+            "description": "Hades was the ancient Greek god of the underworld."]
+        }, {
+            "id": 2,
+            "name": "Zeus",
+            "kind": "God",
+            "description": "Zeus is the god of sky and thunder in Greek mythology."]
+        }]
+
+### Create a figure [POST]
++ Request (application/json)
+
+        {
+            "name": "Zeus",
+            "kind": "God",
+            "description": "Zeus is the god of sky and thunder in Greek mythology.",
+            "image": ["http://upload.wikimedia.org/wikipedia/commons/c/c8/Jupiter_Smyrna_Louvre_Ma13.jpg"],
+            "videos": ["https://www.youtube.com/results?search_query=zeus"],
+            "related_figures": [1, 3, 4, 6, 7],
+            "related_cultures": [1, 2],
+            "related_stories": [7, 9, 11, 13, 14]
+        }
+
++ Response 201 (application/json)
+
+        {
+            "id": 2
+        }
+
+## Figure [/figures/{id}]
+A single figure object with all its details
+
+### Retrieve a figure [GET]
++ Response 200 (application/json)
+
+        {
+        "id": 2,
+        "name": "Zeus",
+        "kind": "God",
+        "description": "Zeus is the god of sky and thunder in Greek mythology.",
+        "image": ["http://upload.wikimedia.org/wikipedia/commons/c/c8/Jupiter_Smyrna_Louvre_Ma13.jpg"],
+        "videos": ["https://www.youtube.com/results?search_query=zeus"],
+        "related_figures": [1, 3, 4, 6, 7],
+        "related_cultures": [1, 2],
+        "related_stories": [7, 9, 11, 13, 14]
+        }
+
+### Remove a figure [DELETE]
++ Response 204
+
+# Group Stories
+Story related resources of the **MDB API**
+
+## Stories [/stories]
+### List all stories [GET]
++ Response 200 (application/json)
+
+        [{
+          "id": 1, "title": "Jogging in park"
+        }, {
+          "id": 2, "title": "Pick-up posters from post-office"
+        }]
+
+### Create a story [POST]
++ Request (application/json)
+
+        { "title": "Buy cheese and bread for breakfast." }
+
++ Response 201 (application/json)
+
+        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+
+## Story [/stories/{id}]
+A single story object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the story to perform action with. Has example value.
+
+### Retrieve a story [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": 2, "title": "Pick-up posters from post-office" }
+
+### Remove a story [DELETE]
++ Response 204
+
+# Group Cultures
+Culture related resources of the **MDB API**
+
+## Cultures [/cultures]
+### List all cultures [GET]
++ Response 200 (application/json)
+
+        [{
+          "id": 1, "title": "Jogging in park"
+        }, {
+          "id": 2, "title": "Pick-up posters from post-office"
+        }]
+
+### Create a culture [POST]
++ Request (application/json)
+
+        { "title": "Buy cheese and bread for breakfast." }
+
++ Response 201 (application/json)
+
+        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+
+## Culture [/cultures/{id}]
+A single culture object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the culture to perform action with. Has example value.
+
+### Retrieve a culture [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": 2, "title": "Pick-up posters from post-office" }
+
+### Remove a culture [DELETE]
++ Response 204
+
