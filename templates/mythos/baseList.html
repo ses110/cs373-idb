@@ -4,8 +4,21 @@
 
     {{ block.super }}
     
-    <div class="container-fluid">
-        <h1>{% block header %} Base List Page {% endblock header %}</h1>
+    <div class="col-md-offset-2 col-md-8 col-lg-offset-4 col-lg-4" style="padding:5% 0 0 0">
+        <table class="table table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Cultures</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in items %}
+                <tr>
+                  <td><div> {{ item.name }}</div></td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
     </div>
 
 {% endblock body %}
