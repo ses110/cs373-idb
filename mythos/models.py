@@ -3,55 +3,72 @@ from django.db import models
 class Relations(models.Model):
    pass 
 
-class Hero(Models.Model):
+class Figures(Models.Model):
     '''
-    Hero Model
+    figure Model
 
-    @type hero_id: models.CharField(200, primary_key = True)
-    @cvar hero_id: A hero's primary key to uniquely the instance
+    @type figure_id: models.CharField(200, primary_key = True)
+    @cvar figure_id: A figure's primary key to uniquely identify the instance
     
     '''
-    hero_id = models.CharField(max_length=200, primary_key=True)
+    figure_id = models.CharField(max_length=200, primary_key=True)
     name    = models.CharField(max_length=200)
+    origin  = models.CharField(max_length=200)
+    strengths = models.CharField(max_length=200)
+    weaknesses = models.CharField(max_length=200)
+    short_bio = models.CharField(max_length=2000)
+    father = models.ForeignKey(Figures)
+    mother = models.ForeignKey(Figures)
+    culture = models.OneToOneField(Cultures)
+
     def getID(self):
         """
         Fetch primary key ID from current instance
 
-        @type self: Hero
-        @param self: Current Hero instance
+        @type self: figure
+        @param self: Current figure instance
 
         @rtype: string
-        @return: The id associated with this Hero instance  
+        @return: The id associated with this figure instance  
         """
-        return self.hero_id
+        return self.figure_id
 
-class Event(Models.Model):
-    event_id = models.CharField(max_length=200, primary_key=True)
+class Story(Models.Model):
+    story_id = models.CharField(max_length=200, primary_key=True)
     name     = models.CharField(max_length=200)
+    location = models.CharField(max_length=200)
+    culture  = models.ForeignKey(Cultures)
+    summary  = models.CharField(max_length=10000)
+    start_date = models.DateTimeField("Beginning date of story")
+    end_date = models.DateTimeField("Ending date of story")
+
     def getID(self):
         """
         Fetch primary key ID from current instance
 
-        @type self: Event
-        @param self: Current Event instance
+        @type self: story
+        @param self: Current story instance
 
         @rtype: string
-        @return: The id associated with this Event instance
+        @return: The id associated with this story instance
         """
-        return self.event_id
+        return self.story_id
 
-class God(Models.Model):
-    god_id = models.CharField(max_length=200, primary_key=True)
+class Cultures(Models.Model):
+    culture_id = models.CharField(max_length=200, primary_key=True)
     name   = models.CharField(max_length=200)
+    location = models.CharField(max_length=200)
+    timespan_startdate = models.DateTimeField("Beginning timespan of culture")
+    timespan_enddate = models.DateTimeField("Ending timespan of culture")
 
     def getID(self):
         """
         Fetch primary key ID from current instance
 
-        @type self: God
-        @param self: Current God instance
+        @type self: culture
+        @param self: Current culture instance
 
         @rtype: string
-        @return: The id associated with this God instance
+        @return: The id associated with this culture instance
         """
-        return self.god_id
+        return self.culture_id
