@@ -2,8 +2,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 
-from models import Culture
-
+from mythos import models
 
 
 
@@ -61,11 +60,11 @@ def cultures(request):
     # Get list of all figures
 
     cultures = [
-        Culture({'name':'Greeks'}),
-        Culture({'name':'Romans'})
-        Culture({'name':'Chinese'})
-        Culture({'name':'Persian'})
-        Culture({'name':'Norse'})
+        models.Culture(name='Greeks'),
+        models.Culture(name='Romans'),
+        models.Culture(name='Chinese'),
+        models.Culture(name='Persian'),
+        models.Culture(name='Norse')
     ]
 
     # TESTING

@@ -17,9 +17,9 @@ class Figure(models.Model):
     description         = models.CharField(max_length=2000)
     images              = models.CharField(max_length=200)
     videos              = models.CharField(max_length=200)
-    related_figures     = models.ForeignKey(Figure)
-    related_cultures    = models.ForeignKey(Culture)
-    related_stories     = models.ForeignKey(Story)
+    related_figures     = models.ForeignKey('Figure')
+    related_cultures    = models.ForeignKey('Culture')
+    related_stories     = models.ForeignKey('Story')
     external_links      = models.CharField(max_length=200)
 
     def getID(self):
@@ -41,9 +41,9 @@ class Story(models.Model):
     description         = models.CharField(max_length=10000)
     images              = models.CharField(max_length=200)
     videos              = models.CharField(max_length=200)
-    related_figures     = models.ForeignKey(Figure)
-    related_cultures    = models.ForeignKey(Culture)
-    related_stories     = models.ForeignKey(Story)
+    related_figures     = models.ForeignKey('Figure')
+    related_cultures    = models.ForeignKey('Culture')
+    related_stories     = models.ForeignKey('Story')
     external_links      = models.CharField(max_length=200)
 
   
@@ -59,7 +59,7 @@ class Story(models.Model):
         """
         return self.id
 
-class Culture(Models.Model):
+class Culture(models.Model):
     id                  = models.CharField(max_length=200, primary_key=True)
     name                = models.CharField(max_length=200)
     region              = models.CharField(max_length=200)
@@ -67,9 +67,9 @@ class Culture(Models.Model):
     language            = models.CharField(max_length=200)
     images              = models.CharField(max_length=200)
     videos              = models.CharField(max_length=200)
-    related_figures     = models.ForeignKey(Figure)
-    related_cultures    = models.ForeignKey(Culture)
-    related_stories     = models.ForeignKey(Story)
+    related_figures     = models.ForeignKey('Figure')
+    related_cultures    = models.ForeignKey('Culture')
+    related_stories     = models.ForeignKey('Story')
     external_links      = models.CharField(max_length=200)
 
 

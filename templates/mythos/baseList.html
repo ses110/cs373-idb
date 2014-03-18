@@ -8,15 +8,13 @@
         <table class="table table-striped table-responsive">
           <thead>
             <tr>
-              <th>Cultures</th>
+              <th>{% block tableHeader %} Table Header {% endblock %}</th>
             </tr>
           </thead>
           <tbody>
-            {% for item in items %}
-                <tr>
-                  <td><div> {{ item.name }}</div></td>
-                </tr>
-            {% endfor %}
+            {% block tableBody %}
+            Table Body
+            {% endblock tableBody %}
           </tbody>
         </table>
     </div>
