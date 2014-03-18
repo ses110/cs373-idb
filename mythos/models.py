@@ -11,11 +11,16 @@ class Figure(models.Model):
     @cvar figure_id: A figure's primary key to uniquely identify the instance
     
     '''
-    figure_id   = models.IntegerField(primary_key=True)
-    name        = models.CharField(max_length=200)
-    description = models.CharField(max_length=2000)
-    cultures    = models.ForeignKey(Culture)
-    stories     = models.ForeignKey(Story)
+    id                  = models.IntegerField(primary_key=True)
+    name                = models.CharField(max_length=200)
+    kind                = models.CharField(max_length=200) #possibly change to models.choices
+    description         = models.CharField(max_length=2000)
+    images              = models.CharField(max_length=200)
+    videos              = models.CharField(max_length=200)
+    related_figures     = models.ForeignKey(Figure)
+    related_cultures    = models.ForeignKey(Culture)
+    related_stories     = models.ForeignKey(Story)
+    external_links      = models.CharField(max_length=200)
 
     def getID(self):
         """
@@ -27,14 +32,21 @@ class Figure(models.Model):
         @rtype: string
         @return: The id associated with this figure instance  
         """
-        return self.figure_id
+        return self.id
 
 class Story(models.Model):
-    story_id = models.IntegerField(primary_key=True)
-    name     = models.CharField(max_length=200)
-    location = models.CharField(max_length=200)
-    culture  = models.ForeignKey(Cultures)
-    summary  = models.CharField(max_length=10000)
+    id                  = models.IntegerField(primary_key=True)
+    name                = models.CharField(max_length=200)
+    
+    description         = models.CharField(max_length=10000)
+    images              = models.CharField(max_length=200)
+    videos              = models.CharField(max_length=200)
+    related_figures     = models.ForeignKey(Figure)
+    related_cultures    = models.ForeignKey(Culture)
+    related_stories     = models.ForeignKey(Story)
+    external_links      = models.CharField(max_length=200)
+
+    
     start_date = models.DateTimeField("Beginning date of story")
     end_date = models.DateTimeField("Ending date of story")
 
@@ -48,14 +60,24 @@ class Story(models.Model):
         @rtype: string
         @return: The id associated with this story instance
         """
-        return self.story_id
+        return self.id
 
 class Culture(Models.Model):
-    culture_id = models.CharField(max_length=200, primary_key=True)
+    id = models.CharField(max_length=200, primary_key=True)
     name   = models.CharField(max_length=200)
-    location = models.CharField(max_length=200)
-    timespan_startdate = models.DateTimeField("Beginning timespan of culture")
-    timespan_enddate = models.DateTimeField("Ending timespan of culture")
+    region = models.CharField(max_length=200)
+    history         = models.CharField(max_length=10000)
+    language = models.CharField(max_length=200)
+    images              = models.CharField(max_length=200)
+    videos              = models.CharField(max_length=200)
+    related_figures     = models.ForeignKey(Figure)
+    related_cultures    = models.ForeignKey(Culture)
+    related_stories     = models.ForeignKey(Story)
+    external_links      = models.CharField(max_length=200)
+
+
+    # timespan_startdate = models.DateTimeField("Beginning timespan of culture")
+    # timespan_enddate = models.DateTimeField("Ending timespan of culture")
 
     def getID(self):
         """
@@ -67,4 +89,4 @@ class Culture(Models.Model):
         @rtype: string
         @return: The id associated with this culture instance
         """
-        return self.culture_id
+        return self.id
