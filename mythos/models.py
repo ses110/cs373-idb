@@ -11,15 +11,10 @@ class Figures(Models.Model):
     @cvar figure_id: A figure's primary key to uniquely identify the instance
     
     '''
-    figure_id = models.CharField(max_length=200, primary_key=True)
-    name    = models.CharField(max_length=200)
-    origin  = models.CharField(max_length=200)
-    strengths = models.CharField(max_length=200)
-    weaknesses = models.CharField(max_length=200)
-    short_bio = models.CharField(max_length=2000)
-    father = models.ForeignKey(Figures)
-    mother = models.ForeignKey(Figures)
-    culture = models.OneToOneField(Cultures)
+    figure_id   = models.CharField(max_length=200, primary_key=True)
+    name        = models.CharField(max_length=200)
+    description = models.CharField(max_length=2000)
+    culture     = models.OneToOneField(Cultures)
 
     def getID(self):
         """
