@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
@@ -70,3 +71,8 @@ def stories(request):
     context_dict = {'title':'Stories'}
 
     return render_to_response('mythos/stories.html', context_dict, context)
+=======
+from django.shortcuts import render
+
+# Create your views here.
+>>>>>>> mythos_models
