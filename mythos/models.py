@@ -3,7 +3,7 @@ from django.db import models
 class Relations(models.Model):
    pass 
 
-class Figures(Models.Model):
+class Figure(models.Model):
     '''
     figure Model
 
@@ -11,10 +11,11 @@ class Figures(Models.Model):
     @cvar figure_id: A figure's primary key to uniquely identify the instance
     
     '''
-    figure_id   = models.CharField(max_length=200, primary_key=True)
+    figure_id   = models.IntegerField(primary_key=True)
     name        = models.CharField(max_length=200)
     description = models.CharField(max_length=2000)
-    culture     = models.OneToOneField(Cultures)
+    cultures    = models.ForeignKey(Culture)
+    stories     = models.ForeignKey(Story)
 
     def getID(self):
         """
@@ -28,8 +29,8 @@ class Figures(Models.Model):
         """
         return self.figure_id
 
-class Story(Models.Model):
-    story_id = models.CharField(max_length=200, primary_key=True)
+class Story(models.Model):
+    story_id = models.IntegerField(primary_key=True)
     name     = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     culture  = models.ForeignKey(Cultures)
@@ -49,7 +50,7 @@ class Story(Models.Model):
         """
         return self.story_id
 
-class Cultures(Models.Model):
+class Culture(Models.Model):
     culture_id = models.CharField(max_length=200, primary_key=True)
     name   = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
