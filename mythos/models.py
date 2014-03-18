@@ -46,10 +46,7 @@ class Story(models.Model):
     related_stories     = models.ForeignKey(Story)
     external_links      = models.CharField(max_length=200)
 
-    
-    start_date = models.DateTimeField("Beginning date of story")
-    end_date = models.DateTimeField("Ending date of story")
-
+  
     def getID(self):
         """
         Fetch primary key ID from current instance
@@ -63,11 +60,11 @@ class Story(models.Model):
         return self.id
 
 class Culture(Models.Model):
-    id = models.CharField(max_length=200, primary_key=True)
-    name   = models.CharField(max_length=200)
-    region = models.CharField(max_length=200)
-    history         = models.CharField(max_length=10000)
-    language = models.CharField(max_length=200)
+    id                  = models.CharField(max_length=200, primary_key=True)
+    name                = models.CharField(max_length=200)
+    region              = models.CharField(max_length=200)
+    history             = models.CharField(max_length=10000)
+    language            = models.CharField(max_length=200)
     images              = models.CharField(max_length=200)
     videos              = models.CharField(max_length=200)
     related_figures     = models.ForeignKey(Figure)
