@@ -6,4 +6,4 @@ CS373 Private repo for the IDB project
 
 heroku page
 ---
-cs373-idb.herokuapp.com
+<a href="cs373-idb.herokuapp.com">cs373-idb.herokuapp.com</a>
