@@ -1,6 +1,24 @@
 from django.db import models
 
 class Media(models.Model):
+    '''
+    Media Model that represents media (such as image, a video, etc.) associated with a figure, a culture, or a story
+
+    @type id: models.IntegerField(primary_key = True)
+    @cvar id: Primary key uniquely identifying a media instance
+    @type name: modesl.Charfield(200)
+    @cvar name: Name of the media
+    @type kind: modesl.Charfield(200)
+    @cvar kind: The kind/category of the media instance
+    @type link: modesl.Charfield(200)
+    @cvar link: URL to the media
+    @type figure: models.ForeignKey('Figure')
+    @cvar figure: Foreign key associating this media to a figure
+    @type culture: models.ForeignKey('Culture')
+    @cvar culture: Foreign key associating this media to a culture
+    @type story: models.ForeignKey('Story')
+    @cvar story: Foreign key associating this media to a story
+    '''
     id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
     kind                = models.CharField(max_length=200)
@@ -23,11 +41,22 @@ class Media(models.Model):
 
 class Figure(models.Model):
     '''
-    figure Model
+    figure Model represents an instance of an 
 
-    @type figure_id: models.CharField(200, primary_key = True)
-    @cvar figure_id: A figure's primary key to uniquely identify the instance
-    
+    @type id: models.CharField(200, primary_key = True)
+    @cvar id: A figure's primary key to uniquely identify the instance
+    @type name: models.CharField(200)
+    @cvar name: Name of the figure
+    @type kind: models.CharField(200)
+    @cvar kind: Kind of the figure
+    @type biography: models.CharField(10000)
+    @cvar biography: Short description/bio of the figure
+    @type related_figures: models.ForeignKey(self)
+    @cvar related_figures: Foreign key associating other related figures to this figure instance
+    @type related_cultures: models.ForeignKey('Culture')
+    @cvar related_cultures: Foreign key associating related cultures to this figure instance
+    @type related_stories: models.ForeignKey('Story')
+    @cvar related_stories: Foreign key associating related stories that this figure instance is in
     '''
     id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
@@ -50,6 +79,22 @@ class Figure(models.Model):
         return self.id
 
 class Story(models.Model):
+    '''
+    Story model
+    
+    @type id: models.IntegerField(primary_key = True)
+    @cvar id: Primary key to uniquely identify Story instance
+    @type name: models.CharField(200)
+    @cvar name: Name of Story instance
+    @type summary: models.
+    @cvar summary: Short description/summary of the story
+    @type related_figures: models.ForeignKey('Figure')
+    @cvar related_figures: Foreign Key linking to any related figures associated with this story
+    @type related_cultures: models.ForeignKey('Culture')
+    @cvar related_cultures: Foreign Key linking to any related cultures that may be associated with this story
+    @type related_stories: models.ForeignKey('Story')
+    @cvar related_stories: Foreign key linking to any other stories that may be related to this story instance
+    '''
     id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
     summary             = models.CharField(max_length=10000)
@@ -70,6 +115,24 @@ class Story(models.Model):
         return self.id
 
 class Culture(models.Model):
+    '''
+    @type id: models.IntegerField(primary_key=True)
+    @cvar id: Primary key to uniquely id the Culture instance
+    @type name: models.CharField(200)
+    @cvar name: Name of the culture
+    @type region: models.CharField(200)
+    @cvar region:  Region location of the Culture
+    @type history: models.CharField(10000)
+    @cvar history: Summary of the history of this Culture instance
+    @type language: models.CharField(200)
+    @cvar language: Most common language spoken in this culture
+    @type related_figures: models.ForeignKey('Figure')
+    @cvar related_figures: Foreign Key associating Figures related to this Culture
+    @type related_cultures: models.ForeignKey('self')
+    @cvar related_cultures: Foreign key associating Cultures similar to this Culture
+    @type notable_stories: models.ForeignKey('Story')
+    @cvar notable_stories:  Foreign Key associating notable mythological stories belonging within this Culture
+    '''
     id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
     region              = models.CharField(max_length=200)
@@ -77,7 +140,7 @@ class Culture(models.Model):
     language            = models.CharField(max_length=200)
     related_figures     = models.ForeignKey('Figure')
     related_cultures    = models.ForeignKey('self')
-    related_stories     = models.ForeignKey('Story')
+    notable_stories     = models.ForeignKey('Story')
 
     def getID(self):
         """
