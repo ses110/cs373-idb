@@ -1,7 +1,20 @@
-<<<<<<< HEAD
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+
+from mythos import models
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def index(request):
@@ -46,8 +59,16 @@ def cultures(request):
 
     # Get list of all figures
 
+    cultures = [
+        models.Culture(name='Greeks'),
+        models.Culture(name='Romans'),
+        models.Culture(name='Chinese'),
+        models.Culture(name='Persian'),
+        models.Culture(name='Norse')
+    ]
+
     # TESTING
-    context_dict = {'title':'Cultures'}
+    context_dict = {'title':'Cultures', 'items':cultures}
 
     return render_to_response('mythos/cultures.html', context_dict, context)
 
@@ -66,13 +87,15 @@ def stories(request):
     context = RequestContext(request)
 
     # Get list of all figures
+    stories = [    
+        models.Story(name='The Rape of Persephone'),
+        models.Story(name='Hercules and his Labours'),
+        models.Story(name='Perseus and Medusa'),
+        models.Story(name='Labyrinth of Thebes'),
+        models.Story(name='Titans and Zeus')
+    ]
 
     # TESTING
-    context_dict = {'title':'Stories'}
+    context_dict = {'title':'Stories', 'items':stories}
 
     return render_to_response('mythos/stories.html', context_dict, context)
-=======
-from django.shortcuts import render
-
-# Create your views here.
->>>>>>> mythos_models

@@ -1,7 +1,17 @@
 from django.db import models
 
-class Relations(models.Model):
-   pass 
+
+class Media(models.Model):
+    '''
+    '''
+    id                  = models.IntegerField(primary_key=True)
+    name                = models.CharField(max_length=200)
+    kind                = models.CharField(max_length=200)
+    link                = models.CharField(max_length=200)
+
+    def getID(self):
+        return self.id
+
 
 class Figure(models.Model):
     '''
@@ -13,14 +23,14 @@ class Figure(models.Model):
     '''
     id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
-    kind                = models.CharField(max_length=200) #possibly change to models.choices
-    description         = models.CharField(max_length=2000)
-    images              = models.CharField(max_length=200)
-    videos              = models.CharField(max_length=200)
-    related_figures     = models.ForeignKey(Figure)
-    related_cultures    = models.ForeignKey(Culture)
-    related_stories     = models.ForeignKey(Story)
-    external_links      = models.CharField(max_length=200)
+    kind                = models.CharField(max_length=200) 
+    bio                 = models.CharField(max_length=10000)
+    images              = models.ForeignKey('Media')
+    videos              = models.ForeignKey('Media')
+    external_links      = models.ForeignKey('Media')
+    related_figures     = models.ForeignKey('Figure')
+    related_cultures    = models.ForeignKey('Culture')
+    related_stories     = models.ForeignKey('Story')
 
     def getID(self):
         """
@@ -37,14 +47,13 @@ class Figure(models.Model):
 class Story(models.Model):
     id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
-    
-    description         = models.CharField(max_length=10000)
-    images              = models.CharField(max_length=200)
-    videos              = models.CharField(max_length=200)
-    related_figures     = models.ForeignKey(Figure)
-    related_cultures    = models.ForeignKey(Culture)
-    related_stories     = models.ForeignKey(Story)
-    external_links      = models.CharField(max_length=200)
+    summary             = models.CharField(max_length=10000)
+    images              = models.ForeignKey('Media')
+    videos              = models.ForeignKey('Media')
+    external_links      = models.ForeignKey('Media')
+    related_figures     = models.ForeignKey('Figure')
+    related_cultures    = models.ForeignKey('Culture')
+    related_stories     = models.ForeignKey('Story')
 
   
     def getID(self):
@@ -59,22 +68,18 @@ class Story(models.Model):
         """
         return self.id
 
-class Culture(Models.Model):
-    id                  = models.CharField(max_length=200, primary_key=True)
+class Culture(models.Model):
+    id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
     region              = models.CharField(max_length=200)
     history             = models.CharField(max_length=10000)
     language            = models.CharField(max_length=200)
-    images              = models.CharField(max_length=200)
-    videos              = models.CharField(max_length=200)
-    related_figures     = models.ForeignKey(Figure)
-    related_cultures    = models.ForeignKey(Culture)
-    related_stories     = models.ForeignKey(Story)
-    external_links      = models.CharField(max_length=200)
-
-
-    # timespan_startdate = models.DateTimeField("Beginning timespan of culture")
-    # timespan_enddate = models.DateTimeField("Ending timespan of culture")
+    images              = models.ForeignKey('Media')
+    videos              = models.ForeignKey('Media')
+    external_links      = models.ForeignKey('Media')
+    related_figures     = models.ForeignKey('Figure')
+    related_cultures    = models.ForeignKey('Culture')
+    related_stories     = models.ForeignKey('Story')
 
     def getID(self):
         """
