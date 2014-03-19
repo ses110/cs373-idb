@@ -6,7 +6,28 @@
     
     <div class="container-fluid">
         <h1 class="col-md-offset-2">{% block header %} Base Detail Page {% endblock header %}</h1>
-        
+
+        {% block content %}
+            Content
+        {% endblock content %}
+
+        {% if external_links %}
+            <table class="table table-responsive">
+              <thead>
+                <tr>
+                  <th>External Links</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for media in external_links %}
+                    <tr>
+                      <td><a href="{{ media.link }}"> {{ media.name }} </a></td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        {% endif %}
+
     </div>
     
 {% endblock body %}
