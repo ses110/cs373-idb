@@ -7,48 +7,67 @@
     <div class="container-fluid">
         <h1 class="col-md-offset-2">{% block header %} Base Detail Page {% endblock header %}</h1>
 
-        {% block content %}
-            Content
-        {% endblock content %}
+        <div class="row">
+            <div class="col-md-offset-2 col-md-5">
 
-        {% if external_links %}
-            <table class="table table-responsive">
-              <thead>
-                <tr>
-                  <th>External Links</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for media in external_links %}
-                    <tr>
-                      <td><a href="{{ media.link }}"> {{ media.name }} </a></td>
-                    </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-        {% endif %}
+                <!-- Detail Content -->
+                {% block content %} Content {% endblock content %}
+        
+                <!-- Related Figures -->
+                {% if related_figures %}
+                    <div class="col-md-offset-2 col-md-8">
+                        <table class="table table-responsive">
+                          <thead>
+                            <tr>
+                              <th>Related Figures</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for figures in related_figures %}
+                                <tr>
+                                  <td><a href="{{ media.link }}"> {{ media.name }} </a></td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                    </div>
+                {% endif %}
 
-    </div>
+                <!-- External Links -->
+                {% if external_links %}
+                    <div>
+                        <table class="table table-responsive">
+                          <thead>
+                            <tr>
+                              <th>External Links</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for media in external_links %}
+                                <tr>
+                                  <td><a href="{{ media.link }}"> {{ media.name }} </a></td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                    </div>
+                {% endif %}
 
-    {% if external_links %}
-
-        <div class="col-md-offset-2 col-md-8" style="padding:5% 0 0 0">
-            <table class="table table-striped table-responsive">
-              <thead>
-                <tr>
-                  <th>External Links</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for media in external_links %}
-                    <tr>
-                        <td><a href="{{ media.link }}"> {{ media.name }}</a></td>
-                    </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% if images %}
+                <div class="col-md-offset-7 col-md-3">
+                    <img src="{{ images.0.link }}">
+                </div>
+            {% endif %}
         </div>
 
-    {% endif %}
+        
+
+        
+
+    </div>
     
 {% endblock body %}

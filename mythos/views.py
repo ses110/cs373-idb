@@ -31,30 +31,31 @@ def figures(request):
     return render_to_response('mythos/figures.html', context_dict, context)
 
 
-def culture(request, val):
+def culture(request, id):
     context = RequestContext(request)
 
-    # Retrieve correct figure
+    # Retrieve correct culture
+    culture = models.p1_culture(id)
+    images = [m for m in culture.media if m.kind == 'img']
+    videos = [m for m in culture.media if m.kind == 'vid']
+    external_links = [m for m in culture.media if m.kind == 'link']
 
-    # TESTING 
-    context_dict = {'title':'Test Culture'}
+    context_dict = {
+        'title':culture.name,
+        'region':culture.region,
+        'language':culture.language,
+        'history':culture.history,
+        'images':images,
+        'videos':videos,
+        'external_links':external_links
+    }
 
     return render_to_response('mythos/culture.html', context_dict, context)
 
 def cultures(request):
     context = RequestContext(request)
 
-    # Get list of all figures
-
-    cultures = [
-        models.Culture(name='Greeks', region='Greece', language='Greek', ),
-        models.Culture(name='Romans'),
-        models.Culture(name='Chinese'),
-        models.Culture(name='Persian'),
-        models.Culture(name='Norse')
-    ]
-
-    # TESTING
+    cultures = models.p1_cultures()
     context_dict = {'title':'Cultures', 'items':cultures}
 
     return render_to_response('mythos/cultures.html', context_dict, context)

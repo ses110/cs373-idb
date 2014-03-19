@@ -3,3 +3,15 @@
 {% block title %}{{ title }}{% endblock title %}
 {% block header %}{{ title }}{% endblock header %}
 
+{% block content %}
+    <ul class="list-inline">
+        <li style="color:#888">Region: {{ region }} </li>
+        <li style="color:#888">Language: {{ language }} </li>
+    </ul>
+    <p>
+        {{ history }}
+    </p>
+{% endblock content %}
+
+
+
