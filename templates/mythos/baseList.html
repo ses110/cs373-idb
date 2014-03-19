@@ -1,5 +1,8 @@
 {% extends "mythos/base.html" %}
 
+{% block title %}{{ title }}{% endblock title %}
+{% block header %}{{ title }}{% endblock header %}
+
 {% block body %}
 
     {{ block.super }}
@@ -8,7 +11,7 @@
         <table class="table table-striped table-responsive">
           <thead>
             <tr>
-              <th>{% block tableHeader %} Table Header {% endblock %}</th>
+              <th>{% block tableHeader %} {{ title }} {% endblock tableHeader %}</th>
             </tr>
           </thead>
           <tbody>

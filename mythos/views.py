@@ -34,23 +34,7 @@ def figures(request):
 def culture(request, id):
     context = RequestContext(request)
 
-    # Retrieve correct culture
-    culture = models.p1_culture(id)
-    images = [m for m in culture.media if m.kind == 'img']
-    videos = [m for m in culture.media if m.kind == 'vid']
-    external_links = [m for m in culture.media if m.kind == 'link']
-
-    context_dict = {
-        'title':culture.name,
-        'region':culture.region,
-        'language':culture.language,
-        'history':culture.history,
-        'images':images,
-        'videos':videos,
-        'external_links':external_links
-    }
-
-    return render_to_response('mythos/culture.html', context_dict, context)
+    return render_to_response('mythos/culture.html', models.p1_culture(id), context)
 
 def cultures(request):
     context = RequestContext(request)

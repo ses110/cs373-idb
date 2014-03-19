@@ -46,31 +46,62 @@
                         <a href="{{ image.link }}"><img src="{{ image.link }}" style="padding:2px 2px 2px 2px;overflow:hidden;max-height:128px;max-width:64px"></a>
                     {% endif %}
                 {% endfor %}
-            </div>
-        </div>
 
-        <div class="col-sm-offset-2 col-sm-6">
-            
-            <!-- Related Figures -->
-            {% if related_figures %}
-                <div class="col-md-offset-2 col-md-8">
-                    <table class="table table-responsive">
+
+                <!-- Related Figures -->
+                    
+                {% if related_figures %}
+                    <table class="table">
                       <thead>
-                        <tr>
-                          <th>Related Figures</th>
-                        </tr>
+                        <tr><th> {% block relatedFigureTitle %} Related Figures {% endblock relatedFigureTitle %}</th></tr>
                       </thead>
                       <tbody>
                         {% for figure in related_figures %}
                             <tr>
-                              <td><a href="/figures/{{ figure.id }}"> {{ figure.name }} </a></td>
+                              <td style="border-top:none"><a href="/figures/{{ figure.id }}"> {{ figure.name }} </a></td>
                             </tr>
                         {% endfor %}
                       </tbody>
                     </table>
-                </div>
-            {% endif %}
+                {% endif %}
 
+                {% if related_stories %}
+                    <table class="table">
+                      <thead>
+                        <tr><th> {% block relatedStoriesTitle %} Related Stories {% endblock relatedStoriesTitle %}</th></tr>
+                      </thead>
+                      <tbody>
+                        {% for story in related_stories %}
+                            <tr>
+                              <td style="border-top:none"><a href="/stories/{{ story.id }}"> {{ story.name }} </a></td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                {% endif %}
+
+                {% if related_cultures %}
+                    <table class="table">
+                      <thead>
+                        <tr><th> {% block relatedCulturesTitle %} Related Cultures {% endblock relatedCulturesTitle %}</th></tr>
+                      </thead>
+                      <tbody>
+                        {% for culture in related_cultures %}
+                            <tr>
+                              <td style="border-top:none"><a href="/cultures/{{ culture.id }}"> {{ culture.name }} </a></td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                {% endif %}
+                
+            </div>
+
+        </div>
+
+        <div class="col-sm-offset-2 col-sm-6">
+            
+            
             <!-- External Links -->
             {% if external_links %}
                 <div>
