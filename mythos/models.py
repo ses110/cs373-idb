@@ -131,7 +131,7 @@ architecture, music, mathematics, science, technology, cuisine, and sports, both
                       Media(link="http://upload.wikimedia.org/wikipedia/commons/1/1c/Homer_British_Museum.jpg")],
             'videos':[Media(link="http://www.youtube.com/embed/WptSXfvY-vs"),
                       Media(link="http://www.youtube.com/embed/vHMu2gVzspA")],
-            'related_figures':[],
+            'related_figures':[Figure(id=1, name="Atlas"), Figure(id=2, name="Athena")],
             'related_stories':[],
             'related_cultures':[Culture(id=2, name="Roman")],
             'external_links':[Media(name="Wikipedia: Greeks", link="http://en.wikipedia.org/wiki/Greeks"),
@@ -164,7 +164,7 @@ republics such as the United States and France. It achieved impressive technolog
                       Media(link="http://upload.wikimedia.org/wikipedia/commons/2/2d/Invasions_of_the_Roman_Empire_1.png")],
             'videos':[Media(link="http://www.youtube.com/embed/g-MFgjO88KY"),
                       Media(link="http://www.youtube.com/embed/uR-dCYZ8LIo")],
-            'related_figures':[],
+            'related_figures':[Figure(id=1, name="Atlas"), Figure(id=2, name="Athena")],
             'related_stories':[],
             'related_cultures':[Culture(id=1, name="Greeks")],
             'external_links':[Media(name="Wikipedia: Roman Mythology", link="http://en.wikipedia.org/wiki/Roman_mythology"),
@@ -195,7 +195,7 @@ owe much to the modern Viking myth that had taken shape by the early 20th centur
                       Media(link="http://upload.wikimedia.org/wikipedia/commons/b/b3/Manuscript_Odinn.jpg")],
             'videos':[Media(link="http://www.youtube.com/embed/_qYvtDaVEYM"),
                       Media(link="http://www.youtube.com/embed/IsX7i5BCHso")],
-            'related_figures':[],
+            'related_figures':[Figure(id=3, name="Loki")],
             'related_stories':[],
             'related_cultures':[Culture(id=2, name="Roman")],
             'external_links':[Media(name="Wikipedia: Nordic Mythology", link="http://en.wikipedia.org/wiki/Nordic_mythology"),
@@ -207,7 +207,7 @@ owe much to the modern Viking myth that had taken shape by the early 20th centur
     def init_figure_items():
         P1_Models.figure_items = list()
         P1_Models.figure_items.append(Figure(id=1, name="Atlas"))
-        P1_Models.figure_items.append(Figure(id=2, name="Ares"))
+        P1_Models.figure_items.append(Figure(id=2, name="Athena"))
         P1_Models.figure_items.append(Figure(id=3, name="Loki"))
 
     @staticmethod
@@ -231,7 +231,51 @@ but Zeus condemned Atlas to stand at the western edge of Gaia (the Earth) and ho
             'related_stories':[],
             'related_cultures':[Culture(id=1, name="Greek"), Culture(id=2, name="Roman")],
             'external_links':[Media(name="Wikipedia: Atlas", link="http://en.wikipedia.org/wiki/Atlas_(mythology)"),
-                              Media(name="Tufs: A Dictionary of Greek and Roman biography and mythology ", link="http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0104%3Aalphabetic+letter%3DA%3Aentry+group%3D53%3Aentry%3Datlas-bio-1")]
+                              Media(name="Tufts: A Dictionary of Greek and Roman biography and mythology", link="http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0104%3Aalphabetic+letter%3DA%3Aentry+group%3D53%3Aentry%3Datlas-bio-1")]
+        }
+
+        P1_Models.figures[2] = {
+            'title':"Athena",
+            'kind':"Olympian",
+            'biography':"""In Greek religion and mythology, Athena or Athene, also referred to as Pallas Athena/Athene, 
+is the goddess of wisdom, courage, inspiration, civilization, law and justice, just warfare, mathematics, strength, strategy, the arts, crafts, and skill. 
+Minerva is the Roman goddess identified with Athena. Athena is also a shrewd companion of heroes and is the goddess of heroic endeavour. She is the virgin patroness of Athens. 
+The Athenians founded the Parthenon on the Acropolis of her namesake city, Athens (Athena Parthenos), in her honour. Athena's veneration as the patron of Athens seems to have existed 
+from the earliest times, and was so persistent that archaic myths about her were recast to adapt to cultural changes. In her role as a protector of the city (polis), many people throughout the Greek world worshiped Athena as Athena Polias. 
+The city of Athens and the goddess Athena essentially bear the same name (Athena the Goddess, Athenai the city) while it is not known which of the two words is derived from the other.""",
+            'images':[Media(link="http://upload.wikimedia.org/wikipedia/commons/2/22/Mattei_Athena_Louvre_Ma530_n2.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/d/db/Athena_Parthenos_Altemps_Inv8622.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/2/2a/Gandharan_Athena.jpg")],
+            'videos':[Media(link="http://www.youtube.com/embed/AOL0oAAO9LA")],
+            'related_figures':[Figure(id=1, name="Atlas")],
+            'related_stories':[],
+            'related_cultures':[Culture(id=1, name="Greek"), Culture(id=2, name="Roman")],
+            'external_links':[Media(name="Wikipedia: Athena", link="http://en.wikipedia.org/wiki/Athena"),
+                              Media(name="Cult of Athena", link="http://www.theoi.com/Cult/AthenaCult.html")]
+        }
+
+        P1_Models.figures[3] = {
+            'title':"Loki",
+            'kind':"God",
+            'biography':"""In Norse mythology, Loki, Loptr, or Hveðrungr is a god. Loki is the son of Fárbauti and Laufey, and the brother of Helblindi and Byleistr. 
+By the jotunn Angrboða, Loki is the father of Hel, the wolf Fenrir, and the world serpent Jormungandr. By his wife Sigyn, Loki is the father of Narfi and/or Nari. 
+By the stallion Svaoilfari, Loki is the mother—giving birth in the form of a mare—to the eight-legged horse Sleipnir. In addition, Loki is referred to as the father of Vali in the Prose Edda.
+Loki's relation with the gods varies by source. Loki sometimes assists the gods and sometimes causes problems for them. Loki is a shape shifter and in separate incidents he appears in the form of a salmon, 
+mare, seal, a fly, and possibly an elderly woman. Loki's positive relations with the gods end with his role in engineering the death of the god Baldr. Loki is eventually bound by the gods with the entrails of one of his sons.
+In both the Poetic Edda and the Prose Edda, the goddess Skaði is responsible for placing a serpent above him while he is bound. The serpent drips venom from above him that Sigyn collects into a bowl; however, 
+she must empty the bowl when it is full, and the venom that drips in the meantime causes Loki to writhe in pain, thereby causing earthquakes. With the onset of Ragnarök, Loki is foretold to slip free from his bonds and to fight against the gods among the forces of the jotnar, 
+at which time he will encounter the god Heimdallr and the two will slay each other. Loki is attested in the Poetic Edda, compiled in the 13th century from earlier traditional sources; the Prose Edda and Heimskringla, written in the 13th century by Snorri Sturluson; 
+the Norwegian Rune Poems, in the poetry of skalds, and in Scandinavian folklore. Loki may be depicted on the Snaptun Stone, the Kirkby Stephen Stone, and the Gosforth Cross. Loki's origins and role in Norse mythology, which some scholars have described as that of a trickster god, 
+have been much debated by scholars.""",
+            'images':[Media(link="http://upload.wikimedia.org/wikipedia/commons/4/40/Processed_SAM_loki.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/a/ac/Loki_taunts_Bragi.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/c/cb/Louis_Huard_-_The_Punishment_of_Loki.jpg")],
+            'videos':[Media(link="http://www.youtube.com/embed/o43-oAL2ogY")],
+            'related_figures':[],
+            'related_stories':[],
+            'related_cultures':[Culture(id=3, name="Nordic")],
+            'external_links':[Media(name="Wikipedia: Loki", link="http://en.wikipedia.org/wiki/Loki"),
+                              Media(name="Pantheon.Org", link="http://www.pantheon.org/articles/l/loki.html")]
         }
 
 

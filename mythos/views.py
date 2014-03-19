@@ -51,16 +51,7 @@ def story(request, val):
 def stories(request):
     context = RequestContext(request)
 
-    # Get list of all figures
-    stories = [    
-        models.Story(name='The Rape of Persephone'),
-        models.Story(name='Hercules and his Labours'),
-        models.Story(name='Perseus and Medusa'),
-        models.Story(name='Labyrinth of Thebes'),
-        models.Story(name='Titans and Zeus')
-    ]
-
     # TESTING
-    context_dict = {'title':'Stories', 'items':stories}
+    context_dict = {'title':'Stories'}
 
     return render_to_response('mythos/stories.html', context_dict, context)
