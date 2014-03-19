@@ -130,8 +130,8 @@ class Culture(models.Model):
     @cvar related_figures: Foreign Key associating Figures related to this Culture
     @type related_cultures: models.ForeignKey('self')
     @cvar related_cultures: Foreign key associating Cultures similar to this Culture
-    @type notable_stories: models.ForeignKey('Story')
-    @cvar notable_stories:  Foreign Key associating notable mythological stories belonging within this Culture
+    @type related_stories: models.ForeignKey('Story')
+    @cvar related_stories:  Foreign Key associating notable mythological stories belonging within this Culture
     '''
     id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
