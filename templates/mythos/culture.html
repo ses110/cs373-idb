@@ -8,9 +8,19 @@
         <li style="color:#888">Region: {{ region }} </li>
         <li style="color:#888">Language: {{ language }} </li>
     </ul>
-    <p>
-        {{ history }}
-    </p>
+    <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>History</th>
+            </tr>
+          </thead>
+          <tbody>
+                <tr><td style="border-top:none"><p class="text-justify"> {{ history }}</p></td></tr>
+          </tbody>
+        </table>
+    </div>
+   
 {% endblock content %}
 
 

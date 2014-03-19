@@ -34,8 +34,8 @@ class Figure(models.Model):
     kind                = models.CharField(max_length=200)
     biography           = models.CharField(max_length=10000)
     related_figures     = models.ForeignKey('self')
-    related_cultures    = models.ForeignKey('Culture')
-    related_stories     = models.ForeignKey('Story')
+    cultures            = models.ForeignKey('Culture')
+    other_stories       = models.ForeignKey('Story')
 
     def getID(self):
         """
@@ -53,7 +53,7 @@ class Story(models.Model):
     id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
     summary             = models.CharField(max_length=10000)
-    related_figures     = models.ForeignKey('Figure')
+    notable_figures     = models.ForeignKey('Figure')
     related_cultures    = models.ForeignKey('Culture')
     related_stories     = models.ForeignKey('self')
 
@@ -75,9 +75,9 @@ class Culture(models.Model):
     region              = models.CharField(max_length=200)
     history             = models.CharField(max_length=10000)
     language            = models.CharField(max_length=200)
-    related_figures     = models.ForeignKey('Figure')
+    notable_figures     = models.ForeignKey('Figure')
     related_cultures    = models.ForeignKey('self')
-    related_stories     = models.ForeignKey('Story')
+    notable_stories     = models.ForeignKey('Story')
 
     def getID(self):
         """
@@ -99,33 +99,48 @@ class P1_Models(object):
     stories = None
 
     @staticmethod
+    def init_models():
+        P1_Models.init_cultures()
+
+    @staticmethod
     def init_cultures():
         P1_Models.cultures = dict()
 
-        c1 = Culture(id=1,
-            name="Greeks", 
-            region="Greece", 
-            history="""The Greeks are an ethnic group native to Greece, Cyprus, Anatolia and other regions. They also form a significant diaspora, with Greek communities established
+        P1_Models.cultures[1] = {
+            'title':"Greeks",
+            'region':"Greece"
+            'language':"Greek"
+            'history':"""The Greeks are an ethnic group native to Greece, Cyprus, Anatolia and other regions. They also form a significant diaspora, with Greek communities established
 around the world. Greek colonies and communities have been historically established in most corners of the Mediterranean, but Greeks have always been centered around the Aegean Sea, 
 where the Greek language has been spoken since the Bronze Age. Until the early 20th century, Greeks were uniformly distributed between the Greek peninsula, the western coast of 
 Asia Minor, Pontus, Egypt, Cyprus and Constantinople; many of these regions coincided to a large extent with the borders of the Byzantine Empire of the late 11th century and the 
 Eastern Mediterranean areas of the ancient Greek colonization. Greeks have greatly influenced and contributed to culture, arts, exploration, literature, philosophy, politics, 
-architecture, music, mathematics, science, technology, cuisine, and sports, both historically and contemporary.""",
-            language="Greek")
-        c1_m0 = Media(id=0, culture=c1, name="img_Greeks", kind="img", link="http://upload.wikimedia.org/wikipedia/commons/1/1c/Homer_British_Museum.jpg")
-        c1_m1 = Media(id=1, culture=c1, name="youtube:Greeks", kind="vid", link="http://www.youtube.com/watch?v=WptSXfvY-vs")
-        c1_m2 = Media(id=2, culture=c1, name="wikipedia:Greeks", kind="link", link="http://en.wikipedia.org/wiki/Greeks")
-        c1.media = [c1_m0, c1_m1, c1_m2]
-        P1_Models.cultures[c1.getID()] = c1
+architecture, music, mathematics, science, technology, cuisine, and sports, both historically and contemporary."""
+            'images':[Media(link="http://upload.wikimedia.org/wikipedia/commons/1/1c/Homer_British_Museum.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/6/61/Leonidas_I_of_Sparta.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/6/66/Pericles_Townley_BM_549.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/7/7d/Head_Platon_Glyptothek_Munich_548.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/e/e7/Domenico-Fetti_Archimedes_1620.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/a/a4/Socrates_Louvre.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/0/01/El_greco.JPG"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/7/7d/Head_Platon_Glyptothek_Munich_548.jpg")]
+            'videos':[Media(id=9, culture=c1, name="youtube:Greeks1", kind="vid", link="http://www.youtube.com/embed/WptSXfvY-vs"),
+                      Media(id=10, culture=c1, name="youtube:Greeks2", kind="vid", link="http://www.youtube.com/embed/vHMu2gVzspA")]
+            'external_links':[Media(name="Wikipedia: Greeks", link="http://en.wikipedia.org/wiki/Greeks"),
+                              Media(name="ancientgreece.com", link="http://www.ancientgreece.com/s/Main_Page/"),
+                              Media(name="BBC: Ancient Greeks", link="http://www.bbc.co.uk/schools/primaryhistory/ancient_greeks/"),
+                              Media(name="History Channel: Ancient Greeks", link="http://www.history.com/topics/ancient-history/ancient-greece")]
+        }
 
 def p1_cultures():
     if not P1_Models.cultures:
-        P1_Models.init_cultures()
+        P1_Models.init_models()
     return P1_Models.cultures.values()
 
 def p1_culture(id):
     if not P1_Models.cultures:
-        P1_Models.init_cultures()
+        P1_Models.init_models()
     return P1_Models.cultures[int(id)]
 
 def p1_figure(id):
