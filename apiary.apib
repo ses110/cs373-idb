@@ -15,12 +15,12 @@ Figure related resources of the **MDB API**
             "id": 1,
             "name": "Hades",
             "kind": "God",
-            "description": "Hades was the ancient Greek god of the underworld."]
+            "description": "Hades was the ancient Greek god of the underworld."
         }, {
             "id": 2,
             "name": "Zeus",
             "kind": "God",
-            "description": "Zeus is the god of sky and thunder in Greek mythology."]
+            "description": "Zeus is the god of sky and thunder in Greek mythology."
         }]
 
 ### Create a figure [POST]
@@ -50,15 +50,15 @@ A single figure object with all its details
 + Response 200 (application/json)
 
         {
-        "id": 2,
-        "name": "Zeus",
-        "kind": "God",
-        "description": "Zeus is the god of sky and thunder in Greek mythology.",
-        "image": ["http://upload.wikimedia.org/wikipedia/commons/c/c8/Jupiter_Smyrna_Louvre_Ma13.jpg"],
-        "videos": ["https://www.youtube.com/results?search_query=zeus"],
-        "related_figures": [1, 3, 4, 6, 7],
-        "related_cultures": [1, 2],
-        "related_stories": [7, 9, 11, 13, 14]
+            "id": 2,
+            "name": "Zeus",
+            "kind": "God",
+            "description": "Zeus is the god of sky and thunder in Greek mythology.",
+            "image": ["http://upload.wikimedia.org/wikipedia/commons/c/c8/Jupiter_Smyrna_Louvre_Ma13.jpg"],
+            "videos": ["https://www.youtube.com/results?search_query=zeus"],
+            "related_figures": [1, 3, 4, 6, 7],
+            "related_cultures": [1, 2],
+            "related_stories": [7, 9, 11, 13, 14]
         }
 
 ### Remove a figure [DELETE]
@@ -72,36 +72,51 @@ Story related resources of the **MDB API**
 + Response 200 (application/json)
 
         [{
-          "id": 1, "title": "Jogging in park"
+              "id": 7,
+              "name": "Labours of Heracles",
+              "description": "The twelve labours of Heracles are a series of episodes concerning a penance carried out by Heracles."
+          
         }, {
-          "id": 2, "title": "Pick-up posters from post-office"
+              "id": 9, 
+              "name": "Trojan War",
+              "description": "The Trojan War was waged againnst the city of Troy by the Achaeans after Paris of Troy took Helen from her husband Menelaus king of Sparta."
         }]
 
 ### Create a story [POST]
 + Request (application/json)
 
-        { "title": "Buy cheese and bread for breakfast." }
+        { 
+            "name": "Labours of Heracles",
+            "description": "The twelve labours of Heracles are a series of episodes concerning a penance carried out by Heracles.",
+            "images": [http://upload.wikimedia.org/wikipedia/commons/4/48/Twelve_Labours_Altemps_Inv8642.jpg],
+            "videos": [http://www.youtube.com/results?search_query=labours%20of%20heracles&sm=3],
+            "related_figures": [2, 7, 9],
+            "related_cultures": [1],
+            "related_stories": [7, 9, 13]
+        }
 
 + Response 201 (application/json)
 
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+        { 
+            "id": 7 
+        }
 
 ## Story [/stories/{id}]
 A single story object with all its details
 
-+ Parameters
-    + id (required, number, `1`) ... Numeric `id` of the story to perform action with. Has example value.
-
 ### Retrieve a story [GET]
 + Response 200 (application/json)
 
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-
-            { "id": 2, "title": "Pick-up posters from post-office" }
+        {
+            "id": 3,
+            "name": "Labours of Heracles",
+            "description": "The twelve labours of Heracles are a series of episodes concerning a penance carried out by Heracles.",
+            "images": [http://upload.wikimedia.org/wikipedia/commons/4/48/Twelve_Labours_Altemps_Inv8642.jpg],
+            "videos": [http://www.youtube.com/results?search_query=labours%20of%20heracles&sm=3],
+            "related_figures": [2, 7, 9],
+            "related_cultures": [1],
+            "related_stories": [7, 9, 13]
+        }
 
 ### Remove a story [DELETE]
 + Response 204
@@ -114,36 +129,58 @@ Culture related resources of the **MDB API**
 + Response 200 (application/json)
 
         [{
-          "id": 1, "title": "Jogging in park"
+              "id": 1, 
+              "name": "Greeks",
+              "region": "Greece",
+              "history": "A Greek civilization belonging to a period of Greek history that lasted from the Archaic period of the 8th of 6th centuries BC to the end of antiquity (ca. 600 AD)",
+              "language": "Greek"
         }, {
-          "id": 2, "title": "Pick-up posters from post-office"
+              "id": 2, 
+              "name": "Romans",
+              "region": "Italian Peninsula",
+              "history": "Ancient Rome began on the Italian Peninsula as early as the 8th century BC.",
+              "language": "Latin"
         }]
 
 ### Create a culture [POST]
 + Request (application/json)
 
-        { "title": "Buy cheese and bread for breakfast." }
+        { 
+            "name": "Greeks",
+            "region": "Greece",
+            "history": "A Greek civilization belonging to a period of Greek history that lasted from the Archaic period of the 8th of 6th centuries BC to the end of antiquity (ca. 600 AD)",
+            "language": "Greek",
+            "images": [http://upload.wikimedia.org/wikipedia/commons/1/19/William_Faden._Composite_Mediterranean._1785.I.jpg],
+            "videos": [http://www.youtube.com/results?search_query=Ancient%20Greece&sm=3],
+            "related_figures": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            "related_cultures": [2],
+            "related_stories": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        }
 
 + Response 201 (application/json)
 
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+        { 
+            "id": 1
+        }
 
 ## Culture [/cultures/{id}]
 A single culture object with all its details
 
-+ Parameters
-    + id (required, number, `1`) ... Numeric `id` of the culture to perform action with. Has example value.
-
 ### Retrieve a culture [GET]
 + Response 200 (application/json)
 
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-
-            { "id": 2, "title": "Pick-up posters from post-office" }
+        { 
+            "id": 1,
+            "name": "Greeks",
+            "region": "Greece",
+            "history": "A Greek civilization belonging to a period of Greek history that lasted from the Archaic period of the 8th of 6th centuries BC to the end of antiquity (ca. 600 AD)",
+            "language": "Greek",
+            "images": [http://upload.wikimedia.org/wikipedia/commons/1/19/William_Faden._Composite_Mediterranean._1785.I.jpg],
+            "videos": [http://www.youtube.com/results?search_query=Ancient%20Greece&sm=3],
+            "related_figures": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            "related_cultures": [2],
+            "related_stories": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        }
 
 ### Remove a culture [DELETE]
 + Response 204
