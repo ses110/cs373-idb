@@ -102,8 +102,9 @@ class P1_Models(object):
     @staticmethod
     def init_culture_items():
         P1_Models.culture_items = list()
-        P1_Models.culture_items.append(Culture(id=1, name="Greeks"))
+        P1_Models.culture_items.append(Culture(id=1, name="Greek"))
         P1_Models.culture_items.append(Culture(id=2, name="Roman"))
+        P1_Models.culture_items.append(Culture(id=3, name="Nordic"))
 
     @staticmethod
     def init_cultures():
@@ -175,33 +176,31 @@ republics such as the United States and France. It achieved impressive technolog
         P1_Models.cultures[3] = {
             'title':"Nordic",
             'region':"Scandinavia",
-            'language':"Latin",
-            'history':"""Ancient Rome was an Italic civilization that began on the Italian Peninsula as early as the 8th century BC. Located along the Mediterranean Sea and centered 
-on the city of Rome, it expanded to become one of the largest empires in the ancient world[1] with an estimated 50 to 90 million inhabitants (roughly 20% of the world's population) 
-and covering 6.5 million square kilometers (2.5 million sq mi) during its height between the first and second centuries AD. In its approximately 12 centuries of existence, Roman civilization 
-shifted from a monarchy to a classical republic to an increasingly autocratic empire. Through conquest and assimilation, it came to dominate Southern Europe, Western Europe, Asia Minor, North Africa, 
-parts of Northern Europe, and parts of Eastern Europe. Rome was preponderant throughout the Mediterranean region and was one of the most powerful entities of the ancient world. It is often grouped into 
-"Classical Antiquity" together with ancient Greece, and their similar cultures and societies are known as the Greco-Roman world. The Romans are still remembered today, including names such as Julius Caesar, 
-Cicero, and Augustus. Ancient Roman society contributed greatly to government, law, politics, engineering, art, literature, architecture, technology, warfare, religion, language, society and more in the 
-Western world. A civilization highly developed for its time, Rome professionalized and greatly expanded its military and created a system of government called res publica, the inspiration for modern 
-republics such as the United States and France. It achieved impressive technological and architectural feats, such as the construction of an extensive system of aqueducts and roads, as well as large monuments, palaces, and public facilities.""",
-            'images':[Media(link="http://upload.wikimedia.org/wikipedia/commons/e/ea/Roman_Republic_Empire_map.gif"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/8/8e/Capitoline_Brutus_Musei_Capitolini_MC1183.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/b/b5/Italy_400bC_en.svg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/1/15/Giulio-cesare-enhanced_1-800x1450.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/9/95/Castro_Battle_of_Actium.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/e/eb/Statue-Augustus.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/e/e6/Septimius_Severus_Glyptothek_Munich_357.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/2/2d/Invasions_of_the_Roman_Empire_1.png")],
-            'videos':[Media(link="http://www.youtube.com/embed/g-MFgjO88KY"),
-                      Media(link="http://www.youtube.com/embed/uR-dCYZ8LIo")],
+            'language':"Old Norse",
+            'history':"""Vikings (from Old Norse víkingr) were the people of the Norse culture, during the Viking Age. 
+They were a seafaring people of north Germanic descent, based in Scandinavia, who raided, traded, explored, and settled in wide areas of Europe, Asia, and the North Atlantic islands, 
+from the late 8th to the mid-11th centuries. The Vikings employed wooden longships with wide, shallow-draft hulls, allowing navigation in rough seas or in shallow river waters. 
+The ships could be landed on beaches, and their light weight enabled them to be hauled over portages. These versatile ships allowed the Vikings to settle and travel as far east 
+as Constantinople and the Volga River in Russia, as far west as Iceland, Greenland, and Newfoundland, and as far south as Nekor. This period of Viking expansion, known as the Viking Age,
+constitutes an important element of the medieval history of Scandinavia, Great Britain, Ireland, Russia, and the rest of Europe.
+Popular conceptions of the Vikings often differ from the complex picture that emerges from archaeology and written sources. A romanticised picture of Vikings as noble savages began to take 
+root in the 18th century, and this developed and became widely propagated during the 19th-century Viking revival.[2] The received views of the Vikings as violent brutes or intrepid adventurers 
+owe much to the modern Viking myth that had taken shape by the early 20th century. Current popular representations are typically highly clichéd, presenting the Vikings as familiar caricatures.""",
+            'images':[Media(link="http://upload.wikimedia.org/wikipedia/commons/c/cb/Wikinger.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/5/53/Gokstadskipet1.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/5/51/The_Wolves_Pursuing_Sol_and_Mani.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/5/51/Ardre_Odin_Sleipnir.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/e/e2/Walhall_by_Emil_Doepler.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/6/60/Hundingsbane.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/b/b3/Manuscript_Odinn.jpg")],
+            'videos':[Media(link="http://www.youtube.com/embed/_qYvtDaVEYM"),
+                      Media(link="http://www.youtube.com/embed/IsX7i5BCHso")],
             'related_figures':[],
             'related_stories':[],
-            'related_cultures':[Culture(id=1, name="Greeks")],
-            'external_links':[Media(name="Wikipedia: Roman Mythology", link="http://en.wikipedia.org/wiki/Roman_mythology"),
-                              Media(name="Wikipedia: Ancient Rome", link="http://en.wikipedia.org/wiki/Ancient_Rome"),
-                              Media(name="OpenCourseWare: History of Ancient Rome", link="http://ocw.nd.edu/classics/history-of-ancient-rome"),
-                              Media(name="Livius.org", link="http://www.livius.org/rome.html")]
+            'related_cultures':[Culture(id=2, name="Roman")],
+            'external_links':[Media(name="Wikipedia: Nordic Mythology", link="http://en.wikipedia.org/wiki/Nordic_mythology"),
+                              Media(name="Wikipedia: Norsemen", link="http://en.wikipedia.org/wiki/Norsemen"),
+                              Media(name="Hurstwic", link="http://www.hurstwic.org/history/text/history.htm")]
         }
 
 def p1_cultures():
