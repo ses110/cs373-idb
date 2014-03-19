@@ -167,7 +167,7 @@ class P1_Models(object):
         P1_Models.culture_items = list()
         P1_Models.culture_items.append(Culture(id=1, name="Greek"))
         P1_Models.culture_items.append(Culture(id=2, name="Roman"))
-        P1_Models.culture_items.append(Culture(id=3, name="Nordic"))
+        P1_Models.culture_items.append(Culture(id=3, name="Norse"))
 
     @staticmethod
     def init_cultures():
@@ -229,7 +229,7 @@ republics such as the United States and France. It achieved impressive technolog
                       Media(link="http://www.youtube.com/embed/uR-dCYZ8LIo")],
             'related_figures':[Figure(id=1, name="Atlas"), Figure(id=2, name="Athena")],
             'related_stories':[],
-            'related_cultures':[Culture(id=1, name="Greeks")],
+            'related_cultures':[Culture(id=1, name="Greeks"), Culture(id=3, name="Norse")],
             'external_links':[Media(name="Wikipedia: Roman Mythology", link="http://en.wikipedia.org/wiki/Roman_mythology"),
                               Media(name="Wikipedia: Ancient Rome", link="http://en.wikipedia.org/wiki/Ancient_Rome"),
                               Media(name="OpenCourseWare: History of Ancient Rome", link="http://ocw.nd.edu/classics/history-of-ancient-rome"),
@@ -290,8 +290,8 @@ but Zeus condemned Atlas to stand at the western edge of Gaia (the Earth) and ho
                       Media(link="http://upload.wikimedia.org/wikipedia/commons/0/0d/Atlas_sculpture_on_collins_street_melbourne.jpg"),
                       Media(link="http://upload.wikimedia.org/wikipedia/commons/6/62/GandharanAtlas.JPG")],
             'videos':[Media(link="http://www.youtube.com/embed/5hhPRUpF6YY")],
-            'related_figures':[],
-            'related_stories':[],
+            'related_figures':[Figure(id=1, name="Atlas")],
+            'related_stories':[Story(id=2, name="The Punishment of Atlas")],
             'related_cultures':[Culture(id=1, name="Greek"), Culture(id=2, name="Roman")],
             'external_links':[Media(name="Wikipedia: Atlas", link="http://en.wikipedia.org/wiki/Atlas_(mythology)"),
                               Media(name="Tufts: A Dictionary of Greek and Roman biography and mythology", link="http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0104%3Aalphabetic+letter%3DA%3Aentry+group%3D53%3Aentry%3Datlas-bio-1")]
@@ -311,7 +311,7 @@ The city of Athens and the goddess Athena essentially bear the same name (Athena
                       Media(link="http://upload.wikimedia.org/wikipedia/commons/2/2a/Gandharan_Athena.jpg")],
             'videos':[Media(link="http://www.youtube.com/embed/AOL0oAAO9LA")],
             'related_figures':[Figure(id=1, name="Atlas")],
-            'related_stories':[],
+            'related_stories':[Story(id=1, name="Birth of Athena")],
             'related_cultures':[Culture(id=1, name="Greek"), Culture(id=2, name="Roman")],
             'external_links':[Media(name="Wikipedia: Athena", link="http://en.wikipedia.org/wiki/Athena"),
                               Media(name="Cult of Athena", link="http://www.theoi.com/Cult/AthenaCult.html")]
@@ -336,10 +336,92 @@ have been much debated by scholars.""",
             'videos':[Media(link="http://www.youtube.com/embed/o43-oAL2ogY")],
             'related_figures':[],
             'related_stories':[],
-            'related_cultures':[Culture(id=3, name="Nordic")],
+            'related_cultures':[Culture(id=3, name="Norse")],
             'external_links':[Media(name="Wikipedia: Loki", link="http://en.wikipedia.org/wiki/Loki"),
                               Media(name="Pantheon.Org", link="http://www.pantheon.org/articles/l/loki.html")]
         }
+
+    @staticmethod
+    def init_story_items():
+      P1_Models.story_items = list()
+      P1_Models.story_items.append(Story(id=1, name="Birth of Athena"))
+      P1_Models.story_items.append(Story(id=2, name="The Punishment of Atlas"))
+      P1_Models.story_items.append(Story(id=3, name="Reginsmál"))
+
+    @staticmethod
+    def init_stories():
+      P1_Models.stories = dict()
+
+      P1_Models.stories[1] = {
+        'title':"The Birth of Athena",
+        'summary':"""The story of Athena's birth comes in several versions. In the one most commonly cited, Zeus lay with Metis, the goddess of crafty thought and wisdom, 
+but he immediately feared the consequences. It had been prophesied that Metis would bear children more powerful than the sire, even Zeus himself. In order to forestall these dire 
+consequences, after lying with Metis, Zeus "put her away inside his own belly;" he "swallowed her down all of a sudden." He was too late: Metis had already conceived.
+Eventually Zeus experienced an enormous headache; Prometheus, Hephaestus, Hermes, Ares, or Palaemon (depending on the sources examined) cleaved Zeus's head with the double-headed 
+Minoan axe, the labrys. Athena leaped from Zeus's head, fully grown and armed, with a shout— "and pealed to the broad sky her clarion cry of war. And Ouranos trembled to hear, 
+and Mother Gaia..." (Pindar, Seventh Olympian Ode).\nThe major competing tradition regarding Athena's parentage involves some of her more mysterious epithets: Pallas, as in the 
+ancient-Greek Παλλάς Ἀθήνη (also Pallantias) and Tritogeneia (also Trito, Tritonis, Tritoneia, Tritogenes). A distant archaic separate entity named Pallas is invoked as Athena's father, 
+sister, foster sister, companion, or opponent in battle. Pallas is often a nymph, a daughter of Triton (a sea god), and a childhood friend of Athena.
+In every case, Athena kills Pallas, accidentally, and thereby gains the name for herself. In one telling, they practice the arts of war together until 
+one day they have a falling out. As Pallas is about to strike Athena, Zeus intervenes. With Pallas stunned by a blow from Zeus, Athena takes advantage and 
+kills her. Distraught over what she has done, Athena takes the name Pallas for herself.
+When Pallas is Athena's father the events, including her birth, are located near a body of water named Triton or Tritonis. When Pallas is Athena's sister or 
+foster-sister, Athena's father or foster-father is Triton, the son and herald of Poseidon. But Athena may be called the daughter of Poseidon and a nymph named Tritonis,
+without involving Pallas. Likewise, Pallas may be Athena's father or opponent, without involving Triton.""",
+        'images':[Media(link="http://upload.wikimedia.org/wikipedia/commons/4/42/Amphora_birth_Athena_Louvre_F32.jpg")],
+        'videos':[],
+        'related_figures':[Figure(id=2, name="Athena")],
+        'related_stories':[],
+        'related_cultures':[Culture(id=1, name="Greek"), Culture(id=2, name="Roman")],
+        'external_links':[Media(name="Wikipedia: Athena", link="http://en.wikipedia.org/wiki/Athena"),
+                          Media(name="Birth of Athena", link="http://www.greekmythology.com/Myths/The_Myths/Birth_of_Athena/birth_of_athena.html")]
+    }
+
+      P1_Models.stories[2] = {
+          'title':"The Punishment of Atlas",
+          'summary':"""Atlas and his brother Menoetius sided with the Titans in their war against the Olympians, the Titanomachy. When the Titans were defeated, 
+many of them (including Menoetius) were confined to Tartarus, but Zeus condemned Atlas to stand at the western edge of Gaia (the Earth) and hold up Uranus on his shoulders, 
+to prevent the two from resuming their primordial embrace. Thus, he was Atlas Telamon, "enduring Atlas," and became a doublet of Coeus, the embodiment of the celestial axis 
+around which the heavens revolve.""",
+          'images':[Media(link="http://upload.wikimedia.org/wikipedia/commons/8/8c/MAN_Atlante_fronte_1040572.JPG")],
+          'videos':[],
+          'related_figures':[Figure(id=1, name="Atlas"), Figure(id=2, name="Athena")],
+          'related_stories':[],
+          'related_cultures':[Culture(id=1, name="Greek"), Culture(id=2, name="Roman")],
+          'external_links':[Media(name="Wikipedia: Atlas", link="http://en.wikipedia.org/wiki/Atlas_(mythology)"),
+                            Media(name="Ancient History", link="http://ancienthistory.about.com/od/atlastitanmyth/f/081409WorldonShouders.htm")]
+      }
+
+      P1_Models.stories[3] = {
+          'title':"Reginsmál",
+          'summary':"""Loki appears in both prose and the first six stanzas of the poem Reginsmál. 
+The prose introduction to Reginsmál details that, while the hero Sigurd was being fostered by Regin, son of Hreidmar, 
+Regin tells him that once the gods Odin, Hœnir, and Loki went to Andvara-falls, which contained many fish. Regin, a dwarf, 
+ two brothers; Andvari, who gained food by spending time in the Andvara-falls in the form of a pike, and Ótr, who would often go to the Andvara-falls in the form of an otter.
+While the three gods are at the falls, Ótr (in the form of an otter) catches a salmon and eats it on a river bank, his eyes shut, when Loki hits and kills him with a stone. 
+The gods think that this is great, and flay the skin from the otter to make a bag. That night, the three gods stay with Hreidmar (the father of Regin, Andvari, 
+  and the now-dead Ótr) and show him their catches, including the skin of the otter. Upon seeing the skin, Regin and Hreidmar "seized them and made them ransom their lives" in exchange for filling the 
+otterskin bag the gods had made with gold and covering the exterior of the bag with red gold.
+Loki is sent to retrieve the gold, and Loki goes to the goddess Rán, borrows her net, and then goes back to the Andvara-falls. 
+At the falls, Loki spreads his net before Andvari (who is in the form of a pike), which Andvari jumps into. The stanzas of the poem then begin: 
+Loki mocks Andvari, and tells him that he can save his head by telling Loki where his gold is. Andvari gives some background information about himself, 
+including that he was cursed by a "norn of misfortune" in his "early days". Loki responds by asking Andvari "what requital" does mankind get if 
+"they wound each other with words". Andvari responds that lying men receive a "terrible requital": having to wade in the river Vadgelmir, and that their suffering will be long.
+Loki looks over the gold that Andvari possesses, and after Andvari hands over all of his gold, Andvari holds on to but a single ring; the ring Andvarinaut, which Loki also takes. 
+Andvari, now in the form of a dwarf, goes into a rock, and tells Loki that the gold will result in the death of two brothers, will cause strife between eight princes, and will be useless to everyone.
+Loki returns, and the three gods give Hreidmar the money from the gold hoard and flatten out the otter skin, stretch out its legs, and heap gold atop it, covering it. Hreidmar looks it over, and notices a single hair that has not been covered. 
+Hreidmar demands that it be covered as well. Odin puts forth the ring Andvarinaut, covering the single hair.
+Loki states that they have now handed over the gold, and that gold is cursed as Andvari is, and that it will be the death of Hreidmar and Regin both. 
+Hreidmar responds that if he had known this before, he would have taken their lives, yet that he believes those are not yet born whom the curse is intended for, and that he doesn't believe him. Further, with the hoard, he will have red gold for the rest of his life. 
+Hreidmar tells them to leave, and the poem continues without further mention of Loki.""",
+          'images':[Media(link="http://upload.wikimedia.org/wikipedia/commons/8/8c/MAN_Atlante_fronte_1040572.JPG")],
+          'videos':[],
+          'related_figures':[Figure(id=3, name="Loki")],
+          'related_stories':[],
+          'related_cultures':[Culture(id=1, name="Norse")],
+          'external_links':[Media(name="Wikipedia: Loki", link="http://en.wikipedia.org/wiki/Loki"),
+                            Media(name="Wikipedia: Reginsmál", link="http://en.wikipedia.org/wiki/Reginsm%C3%A1l")]
+      }
 
 
 def p1_cultures():
@@ -362,5 +444,12 @@ def p1_figure(id):
         P1_Models.init_figures()
     return P1_Models.figures[int(id)]
 
+def p1_stories():
+    if not P1_Models.story_items:
+        P1_Models.init_story_items()
+    return P1_Models.story_items
+
 def p1_story(id):
-    pass
+    if not P1_Models.stories:
+        P1_Models.init_stories()
+    return P1_Models.stories[int(id)]

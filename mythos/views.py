@@ -38,20 +38,14 @@ def cultures(request):
     return render_to_response('mythos/cultures.html', context_dict, context)
 
 
-def story(request, val):
+def story(request, id):
     context = RequestContext(request)
-
-    # Retrieve correct figure
-
-    # TESTING 
-    context_dict = {'title':'Test Story'}
-
-    return render_to_response('mythos/story.html', context_dict, context)
+    return render_to_response('mythos/story.html', models.p1_story(id), context)
 
 def stories(request):
     context = RequestContext(request)
 
-    # TESTING
-    context_dict = {'title':'Stories'}
+    stories = models.p1_stories()
+    context_dict = {'title':'Stories', 'items':stories}
 
     return render_to_response('mythos/stories.html', context_dict, context)
