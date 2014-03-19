@@ -77,7 +77,7 @@ class Culture(models.Model):
     language            = models.CharField(max_length=200)
     related_figures     = models.ForeignKey('Figure')
     related_cultures    = models.ForeignKey('self')
-    notable_stories     = models.ForeignKey('Story')
+    related_stories     = models.ForeignKey('Story')
 
     def getID(self):
         """

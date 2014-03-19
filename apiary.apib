@@ -15,12 +15,12 @@ Figure related resources of the **MDB API**
             "id": 1,
             "name": "Hades",
             "kind": "God",
-            "description": "Hades was the ancient Greek god of the underworld."
+            "biography": "Hades was the ancient Greek god of the underworld."
         }, {
             "id": 2,
             "name": "Zeus",
             "kind": "God",
-            "description": "Zeus is the god of sky and thunder in Greek mythology."
+            "biography": "Zeus is the god of sky and thunder in Greek mythology."
         }]
 
 ### Create a figure [POST]
@@ -29,7 +29,7 @@ Figure related resources of the **MDB API**
         {
             "name": "Zeus",
             "kind": "God",
-            "description": "Zeus is the god of sky and thunder in Greek mythology.",
+            "biography": "Zeus is the god of sky and thunder in Greek mythology.",
             "image": ["http://upload.wikimedia.org/wikipedia/commons/c/c8/Jupiter_Smyrna_Louvre_Ma13.jpg"],
             "videos": ["https://www.youtube.com/results?search_query=zeus"],
             "related_figures": [1, 3, 4, 6, 7],
@@ -46,6 +46,9 @@ Figure related resources of the **MDB API**
 ## Figure [/figures/{id}]
 A single figure object with all its details
 
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Figure to perform action with. Has example value.
+
 ### Retrieve a figure [GET]
 + Response 200 (application/json)
 
@@ -53,7 +56,7 @@ A single figure object with all its details
             "id": 2,
             "name": "Zeus",
             "kind": "God",
-            "description": "Zeus is the god of sky and thunder in Greek mythology.",
+            "biography": "Zeus is the god of sky and thunder in Greek mythology.",
             "image": ["http://upload.wikimedia.org/wikipedia/commons/c/c8/Jupiter_Smyrna_Louvre_Ma13.jpg"],
             "videos": ["https://www.youtube.com/results?search_query=zeus"],
             "related_figures": [1, 3, 4, 6, 7],
@@ -74,12 +77,12 @@ Story related resources of the **MDB API**
         [{
               "id": 7,
               "name": "Labours of Heracles",
-              "description": "The twelve labours of Heracles are a series of episodes concerning a penance carried out by Heracles."
+              "summary": "The twelve labours of Heracles are a series of episodes concerning a penance carried out by Heracles."
           
         }, {
               "id": 9, 
               "name": "Trojan War",
-              "description": "The Trojan War was waged againnst the city of Troy by the Achaeans after Paris of Troy took Helen from her husband Menelaus king of Sparta."
+              "summary": "The Trojan War was waged againnst the city of Troy by the Achaeans after Paris of Troy took Helen from her husband Menelaus king of Sparta."
         }]
 
 ### Create a story [POST]
@@ -87,7 +90,7 @@ Story related resources of the **MDB API**
 
         { 
             "name": "Labours of Heracles",
-            "description": "The twelve labours of Heracles are a series of episodes concerning a penance carried out by Heracles.",
+            "summary": "The twelve labours of Heracles are a series of episodes concerning a penance carried out by Heracles.",
             "images": [http://upload.wikimedia.org/wikipedia/commons/4/48/Twelve_Labours_Altemps_Inv8642.jpg],
             "videos": [http://www.youtube.com/results?search_query=labours%20of%20heracles&sm=3],
             "related_figures": [2, 7, 9],
@@ -104,13 +107,16 @@ Story related resources of the **MDB API**
 ## Story [/stories/{id}]
 A single story object with all its details
 
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Story to perform action with. Has example value.
+
 ### Retrieve a story [GET]
 + Response 200 (application/json)
 
         {
             "id": 3,
             "name": "Labours of Heracles",
-            "description": "The twelve labours of Heracles are a series of episodes concerning a penance carried out by Heracles.",
+            "summary": "The twelve labours of Heracles are a series of episodes concerning a penance carried out by Heracles.",
             "images": [http://upload.wikimedia.org/wikipedia/commons/4/48/Twelve_Labours_Altemps_Inv8642.jpg],
             "videos": [http://www.youtube.com/results?search_query=labours%20of%20heracles&sm=3],
             "related_figures": [2, 7, 9],
@@ -137,7 +143,7 @@ Culture related resources of the **MDB API**
         }, {
               "id": 2, 
               "name": "Romans",
-              "region": "Italian Peninsula",
+              "region": "Mediterranean",
               "history": "Ancient Rome began on the Italian Peninsula as early as the 8th century BC.",
               "language": "Latin"
         }]
@@ -166,6 +172,9 @@ Culture related resources of the **MDB API**
 ## Culture [/cultures/{id}]
 A single culture object with all its details
 
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Culture to perform action with. Has example value.
+
 ### Retrieve a culture [GET]
 + Response 200 (application/json)
 
@@ -184,4 +193,3 @@ A single culture object with all its details
 
 ### Remove a culture [DELETE]
 + Response 204
-
