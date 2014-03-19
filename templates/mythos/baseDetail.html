@@ -29,5 +29,26 @@
         {% endif %}
 
     </div>
+
+    {% if external_links %}
+
+        <div class="col-md-offset-2 col-md-8" style="padding:5% 0 0 0">
+            <table class="table table-striped table-responsive">
+              <thead>
+                <tr>
+                  <th>External Links</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for media in external_links %}
+                    <tr>
+                        <td><a href="{{ media.link }}"> {{ media.name }}</a></td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+
+    {% endif %}
     
 {% endblock body %}

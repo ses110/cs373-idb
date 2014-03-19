@@ -1,15 +1,21 @@
 from django.db import models
 
-
 class Media(models.Model):
-    '''
-    '''
     id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
     kind                = models.CharField(max_length=200)
     link                = models.CharField(max_length=200)
 
     def getID(self):
+        """
+        Fetch primary key ID from current instance
+
+        @type self: figure
+        @param self: Current figure instance
+
+        @rtype: string
+        @return: The id associated with this figure instance  
+        """
         return self.id
 
 
@@ -23,8 +29,8 @@ class Figure(models.Model):
     '''
     id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
-    kind                = models.CharField(max_length=200) 
-    bio                 = models.CharField(max_length=10000)
+    kind                = models.CharField(max_length=200)
+    biography           = models.CharField(max_length=10000)
     images              = models.ForeignKey('Media')
     videos              = models.ForeignKey('Media')
     external_links      = models.ForeignKey('Media')
@@ -55,7 +61,6 @@ class Story(models.Model):
     related_cultures    = models.ForeignKey('Culture')
     related_stories     = models.ForeignKey('Story')
 
-  
     def getID(self):
         """
         Fetch primary key ID from current instance
