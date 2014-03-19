@@ -4,19 +4,6 @@ from django.shortcuts import render_to_response
 
 from mythos import models
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 def index(request):
     context = RequestContext(request)
     return render_to_response('mythos/index.html', None, context)
@@ -60,7 +47,7 @@ def cultures(request):
     # Get list of all figures
 
     cultures = [
-        models.Culture(name='Greeks'),
+        models.Culture(name='Greeks', region='Greece', language='Greek', ),
         models.Culture(name='Romans'),
         models.Culture(name='Chinese'),
         models.Culture(name='Persian'),
