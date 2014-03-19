@@ -9,15 +9,9 @@ def index(request):
     return render_to_response('mythos/index.html', None, context)
 
 
-def figure(request, val):
+def figure(request, id):
     context = RequestContext(request)
-
-    # Retrieve correct figure
-
-    # TESTING 
-    context_dict = {'title':'Test Figure'}
-
-    return render_to_response('mythos/figure.html', context_dict, context)
+    return render_to_response('mythos/figure.html', models.p1_figure(id), context)
 
 
 def figures(request):
@@ -25,15 +19,14 @@ def figures(request):
 
     # Get list of all figures
 
-    # TESTING
-    context_dict = {'title':'Figures'}
+    figures = models.p1_figures()
+    context_dict = {'title':'Figures', 'items':figures}
 
     return render_to_response('mythos/figures.html', context_dict, context)
 
 
 def culture(request, id):
     context = RequestContext(request)
-
     return render_to_response('mythos/culture.html', models.p1_culture(id), context)
 
 def cultures(request):

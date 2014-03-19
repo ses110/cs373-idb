@@ -203,6 +203,38 @@ owe much to the modern Viking myth that had taken shape by the early 20th centur
                               Media(name="Hurstwic", link="http://www.hurstwic.org/history/text/history.htm")]
         }
 
+    @staticmethod
+    def init_figure_items():
+        P1_Models.figure_items = list()
+        P1_Models.figure_items.append(Figure(id=1, name="Atlas"))
+        P1_Models.figure_items.append(Figure(id=2, name="Ares"))
+        P1_Models.figure_items.append(Figure(id=3, name="Loki"))
+
+    @staticmethod
+    def init_figures():
+        P1_Models.figures = dict()
+
+        P1_Models.figures[1] = {
+            'title':"Atlas",
+            'kind':"Titan",
+            'biography':"""In Greek mythology, Atlas was the primordial Titan who held up the celestial sphere. 
+He is also the titan of astronomy and navigation. Although associated with various places, he became commonly identified with the Atlas Mountains in northwest Africa (Modern-day Morocco and Algeria). 
+Atlas and his brother Menoetius sided with the Titans in their war against the Olympians, the Titanomachy. When the Titans were defeated, many of them (including Menoetius) were confined to Tartarus, 
+but Zeus condemned Atlas to stand at the western edge of Gaia (the Earth) and hold up Uranus on his shoulders, to prevent the two from resuming their primordial embrace. Thus, he was Atlas Telamon, 
+"enduring Atlas," and became a doublet of Coeus, the embodiment of the celestial axis around which the heavens revolve.""",
+            'images':[Media(link="http://upload.wikimedia.org/wikipedia/en/7/75/Atlas_New_York.JPG"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/5/52/Atlas_Santiago_Toural_GFDL.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/0/0d/Atlas_sculpture_on_collins_street_melbourne.jpg"),
+                      Media(link="http://upload.wikimedia.org/wikipedia/commons/6/62/GandharanAtlas.JPG")],
+            'videos':[Media(link="http://www.youtube.com/embed/5hhPRUpF6YY")],
+            'related_figures':[],
+            'related_stories':[],
+            'related_cultures':[Culture(id=1, name="Greek"), Culture(id=2, name="Roman")],
+            'external_links':[Media(name="Wikipedia: Atlas", link="http://en.wikipedia.org/wiki/Atlas_(mythology)"),
+                              Media(name="Tufs: A Dictionary of Greek and Roman biography and mythology ", link="http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0104%3Aalphabetic+letter%3DA%3Aentry+group%3D53%3Aentry%3Datlas-bio-1")]
+        }
+
+
 def p1_cultures():
     if not P1_Models.culture_items:
         P1_Models.init_culture_items()
@@ -213,8 +245,15 @@ def p1_culture(id):
         P1_Models.init_cultures()
     return P1_Models.cultures[int(id)]
 
+def p1_figures():
+    if not P1_Models.figure_items:
+        P1_Models.init_figure_items()
+    return P1_Models.figure_items
+
 def p1_figure(id):
-    pass
+    if not P1_Models.figures:
+        P1_Models.init_figures()
+    return P1_Models.figures[int(id)]
 
 def p1_story(id):
     pass
