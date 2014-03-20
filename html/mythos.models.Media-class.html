@@ -64,6 +64,9 @@ django.db.models.Model --+
 </pre>
 
 <hr />
+<p>Media Model that represents media (such as image, a video, etc.) 
+  associated with a figure, a culture, or a story</p>
+
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -118,51 +121,58 @@ django.db.models.Model --+
 </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">models.IntegerField(primary_key = True)</span>
     </td><td class="summary">
-        <a name="id"></a><span class="summary-name">id</span> = <code title="models.IntegerField(primary_key= True)">models.IntegerField(primary_key= True)</code>
+        <a name="id"></a><span class="summary-name">id</span> = <code title="models.IntegerField(primary_key= True)">models.IntegerField(primary_key= True)</code><br />
+      Primary key uniquely identifying a media instance
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">models.Charfield(200)</span>
     </td><td class="summary">
-        <a name="name"></a><span class="summary-name">name</span> = <code title="models.CharField(max_length= 200)">models.CharField(max_length= 200)</code>
+        <a name="name"></a><span class="summary-name">name</span> = <code title="models.CharField(max_length= 200)">models.CharField(max_length= 200)</code><br />
+      Name of the media
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">models.Charfield(200)</span>
     </td><td class="summary">
-        <a name="kind"></a><span class="summary-name">kind</span> = <code title="models.CharField(max_length= 200)">models.CharField(max_length= 200)</code>
+        <a name="kind"></a><span class="summary-name">kind</span> = <code title="models.CharField(max_length= 200)">models.CharField(max_length= 200)</code><br />
+      The kind/category of the media instance
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">models.Charfield(200)</span>
     </td><td class="summary">
-        <a name="link"></a><span class="summary-name">link</span> = <code title="models.CharField(max_length= 200)">models.CharField(max_length= 200)</code>
+        <a name="link"></a><span class="summary-name">link</span> = <code title="models.CharField(max_length= 200)">models.CharField(max_length= 200)</code><br />
+      URL to the media
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">models.ForeignKey('Figure')</span>
     </td><td class="summary">
-        <a name="figure"></a><span class="summary-name">figure</span> = <code title="models.ForeignKey('Figure', blank= True, null= True)">models.ForeignKey('Figure', blank= True, null= True)</code>
+        <a name="figure"></a><span class="summary-name">figure</span> = <code title="models.ForeignKey('Figure', blank= True, null= True)">models.ForeignKey('Figure', blank= True, null= True)</code><br />
+      Foreign key associating this media to a figure
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">models.ForeignKey('Culture')</span>
     </td><td class="summary">
-        <a name="culture"></a><span class="summary-name">culture</span> = <code title="models.ForeignKey('Culture', blank= True, null= True)">models.ForeignKey('Culture', blank= True, null= True)</code>
+        <a name="culture"></a><span class="summary-name">culture</span> = <code title="models.ForeignKey('Culture', blank= True, null= True)">models.ForeignKey('Culture', blank= True, null= True)</code><br />
+      Foreign key associating this media to a culture
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
+      <span class="summary-type">models.ForeignKey('Story')</span>
     </td><td class="summary">
-        <a name="story"></a><span class="summary-name">story</span> = <code title="models.ForeignKey('Story', blank= True, null= True)">models.ForeignKey('Story', blank= True, null= True)</code>
+        <a name="story"></a><span class="summary-name">story</span> = <code title="models.ForeignKey('Story', blank= True, null= True)">models.ForeignKey('Story', blank= True, null= True)</code><br />
+      Foreign key associating this media to a story
     </td>
   </tr>
 </table>
@@ -236,7 +246,7 @@ django.db.models.Model --+
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Wed Mar 19 17:28:41 2014
+    Generated by Epydoc 3.0.1 on Thu Mar 20 11:44:13 2014
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

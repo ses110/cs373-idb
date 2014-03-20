@@ -1,5 +1,5 @@
-all:
-
+all: manage.py
+	python3 manage.py startapp
 clean:
     rm -f *.pyc
     rm -f Models.html

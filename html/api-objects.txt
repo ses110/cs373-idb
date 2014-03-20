@@ -4,6 +4,7 @@ mythos.models.p1_story	mythos.models-module.html#p1_story
 mythos.models.p1_culture	mythos.models-module.html#p1_culture
 mythos.models.p1_figures	mythos.models-module.html#p1_figures
 mythos.models.p1_cultures	mythos.models-module.html#p1_cultures
+mythos.models.p1_stories	mythos.models-module.html#p1_stories
 mythos.models.Culture	mythos.models.Culture-class.html
 mythos.models.Culture.name	mythos.models.Culture-class.html#name
 mythos.models.Culture.language	mythos.models.Culture-class.html#language
@@ -20,7 +21,6 @@ mythos.models.Figure.name	mythos.models.Figure-class.html#name
 mythos.models.Figure.getID	mythos.models.Figure-class.html#getID
 mythos.models.Figure.id	mythos.models.Figure-class.html#id
 mythos.models.Figure.related_figures	mythos.models.Figure-class.html#related_figures
-mythos.models.Figure.figure_id	mythos.models.Figure-class.html#figure_id
 mythos.models.Figure.related_stories	mythos.models.Figure-class.html#related_stories
 mythos.models.Figure.related_cultures	mythos.models.Figure-class.html#related_cultures
 mythos.models.Figure.biography	mythos.models.Figure-class.html#biography
@@ -35,15 +35,17 @@ mythos.models.Media.link	mythos.models.Media-class.html#link
 mythos.models.Media.id	mythos.models.Media-class.html#id
 mythos.models.P1_Models	mythos.models.P1_Models-class.html
 mythos.models.P1_Models.init_culture_items	mythos.models.P1_Models-class.html#init_culture_items
-mythos.models.P1_Models.init_figures	mythos.models.P1_Models-class.html#init_figures
+mythos.models.P1_Models.init_stories	mythos.models.P1_Models-class.html#init_stories
 mythos.models.P1_Models.figures	mythos.models.P1_Models-class.html#figures
 mythos.models.P1_Models.culture_items	mythos.models.P1_Models-class.html#culture_items
 mythos.models.P1_Models.init_figure_items	mythos.models.P1_Models-class.html#init_figure_items
 mythos.models.P1_Models.figure_items	mythos.models.P1_Models-class.html#figure_items
 mythos.models.P1_Models.story_items	mythos.models.P1_Models-class.html#story_items
-mythos.models.P1_Models.cultures	mythos.models.P1_Models-class.html#cultures
+mythos.models.P1_Models.init_story_items	mythos.models.P1_Models-class.html#init_story_items
 mythos.models.P1_Models.init_cultures	mythos.models.P1_Models-class.html#init_cultures
 mythos.models.P1_Models.stories	mythos.models.P1_Models-class.html#stories
+mythos.models.P1_Models.init_figures	mythos.models.P1_Models-class.html#init_figures
+mythos.models.P1_Models.cultures	mythos.models.P1_Models-class.html#cultures
 mythos.models.Story	mythos.models.Story-class.html
 mythos.models.Story.name	mythos.models.Story-class.html#name
 mythos.models.Story.id	mythos.models.Story-class.html#id

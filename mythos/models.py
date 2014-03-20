@@ -6,11 +6,11 @@ class Media(models.Model):
 
     @type id: models.IntegerField(primary_key = True)
     @cvar id: Primary key uniquely identifying a media instance
-    @type name: modesl.Charfield(200)
+    @type name: models.Charfield(200)
     @cvar name: Name of the media
-    @type kind: modesl.Charfield(200)
+    @type kind: models.Charfield(200)
     @cvar kind: The kind/category of the media instance
-    @type link: modesl.Charfield(200)
+    @type link: models.Charfield(200)
     @cvar link: URL to the media
     @type figure: models.ForeignKey('Figure')
     @cvar figure: Foreign key associating this media to a figure
@@ -41,7 +41,7 @@ class Media(models.Model):
 
 class Figure(models.Model):
     '''
-    figure Model represents an instance of an 
+    figure Model represents an instance of a figure in mythology
 
     @type id: models.CharField(200, primary_key = True)
     @cvar id: A figure's primary key to uniquely identify the instance
@@ -80,13 +80,13 @@ class Figure(models.Model):
 
 class Story(models.Model):
     '''
-    Story model
+    Story model represents an instance of a mythological event/story
     
     @type id: models.IntegerField(primary_key = True)
     @cvar id: Primary key to uniquely identify Story instance
     @type name: models.CharField(200)
     @cvar name: Name of Story instance
-    @type summary: models.
+    @type summary: models.CharField(10000)
     @cvar summary: Short description/summary of the story
     @type related_figures: models.ForeignKey('Figure')
     @cvar related_figures: Foreign Key linking to any related figures associated with this story
@@ -116,6 +116,8 @@ class Story(models.Model):
 
 class Culture(models.Model):
     '''
+    Culture model represents an instance of a culture (e.g. Greek, Scandinavian, Roman...)
+
     @type id: models.IntegerField(primary_key=True)
     @cvar id: Primary key to uniquely id the Culture instance
     @type name: models.CharField(200)
