@@ -34,16 +34,16 @@ Figure related resources of the **MDB API**
         {
             "title":"Loki",
             "kind":"God",
-            "biography":"Long text description here."
-            "images":[Media(link="http://upload.wikimedia.org/wikipedia/commons/4/40/Processed_SAM_loki.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/a/ac/Loki_taunts_Bragi.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/c/cb/Louis_Huard_-_The_Punishment_of_Loki.jpg")],
-            "videos":[Media(link="http://www.youtube.com/embed/o43-oAL2ogY")],
+            "biography":"Long text description here.",
+            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/4/40/Processed_SAM_loki.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/a/ac/Loki_taunts_Bragi.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/c/cb/Louis_Huard_-_The_Punishment_of_Loki.jpg"}],
+            "videos":[{"link":"http://www.youtube.com/embed/o43-oAL2ogY"}],
             "related_figures":[],
             "related_stories":[],
-            "related_cultures":[Culture(id=3, name="Nordic")],
-            "external_links":[Media(name="Wikipedia: Loki", link="http://en.wikipedia.org/wiki/Loki"),
-                              Media(name="Pantheon.Org", link="http://www.pantheon.org/articles/l/loki.html")]
+            "related_cultures":[{"id":3, "name":"Nordic"}],
+            "external_links":[{"name":"Wikipedia: Loki", "link":"http://en.wikipedia.org/wiki/Loki"},
+                              {"name":"Pantheon.Org", "link":"http://www.pantheon.org/articles/l/loki.html"}]
         }
 
 + Response 201 (application/json)
@@ -66,15 +66,15 @@ A single figure object with all its details
             "title":"Loki",
             "kind":"God",
             "biography":"Long text description here.",
-            "images":[Media(link="http://upload.wikimedia.org/wikipedia/commons/4/40/Processed_SAM_loki.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/a/ac/Loki_taunts_Bragi.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/c/cb/Louis_Huard_-_The_Punishment_of_Loki.jpg")],
-            "videos":[Media(link="http://www.youtube.com/embed/o43-oAL2ogY")],
+            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/4/40/Processed_SAM_loki.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/a/ac/Loki_taunts_Bragi.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/c/cb/Louis_Huard_-_The_Punishment_of_Loki.jpg"}],
+            "videos":[{"link":"http://www.youtube.com/embed/o43-oAL2ogY"}],
             "related_figures":[],
             "related_stories":[],
-            "related_cultures":[Culture(id=3, name="Nordic")],
-            "external_links":[Media(name="Wikipedia: Loki", link="http://en.wikipedia.org/wiki/Loki"),
-                              Media(name="Pantheon.Org", link="http://www.pantheon.org/articles/l/loki.html")]
+            "related_cultures":[{"id":3, "name":"Nordic"}],
+            "external_links":[{"name":"Wikipedia: Loki", "link":"http://en.wikipedia.org/wiki/Loki"},
+                              {"name":"Pantheon.Org", "link":"http://www.pantheon.org/articles/l/loki.html"}]
         }
 
 ### Remove a figure [DELETE]
@@ -107,13 +107,13 @@ Story related resources of the **MDB API**
         {
             "title":"The Punishment of Atlas",
             "summary":"Long text description here.",
-            "images":[Media(link="http://upload.wikimedia.org/wikipedia/commons/8/8c/MAN_Atlante_fronte_1040572.JPG")],
-            ""videos":[],
-            "related_figures":[Figure(id=1, name="Atlas"), Figure(id=2, name="Athena")],
+            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/8/8c/MAN_Atlante_fronte_1040572.JPG"}],
+            "videos":[],
+            "related_figures":[{"id":1, "name":"Atlas"}, {"id":2, "name":"Athena"}],
             "related_stories":[],
-            "related_cultures":[Culture(id=1, name="Greek"), Culture(id=2, name="Roman")],
-            "external_links":[Media(name="Wikipedia: Atlas", link="http://en.wikipedia.org/wiki/Atlas_(mythology)"),
-                            Media(name="Ancient History", link="http://ancienthistory.about.com/od/atlastitanmyth/f/081409WorldonShouders.htm")]
+            "related_cultures":[{"id":1, "name":"Greek"}, {"id":2, "name":"Roman"}],
+            "external_links":[{"name":"Wikipedia: Atlas", "link":"http://en.wikipedia.org/wiki/Atlas_(mythology)"},
+                            {"name":"Ancient History", "link":"http://ancienthistory.about.com/od/atlastitanmyth/f/081409WorldonShouders.htm"}]
         }
 
 + Response 201 (application/json)
@@ -135,13 +135,13 @@ A single story object with all its details
             "id": 2,
             "title":"The Punishment of Atlas",
             "summary":"Long text description here.",
-            "images":[Media(link="http://upload.wikimedia.org/wikipedia/commons/8/8c/MAN_Atlante_fronte_1040572.JPG")],
+            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/8/8c/MAN_Atlante_fronte_1040572.JPG"}],
             "videos":[],
-            "related_figures":[Figure(id=1, name="Atlas"), Figure(id=2, name="Athena")],
+            "related_figures":[{"id":1, "name":"Atlas"}, {"id":2, "name":"Athena"}],
             "related_stories":[],
-            "related_cultures":[Culture(id=1, name="Greek"), Culture(id=2, name="Roman")],
-            "external_links":[Media(name="Wikipedia: Atlas", link="http://en.wikipedia.org/wiki/Atlas_(mythology)"),
-                            Media(name="Ancient History", link="http://ancienthistory.about.com/od/atlastitanmyth/f/081409WorldonShouders.htm")]
+            "related_cultures":[{"id":1, "name":"Greek"}, {"id":2, "name":"Roman"}],
+            "external_links":[{"name":"Wikipedia: Atlas", "link":"http://en.wikipedia.org/wiki/Atlas_(mythology)"},
+                            {"name":"Ancient History", "link":"http://ancienthistory.about.com/od/atlastitanmyth/f/081409WorldonShouders.htm"}]
         }
 
 ### Remove a story [DELETE]
@@ -182,25 +182,25 @@ Culture related resources of the **MDB API**
             "region":"Greece",
             "language":"Greek",
             "history":"Long text description here.",
-            "images":[Media(link="http://upload.wikimedia.org/wikipedia/commons/a/ad/Parthenon_from_west.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/1/19/William_Faden._Composite_Mediterranean._1785.I.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/8/87/ArchaicGr.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/7/7c/Beginning_Odyssey.svg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/9/96/EarlyAthenianCoin.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/4/4a/Law_Code_Gortyn_Louvre_Ma703.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/a/a4/Socrates_Louvre.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/2/22/Greek-Persian_duel.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/1/1c/Homer_British_Museum.jpg")],
-            "videos":[Media(link="http://www.youtube.com/embed/WptSXfvY-vs"),
-                      Media(link="http://www.youtube.com/embed/vHMu2gVzspA")],
-            "related_figures":[Figure(id=1, name="Atlas"), Figure(id=2, name="Athena")],
+            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/a/ad/Parthenon_from_west.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/1/19/William_Faden._Composite_Mediterranean._1785.I.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/8/87/ArchaicGr.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/7/7c/Beginning_Odyssey.svg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/9/96/EarlyAthenianCoin.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/4/4a/Law_Code_Gortyn_Louvre_Ma703.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/a/a4/Socrates_Louvre.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/2/22/Greek-Persian_duel.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/1/1c/Homer_British_Museum.jpg"}],
+            "videos":[{"link":"http://www.youtube.com/embed/WptSXfvY-vs"},
+                      {"link":"http://www.youtube.com/embed/vHMu2gVzspA"}],
+            "related_figures":[{"id":1, "name":"Atlas"}, {"id":2, "name":"Athena"}],
             "related_stories":[],
-            "related_cultures":[Culture(id=2, name="Roman")],
-            "external_links":[Media(name="Wikipedia: Greeks", link="http://en.wikipedia.org/wiki/Greeks"),
-                              Media(name="Wikipedia: Ancient Greece", link="http://en.wikipedia.org/wiki/Ancient_Greece"),
-                              Media(name="ancientgreece.com", link="http://www.ancientgreece.com/s/Main_Page/"),
-                              Media(name="BBC: Ancient Greeks", link="http://www.bbc.co.uk/schools/primaryhistory/ancient_greeks/"),
-                              Media(name="History Channel: Ancient Greeks", link="http://www.history.com/topics/ancient-history/ancient-greece")]
+            "related_cultures":[{"id":2, "name":"Roman"}],
+            "external_links":[{"name":"Wikipedia: Greeks", "link":"http://en.wikipedia.org/wiki/Greeks"},
+                              {"name":"Wikipedia: Ancient Greece", "link":"http://en.wikipedia.org/wiki/Ancient_Greece"},
+                              {"name":"ancientgreece.com", "link":"http://www.ancientgreece.com/s/Main_Page/"},
+                              {"name":"BBC: Ancient Greeks", "link":"http://www.bbc.co.uk/schools/primaryhistory/ancient_greeks/"},
+                              {"name":"History Channel: Ancient Greeks", "link":"http://www.history.com/topics/ancient-history/ancient-greece"}]
         }
 
 + Response 201 (application/json)
@@ -224,25 +224,25 @@ A single culture object with all its details
             "region":"Greece",
             "language":"Greek",
             "history":"Long text description here.",
-            "images":[Media(link="http://upload.wikimedia.org/wikipedia/commons/a/ad/Parthenon_from_west.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/1/19/William_Faden._Composite_Mediterranean._1785.I.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/8/87/ArchaicGr.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/7/7c/Beginning_Odyssey.svg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/9/96/EarlyAthenianCoin.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/4/4a/Law_Code_Gortyn_Louvre_Ma703.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/a/a4/Socrates_Louvre.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/2/22/Greek-Persian_duel.jpg"),
-                      Media(link="http://upload.wikimedia.org/wikipedia/commons/1/1c/Homer_British_Museum.jpg")],
-            "videos":[Media(link="http://www.youtube.com/embed/WptSXfvY-vs"),
-                      Media(link="http://www.youtube.com/embed/vHMu2gVzspA")],
-            "related_figures":[Figure(id=1, name="Atlas"), Figure(id=2, name="Athena")],
+            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/a/ad/Parthenon_from_west.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/1/19/William_Faden._Composite_Mediterranean._1785.I.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/8/87/ArchaicGr.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/7/7c/Beginning_Odyssey.svg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/9/96/EarlyAthenianCoin.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/4/4a/Law_Code_Gortyn_Louvre_Ma703.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/a/a4/Socrates_Louvre.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/2/22/Greek-Persian_duel.jpg"},
+                      {"link":"http://upload.wikimedia.org/wikipedia/commons/1/1c/Homer_British_Museum.jpg"}],
+            "videos":[{"link":"http://www.youtube.com/embed/WptSXfvY-vs"},
+                      {"link":"http://www.youtube.com/embed/vHMu2gVzspA"}],
+            "related_figures":[{"id":1, "name":"Atlas"}, {"id":2, "name":"Athena"}],
             "related_stories":[],
-            "related_cultures":[Culture(id=2, name="Roman")],
-            "external_links":[Media(name="Wikipedia: Greeks", link="http://en.wikipedia.org/wiki/Greeks"),
-                              Media(name="Wikipedia: Ancient Greece", link="http://en.wikipedia.org/wiki/Ancient_Greece"),
-                              Media(name="ancientgreece.com", link="http://www.ancientgreece.com/s/Main_Page/"),
-                              Media(name="BBC: Ancient Greeks", link="http://www.bbc.co.uk/schools/primaryhistory/ancient_greeks/"),
-                              Media(name="History Channel: Ancient Greeks", link="http://www.history.com/topics/ancient-history/ancient-greece")]
+            "related_cultures":[{"id":2, "name":"Roman"}],
+            "external_links":[{"name":"Wikipedia: Greeks", "link":"http://en.wikipedia.org/wiki/Greeks"},
+                              {"name":"Wikipedia: Ancient Greece", "link":"http://en.wikipedia.org/wiki/Ancient_Greece"},
+                              {"name":"ancientgreece.com", "link":"http://www.ancientgreece.com/s/Main_Page/"},
+                              {"name":"BBC: Ancient Greeks", "link":"http://www.bbc.co.uk/schools/primaryhistory/ancient_greeks/"},
+                              {"name":"History Channel: Ancient Greeks", "link":"http://www.history.com/topics/ancient-history/ancient-greece"}]
         }
 
 ### Remove a culture [DELETE]
