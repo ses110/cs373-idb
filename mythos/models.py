@@ -420,7 +420,7 @@ Hreidmar tells them to leave, and the poem continues without further mention of 
           'videos':[],
           'related_figures':[Figure(id=3, name="Loki")],
           'related_stories':[],
-          'related_cultures':[Culture(id=1, name="Norse")],
+          'related_cultures':[Culture(id=3, name="Norse")],
           'external_links':[Media(name="Wikipedia: Loki", link="http://en.wikipedia.org/wiki/Loki"),
                             Media(name="Wikipedia: Reginsmál", link="http://en.wikipedia.org/wiki/Reginsm%C3%A1l")]
       }
