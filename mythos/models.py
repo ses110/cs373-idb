@@ -4,8 +4,6 @@ class Media(models.Model):
     '''
     Media Model that represents media (such as image, a video, etc.) associated with a figure, a culture, or a story
 
-    @type id: models.IntegerField(primary_key = True)
-    @cvar id: Primary key uniquely identifying a media instance
     @type name: models.Charfield(200)
     @cvar name: Name of the media
     @type kind: models.Charfield(200)
@@ -19,7 +17,6 @@ class Media(models.Model):
     @type story: models.ForeignKey('Story')
     @cvar story: Foreign key associating this media to a story
     '''
-    id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
     kind                = models.CharField(max_length=200)
     link                = models.CharField(max_length=200)
@@ -27,24 +24,10 @@ class Media(models.Model):
     culture             = models.ForeignKey('Culture', blank=True, null=True)
     story               = models.ForeignKey('Story', blank=True, null=True)
 
-    def getID(self):
-        """
-        Fetch primary key ID from current instance
-
-        @type self: figure
-        @param self: Current figure instance
-
-        @rtype: string
-        @return: The id associated with this figure instance  
-        """
-        return self.id
-
 class Figure(models.Model):
     '''
     figure Model represents an instance of a figure in mythology
 
-    @type id: models.CharField(200, primary_key = True)
-    @cvar id: A figure's primary key to uniquely identify the instance
     @type name: models.CharField(200)
     @cvar name: Name of the figure
     @type kind: models.CharField(200)
@@ -58,7 +41,6 @@ class Figure(models.Model):
     @type related_stories: models.ManyToManyField('Story')
     @cvar related_stories: Many to many assocation associating related stories that this figure instance is in
     '''
-    id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
     kind                = models.CharField(max_length=200)
     biography           = models.CharField(max_length=10000)
@@ -66,24 +48,10 @@ class Figure(models.Model):
     related_cultures    = models.ManyToManyField('Culture')
     related_stories     = models.ManyToManyField('Story')
 
-    def getID(self):
-        """
-        Fetch primary key ID from current instance
-
-        @type self: figure
-        @param self: Current figure instance
-
-        @rtype: string
-        @return: The id associated with this figure instance  
-        """
-        return self.id
-
 class Story(models.Model):
     '''
     Story model represents an instance of a mythological event/story
     
-    @type id: models.IntegerField(primary_key = True)
-    @cvar id: Primary key to uniquely identify Story instance
     @type name: models.CharField(200)
     @cvar name: Name of Story instance
     @type summary: models.CharField(10000)
@@ -95,31 +63,15 @@ class Story(models.Model):
     @type related_stories: models.ManyToManyField('self')
     @cvar related_stories: Many to many assocation linking to any other stories that may be related to this story instance
     '''
-    id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
     summary             = models.CharField(max_length=10000)
-    related_figures     = models.ManyToManyField('Figure')
-    related_cultures    = models.ManyToManyField('Culture')
     related_stories     = models.ManyToManyField('self')
-
-    def getID(self):
-        """
-        Fetch primary key ID from current instance
-
-        @type self: story
-        @param self: Current story instance
-
-        @rtype: string
-        @return: The id associated with this story instance
-        """
-        return self.id
+    related_cultures    = models.ManyToManyField('Culture')
 
 class Culture(models.Model):
     '''
     Culture model represents an instance of a culture (e.g. Greek, Scandinavian, Roman...)
 
-    @type id: models.IntegerField(primary_key=True)
-    @cvar id: Primary key to uniquely id the Culture instance
     @type name: models.CharField(200)
     @cvar name: Name of the culture
     @type region: models.CharField(200)
@@ -135,26 +87,11 @@ class Culture(models.Model):
     @type related_stories: models.ManyToManyField('Story')
     @cvar related_stories:  Many to many assocation associating notable mythological stories belonging within this Culture
     '''
-    id                  = models.IntegerField(primary_key=True)
     name                = models.CharField(max_length=200)
     region              = models.CharField(max_length=200)
     history             = models.CharField(max_length=10000)
     language            = models.CharField(max_length=200)
-    related_figures     = models.ManyToManyField('Figure')
     related_cultures    = models.ManyToManyField('self')
-    related_stories     = models.ManyToManyField('Story')
-
-    def getID(self):
-        """
-        Fetch primary key ID from current instance
-
-        @type self: culture
-        @param self: Current culture instance
-
-        @rtype: string
-        @return: The id associated with this culture instance
-        """
-        return self.id
 
 class P1_Models(object):
     cultures = None

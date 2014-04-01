@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mythos',
@@ -69,10 +70,14 @@ WSGI_APPLICATION = 'idb.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'dfu5tqvs9gfld3',
+    'HOST': 'ec2-54-225-101-164.compute-1.amazonaws.com',
+    'PORT': 5432,
+    'USER': 'mwnltzwsunyywg',
+    'PASSWORD': 'T8F0V7lCuI4ndHwEXAlhC5GJfz'
+  }
 }
 
 # Internationalization
