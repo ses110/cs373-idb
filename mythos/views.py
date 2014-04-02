@@ -13,11 +13,13 @@ def index(request):
     context = RequestContext(request)
     return render_to_response('mythos/index.html', None, context)
 
-
 def figure(request, id):
     context = RequestContext(request)
-    return render_to_response('mythos/figure.html', models.p1_figure(id), context)
-
+    try:
+        figure = Figure.objects.get(pk=id)
+        return render_to_response('mythos/figure.html', dict_from_figure(figure), context)
+    except:
+        return render_to_response('mythos/404.html', None, context)
 
 def figures(request):
     context = RequestContext(request)
@@ -54,6 +56,25 @@ def stories(request):
     context_dict = {'title':'Stories', 'items':stories}
 
     return render_to_response('mythos/stories.html', context_dict, context)
+
+def not_found_html
+
+
+# -----
+# Helper Methods
+# -----
+
+def dict_from_figure(figure):
+    return {
+        'title': figure.name,
+        'kind': figure.kind,
+        'biography': figure.biography,
+        'images': figure.media_set.filter(kind="image"),
+        'videos': figure.media_set.filter(kind="video"),
+        'related_figures': figure.related_figures.all(),
+        'related_cultures': figure.related_cultures.all(),
+        'related_stories': figure.related_stories.all()
+    }
 
 
 # -----
