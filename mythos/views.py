@@ -56,7 +56,7 @@ def stories(request):
 # -----
 
 def api_figure(request, id):
-    pass
+    return HttpResponse("{'test':%d}" % (int(id),), content_type="application/json")
 
 def api_figures(request):
     pass
