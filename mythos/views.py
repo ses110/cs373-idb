@@ -89,21 +89,21 @@ def api_figures(request):
                 med = Media.objects.get(link=image)
                 med.figure = fig
             except ObjectDoesNotExist:
-                med = Media(link = image, figure = fig)
+                med = Media(link = image, kind = "image", figure = fig)
             med.save()
         for video in data["videos"] :
             try:
                 med = Media.objects.get(link=video)
                 med.figure = fig
             except ObjectDoesNotExist:
-                med = Media(link = video, figure = fig)
+                med = Media(link = video, kind = "video", figure = fig)
             med.save()
         for ex_link in data["external_links"] :
             try:
                 med = Media.objects.get(link=ex_link["link"])
                 med.figure = fig
             except ObjectDoesNotExist:
-                med = Media(name = ex_link["name"], link = ex_link["link"], figure = fig)
+                med = Media(name = ex_link["name"], link = ex_link["link"], kind = "link", figure = fig)
             med.save()
         #build related_figures
         for rel_fig_data in data["related_figures"] :
