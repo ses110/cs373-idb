@@ -115,7 +115,7 @@ for id_dict in page_cultures:
 # all_figures[0]["fields"]["related_cultures"] = []
 # all_figures[0]["fields"]["related_stories"] = []
 
-output = open('../fixtures/models.json')
+output = open('models.json', "w")
 for fig in all_figures:
     output.write(json.dumps(fig))
 
