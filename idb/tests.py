@@ -14,7 +14,7 @@ class APItests(TestCase) :
 	def test_get_all_figures(self) :
 
 
-		request = Request("http://cs373idb.apiary-mock.com/api/figures")
+		request = Request("http://127.0.0.1:8000/api/figures/")
 		response = urlopen(request)
 		response_body = response.read().decode("utf-8")
 		self.assertEqual(response.getcode(), 200)
@@ -55,7 +55,7 @@ class APItests(TestCase) :
                               {"name":"Pantheon.Org", "link":"http://www.pantheon.org/articles/l/loki.html"}]
         }).encode("utf-8")
 		headers = {"Content-Type": "application/json"}
-		request = Request("http://cs373idb.apiary-mock.com/api/figures", data=values, headers=headers)
+		request = Request("http://127.0.0.1:8000/api/figures/", data=values, headers=headers)
 		response = urlopen(request)
 		response_body = response.read().decode("utf-8")
 		self.assertEqual(response.getcode(), 201)

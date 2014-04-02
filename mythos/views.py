@@ -72,16 +72,16 @@ def api_figures(request):
         li = []
         for model in models :
             di = {  "id" : model.id,
-                    "title" : model.title,
+                    "name" : model.name,
                     "kind" : model.kind,
                     "biography" : model.biography}
             li.append(di)
-        return HttpResponse(dumps(li), content_type="application/json", status=200)
+        return HttpResponse(dumps(li, ensure_ascii=True), content_type="application/json", status=200)
     elif request.method == 'POST' :
         request_body = request.read().decode("utf-8")
         data = loads(request_body)
         #build Figure
-        fig = Figure(title = data["title"], kind = data["kind"], 
+        fig = Figure(name = data["name"], kind = data["kind"], 
             biography = data["biography"])
         #build Media
         for image in data["images"] :
