@@ -3,9 +3,9 @@
 import wikipedia, json
 
 
-page_figures = [{"title":"Atlas_(mythology)"}, {"title" : "Zeus"}, {"title": "Odin"}, {"title": "Háma"}, {"title" : "The_Dagda"}, {"title" : "The_Morrígan"}, {"title" : "Shiva"}, {"title" : "Vishnu"}, {"title" : "Hunab_Ku"}, {"title" : "Ixchel"}]
-page_stories = [{"title": "Trojan_war"}, {"title": "Trojan_war"}, {"title": "Trojan_war"}, {"title": "Trojan_war"}, {"title": "Trojan_war"}, {"title": "Trojan_war"}, {"title": "Trojan_war"}, {"title": "Trojan_war"}, {"title": "Trojan_war"}, {"title": "Trojan_war"}]
-page_cultures = [{"title": "Greek_mythos"}, {"title": "Celtic_mythology"}, {"title": "Maya_mythology"},{"title": "Norse_mythology"}, {"title": "Hindu_mythology"}, {"title": "Egyptian_mythology"}, {"title": "Mesopotamian_mythology"}, {"title": "Roman_mythology"}, {"title": "Jewish_mythology  "}, {"title": "Islamic_mythology"}]
+page_figures = [{"title":"Atlas_(mythology)"}, {"title" : "Zeus"}, {"title": "Odin"}, {"title": "Háma"}, {"title" : "The_Dagda"}, {"title" : "The_Morrígan"}, {"title" : "Shiva"}, {"title" : "Vishnu"}, {"title" : "Osiris"}, {"title" : "Ixchel"}]
+page_stories = [{"title": "Trojan_war"}, {"title": "Labours_of_Hercules"}, {"title": "Ragnarök"}, {"title": "Beltane"}, {"title": "Ashvamedha"}, {"title": "Flooding_of_the_Nile"}, {"title": "Hannibalic_War"}, {"title": "Garden_of_Eden"}, {"title": "Kamiumi"}, {"title": "Kuniumi"}]
+page_cultures = [{"title": "Greek_mythos"}, {"title": "Celtic_mythology"}, {"title": "Maya_mythology"},{"title": "Norse_mythology"}, {"title": "Hindu_mythology"}, {"title": "Egyptian_mythology"}, {"title": "Slavic_mythology"}, {"title": "Roman_mythology"}, {"title": "Jewish_mythology  "}, {"title": "Japanese_mythology"}]
 
 all_media = []
 all_figures = []
@@ -14,9 +14,10 @@ all_stories = []
 
 pk = 1
 
-page_figures = page_figures[0:3]
-page_cultures = page_cultures[0:3]
-page_stories = page_stories[0:3]
+#Delete this after testing
+# page_figures = page_figures[0:3]
+# page_cultures = page_cultures[0:3]
+# page_stories = page_stories[0:3]
 
 for id_dict in page_figures:
     this_figure = {"pk" : pk, "model" : "mythos.figure", "fields" : {}}
@@ -25,10 +26,11 @@ for id_dict in page_figures:
     page = wikipedia.page(title=title)
     try:
         images = page.images
+        # references = page.references
     except:
         pass
 
-    title, summary, references = page.title, page.summary, page.references
+    title, summary = page.title, page.summary
     this_figure["fields"]["name"] = title
     this_figure["fields"]["biography"] = summary
     all_figures.append(this_figure)
@@ -46,9 +48,10 @@ for id_dict in page_stories:
     page = wikipedia.page(title=title)
     try:
         images = page.images
+        # references = page.references
     except:
         pass
-    title, summary, references = page.title, page.summary, page.references
+    title, summary = page.title, page.summary
     this_stories["fields"]["name"] = title
     this_stories["fields"]["summary"] = summary
     all_stories.append(this_stories)
@@ -66,9 +69,10 @@ for id_dict in page_cultures:
     page = wikipedia.page(title=title)
     try:
         images = page.images
+        # references = page.references
     except:
         pass
-    title, summary, references = page.title, page.summary, page.references
+    title, summary = page.title, page.summary
     this_culture["fields"]["name"] = title
     this_culture["fields"]["history"] = summary
     all_cultures.append(this_culture)
