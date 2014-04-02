@@ -26,7 +26,7 @@ for id_dict in page_figures:
     page = wikipedia.page(title=title)
     try:
         images = page.images
-        # references = page.references
+        references = page.references
     except:
         pass
 
@@ -37,7 +37,12 @@ for id_dict in page_figures:
 
     pk = pk + 1
     for img in images:
-        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "Figure image", "link" : img}}
+        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img}}
+        all_media.append(media)
+        pk = pk + 1
+
+    for ref in references:
+        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref}}
         all_media.append(media)
         pk = pk + 1
 
@@ -48,7 +53,7 @@ for id_dict in page_stories:
     page = wikipedia.page(title=title)
     try:
         images = page.images
-        # references = page.references
+        references = page.references
     except:
         pass
     title, summary = page.title, page.summary
@@ -58,7 +63,12 @@ for id_dict in page_stories:
 
     pk = pk + 1
     for img in images:
-        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "Story image", "link" : img}}
+        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img}}
+        all_media.append(media)
+        pk = pk + 1
+
+    for ref in references:
+        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref}}
         all_media.append(media)
         pk = pk + 1
 
@@ -69,7 +79,7 @@ for id_dict in page_cultures:
     page = wikipedia.page(title=title)
     try:
         images = page.images
-        # references = page.references
+        references = page.references
     except:
         pass
     title, summary = page.title, page.summary
@@ -79,7 +89,12 @@ for id_dict in page_cultures:
 
     pk = pk + 1
     for img in images:
-        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "Culture image", "link" : img}}
+        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img}}
+        all_media.append(media)
+        pk = pk + 1
+
+    for ref in references:
+        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref}}
         all_media.append(media)
         pk = pk + 1
 

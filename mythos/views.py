@@ -60,7 +60,7 @@ def api_figure(request, id):
         return HttpResponse("{'test':%d}" % (int(id),), content_type="application/json")
     else if request.method == "PUT":
         pass
-    else if request.method == "PUSH":
+    else if request.method == "POST":
         pass
 
 def api_figures(request):
