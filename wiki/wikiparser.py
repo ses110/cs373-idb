@@ -37,14 +37,16 @@ for id_dict in page_figures:
 
     pk = pk + 1
     for img in images:
-        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img}}
-        all_media.append(media)
-        pk = pk + 1
+        if len(img) < 200:
+            media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img}}
+            all_media.append(media)
+            pk = pk + 1
 
     for ref in references:
-        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref}}
-        all_media.append(media)
-        pk = pk + 1
+        if len(ref) < 200:
+            media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref}}
+            all_media.append(media)
+            pk = pk + 1
 
 for id_dict in page_stories:
     this_stories = {"pk" : pk, "model" : "mythos.story", "fields" : {}}
@@ -63,14 +65,16 @@ for id_dict in page_stories:
 
     pk = pk + 1
     for img in images:
-        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img}}
-        all_media.append(media)
-        pk = pk + 1
+        if len(img) < 200:
+            media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img}}
+            all_media.append(media)
+            pk = pk + 1
 
     for ref in references:
-        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref}}
-        all_media.append(media)
-        pk = pk + 1
+        if len(ref) < 200:
+            media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref}}
+            all_media.append(media)
+            pk = pk + 1
 
 for id_dict in page_cultures:
     this_culture = {"pk" : pk, "model" : "mythos.culture", "fields" : {}}
@@ -89,14 +93,16 @@ for id_dict in page_cultures:
 
     pk = pk + 1
     for img in images:
-        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img}}
-        all_media.append(media)
-        pk = pk + 1
+        if len(img) < 200:
+            media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img}}
+            all_media.append(media)
+            pk = pk + 1
 
     for ref in references:
-        media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref}}
-        all_media.append(media)
-        pk = pk + 1
+        if len(ref) < 200:
+            media = {"pk" : pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref}}
+            all_media.append(media)
+            pk = pk + 1
 
 #Kind
 # all_figures[0]["fields"]["kind"] = "Titan"
