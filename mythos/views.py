@@ -1,6 +1,11 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.core.exceptions import ObjectDoesNotExist
+from json import dumps, loads
+
+#from django.shortcuts import get_object_or_404
+#thepost = get_object_or_404(Content, name='test')
 
 from mythos import models
 
@@ -54,12 +59,92 @@ def stories(request):
 # -----
 # API Methods
 # -----
-
+# Sample return
+# return HttpResponse("{'test':%d}" % (int(id),), content_type="application/json")
 def api_figure(request, id):
-    return HttpResponse("{'test':%d}" % (int(id),), content_type="application/json")
+    return HttpResponse("{'test':%d}" % (int(id),), content_type="application/json", 200)
 
 def api_figures(request):
-    pass
+    if request.method == 'GET' :
+        models = Figures.objects().all()
+        li = []
+        for model in models :
+            di = {  "id" : model.id,
+                    "title" : model.title,
+                    "kind" : model.kind,
+                    "biography" : model.biography}
+            li.append(di)
+
+        return HttpResponse(li, content_type="application/json", status=200)
+
+    elif request.method == 'POST' :
+        request_body = request.read().decode("utf-8")
+        data = loads(request_body)
+        #build Figure
+        fig = Figure(title = data["title"], kind = data["kind"], 
+            biography = data["biography"])
+        #build Media
+        for image in data["images"] :
+            try:
+                med = Media.objects.get(link=image)
+                med.figure = fig
+            except ObjectDoesNotExist:
+                med = Media(link = image, figure = fig)
+            med.save()
+        for video in data["videos"] :
+            try:
+                med = Media.objects.get(link=video)
+                med.figure = fig
+            except ObjectDoesNotExist:
+                med = Media(link = video, figure = fig)
+            med.save()
+        for ex_link in data["external_links"] :
+            try:
+                med = Media.objects.get(link=ex_link["link"])
+                med.figure = fig
+            except ObjectDoesNotExist:
+                med = Media(name = ex_link["name"], link = ex_link["link"], figure = fig)
+            med.save()
+        #build related_figures
+        for rel_fig_data in data["related_figures"] :
+            try:
+                rel_fig = Figures.objects.get(pk=rel_fig_data["id"])
+                rel_fig.related_figures.add(fig)
+                fig.related_figures.add(rel_fig)
+                rel_fig.save()
+            except ObjectDoesNotExist:
+                pass
+
+        #build related_stories
+        for rel_story_data in data["related_stories"] :
+            try:
+                rel_story = Figures.objects.get(pk=rel_story_data["id"])
+                rel_story.related_figures.add(fig)
+                fig.related_stories.add(rel_story)
+                rel_story.save()
+            except ObjectDoesNotExist:
+                pass
+
+        #build related_cultures
+        for rel_cult_data in data["related_cultures"] :
+            try:
+                rel_cult = Figures.objects.get(pk=rel_fig_data["id"])
+                rel_cult.related_figures.add(fig)
+                fig.related_cultures.add(rel_cult)
+                rel_cult.save()
+            except ObjectDoesNotExist:
+                pass
+
+        fig.save()
+
+        return HttpResponse("{'id':%d}" % (fig.pk,), content_type="application/json", status=201)
+
+    elif request.method == 'PUT' :
+        return HttpResponse("{'id':%d}" % (1,), content_type="application/json", 200)
+    else :
+        return HttpResponse("", content_type="application/json", 405)
+
+    
 
 def api_culture(request, id):
     pass
