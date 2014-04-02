@@ -116,15 +116,19 @@ for id_dict in page_cultures:
 # all_figures[0]["fields"]["related_stories"] = []
 
 output = open('models.json', "w")
+output.write("[")
 for fig in all_figures:
-    output.write(json.dumps(fig))
+    output.write(json.dumps(fig) + ",")
 
 for fig in all_cultures:
-    output.write(json.dumps(fig))
+    output.write(json.dumps(fig) + ",")
 
 for fig in all_stories:
-    output.write(json.dumps(fig))
+    output.write(json.dumps(fig) + ",")
 
 for fig in all_media:
     output.write(json.dumps(fig))
+    if not fig is all_media[-1]:
+        output.write(",")
+output.write("]")
 output.close()
