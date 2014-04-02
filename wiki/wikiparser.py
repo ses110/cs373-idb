@@ -194,86 +194,70 @@ all_figures[9]["fields"]["related_cultures"] = [3]
 all_figures[9]["fields"]["related_stories"] = []
 
 #Greek mythology
-all_cultures[0]["fields"]["related_figures"] = [1,2]
 all_cultures[0]["fields"]["related_cultures"] = [8]
-all_cultures[0]["fields"]["related_stories"] = [1,2]
 #Celtic Mythology
-all_cultures[1]["fields"]["related_figures"] = [5,6]
 all_cultures[1]["fields"]["related_cultures"] = []
-all_cultures[1]["fields"]["related_stories"] = [4]
 #Mayan Mythology
-all_cultures[2]["fields"]["related_figures"] = [10]
 all_cultures[2]["fields"]["related_cultures"] = []
-all_cultures[2]["fields"]["related_stories"] = []
 #Norse Mythology
-all_cultures[3]["fields"]["related_figures"] = [3,4]
 all_cultures[3]["fields"]["related_cultures"] = []
-all_cultures[3]["fields"]["related_stories"] = [3]
 #Hindu Mythology
-all_cultures[4]["fields"]["related_figures"] = [7,8]
 all_cultures[4]["fields"]["related_cultures"] = []
-all_cultures[4]["fields"]["related_stories"] = [5]
 #Egyptian mythology
-all_cultures[5]["fields"]["related_figures"] = [9]
 all_cultures[5]["fields"]["related_cultures"] = []
-all_cultures[5]["fields"]["related_stories"] = [6]
 #Slavic Mythology
-all_cultures[6]["fields"]["related_figures"] = []
 all_cultures[6]["fields"]["related_cultures"] = []
-all_cultures[6]["fields"]["related_stories"] = []
 #Roman Mythology
-all_cultures[7]["fields"]["related_figures"] = []
 all_cultures[7]["fields"]["related_cultures"] = [1]
-all_cultures[7]["fields"]["related_stories"] = [7]
 #Jewish Mythology
-all_cultures[8]["fields"]["related_figures"] = []
 all_cultures[8]["fields"]["related_cultures"] = []
-all_cultures[8]["fields"]["related_stories"] = [8]
 #Japanese Mythology
-all_cultures[9]["fields"]["related_figures"] = []
 all_cultures[9]["fields"]["related_cultures"] = []
-all_cultures[9]["fields"]["related_stories"] = [9,10]
+
 
 #Trojan War
-all_stories[0]["fields"]["related_figures"] = [1,2]
 all_stories[0]["fields"]["related_cultures"] = [1]
 all_stories[0]["fields"]["related_stories"] = [2]
 #Labours of Hercules
-all_stories[1]["fields"]["related_figures"] = [1,2]
 all_stories[1]["fields"]["related_cultures"] = [1]
 all_stories[1]["fields"]["related_stories"] = [1]
 #Ragnarok
-all_stories[2]["fields"]["related_figures"] = [3,4]
 all_stories[2]["fields"]["related_cultures"] = [4]
 all_stories[2]["fields"]["related_stories"] = []
 #Beltane
-all_stories[3]["fields"]["related_figures"] = [5,6]
 all_stories[3]["fields"]["related_cultures"] = [2]
 all_stories[3]["fields"]["related_stories"] = []
 #Ashvamedha
-all_stories[4]["fields"]["related_figures"] = [7,8]
 all_stories[4]["fields"]["related_cultures"] = [5]
 all_stories[4]["fields"]["related_stories"] = [5]
 #Flooding of the Nile
-all_stories[5]["fields"]["related_figures"] = [9]
 all_stories[5]["fields"]["related_cultures"] = [6]
 all_stories[5]["fields"]["related_stories"] = []
 #Hannibalic War
-all_stories[6]["fields"]["related_figures"] = []
 all_stories[6]["fields"]["related_cultures"] = [8]
 all_stories[6]["fields"]["related_stories"] = []
 #Garden of Eden
-all_stories[7]["fields"]["related_figures"] = []
 all_stories[7]["fields"]["related_cultures"] = [9]
 all_stories[7]["fields"]["related_stories"] = []
 #Kamiumi
-all_stories[8]["fields"]["related_figures"] = []
 all_stories[8]["fields"]["related_cultures"] = [10]
 all_stories[8]["fields"]["related_stories"] = [10]
 #Kuniuni
-all_stories[9]["fields"]["related_figures"] = []
 all_stories[9]["fields"]["related_cultures"] = [10]
 all_stories[9]["fields"]["related_stories"] = [9]
+
+
+# for fig in all_figures:
+#     print(json.dumps(fig, indent=4))
+
+# for fig in all_cultures:
+#     print(json.dumps(fig, indent=4))
+
+# for fig in all_stories:
+#     print(json.dumps(fig, indent=4))
+
+# for fig in all_media:
+#     print(json.dumps(fig, indent=4))
 
 output = open('models.json', "w")
 output.write("[")
