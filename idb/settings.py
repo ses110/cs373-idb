@@ -55,7 +55,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mythos'
+    'mythos',
 )
 
 MIDDLEWARE_CLASSES = (
