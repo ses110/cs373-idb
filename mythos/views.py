@@ -56,7 +56,12 @@ def stories(request):
 # -----
 
 def api_figure(request, id):
-    return HttpResponse("{'test':%d}" % (int(id),), content_type="application/json")
+    if request.method == "GET":
+        return HttpResponse("{'test':%d}" % (int(id),), content_type="application/json")
+    else if request.method == "PUT":
+        pass
+    else if request.method == "PUSH":
+        pass
 
 def api_figures(request):
     pass
