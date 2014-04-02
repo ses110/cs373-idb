@@ -115,14 +115,16 @@ for id_dict in page_cultures:
 # all_figures[0]["fields"]["related_cultures"] = []
 # all_figures[0]["fields"]["related_stories"] = []
 
+output = open('../fixtures/models.json')
 for fig in all_figures:
-    print(json.dumps(fig, indent=4))
+    output.write(json.dumps(fig))
 
 for fig in all_cultures:
-    print(json.dumps(fig, indent=4))
+    output.write(json.dumps(fig))
 
 for fig in all_stories:
-    print(json.dumps(fig, indent=4))
+    output.write(json.dumps(fig))
 
 for fig in all_media:
-    print(json.dumps(fig, indent=4))
+    output.write(json.dumps(fig))
+output.close()
