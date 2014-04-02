@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from mythos import views
+from mythos import models
 
 
 admin.autodiscover()
@@ -12,5 +13,7 @@ urlpatterns = patterns('',
         url(r'^cultures/$', views.cultures, name='cultures'),
         url(r'^cultures/(\d+)/$', views.culture, name='culture'),
         url(r'^stories/$', views.stories, name='stories'),
-        url(r'^stories/(\d+)/$', views.story, name='story')
+        url(r'^stories/(\d+)/$', views.story, name='story'),
+        url(r'^api/figures/$', views.api_figures, name='api_figures'),
+
 )

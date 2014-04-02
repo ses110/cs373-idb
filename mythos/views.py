@@ -49,3 +49,27 @@ def stories(request):
     context_dict = {'title':'Stories', 'items':stories}
 
     return render_to_response('mythos/stories.html', context_dict, context)
+
+
+# -----
+# API Methods
+# -----
+
+def api_figure(request, id):
+    pass
+
+def api_figures(request):
+    pass
+
+def api_culture(request, id):
+    pass
+
+def api_cultures(request):
+    pass
+
+def api_story(request, id):
+    pass
+
+def api_stories(request):
+    pass
+
