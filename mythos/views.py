@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.core.exceptions import ObjectDoesNotExist
+from mythos.models import *
 from json import dumps, loads
 
 #from django.shortcuts import get_object_or_404
@@ -88,21 +89,20 @@ def api_figure(request, id):
 
 def api_figures(request):
     if request.method == 'GET' :
-        models = Figures.objects().all()
+        models = Figure.objects.all()
         li = []
         for model in models :
             di = {  "id" : model.id,
-                    "title" : model.title,
+                    "name" : model.name,
                     "kind" : model.kind,
                     "biography" : model.biography}
             li.append(di)
-
-        return HttpResponse(li, content_type="application/json", status=200)
+        return HttpResponse(dumps(li, ensure_ascii=True), content_type="application/json", status=200)
     elif request.method == 'POST' :
         request_body = request.read().decode("utf-8")
         data = loads(request_body)
         #build Figure
-        fig = Figure(title = data["title"], kind = data["kind"], 
+        fig = Figure(name = data["name"], kind = data["kind"], 
             biography = data["biography"])
         #build Media
         for image in data["images"] :
@@ -161,6 +161,7 @@ def api_figures(request):
         return HttpResponse("{'id':%d}" % (fig.pk,), content_type="application/json", status=201)
 
     elif request.method == 'PUT' :
+
         return HttpResponse("{'id':%d}" % (1,), content_type="application/json", status=200)
     else :
         return HttpResponse("", content_type="application/json", status=405)
