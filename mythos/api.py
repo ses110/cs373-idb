@@ -6,9 +6,9 @@ from mythos.models import *
 from mythos.prettyPrint import *
 
 class CultureResource(ModelResource):
-	related_cultures = fields.ManyToManyField('self', 'related_cultures', related_name='cultures')
-	related_figures = fields.ManyToManyField('mythos.api.resources.FigureResource', 'related_figures', related_name='cultures')
-	related_stories = fields.ManyToManyField('mythos.api.resources.StoryResource', 'related_stories', related_name='cultures')
+	related_cultures = fields.ManyToManyField('self', 'related_cultures', related_name='cultures',  blank=True, null=True)
+	related_figures = fields.ManyToManyField('mythos.api.resources.FigureResource', 'related_figures', related_name='cultures',  blank=True, null=True)
+	related_stories = fields.ManyToManyField('mythos.api.resources.StoryResource', 'related_stories', related_name='cultures',  blank=True, null=True)
 
 	class Meta:
 		queryset = Culture.objects.all()
@@ -17,9 +17,9 @@ class CultureResource(ModelResource):
 		serializer = PrettyJSONSerializer()
 
 class StoryResource(ModelResource):
-	related_stories = fields.ManyToManyField('self', 'related_stories', related_name='stories')
-	related_cultures = fields.ManyToManyField(CultureResource, 'related_cultures', related_name='stories')
-	related_figures = fields.ManyToManyField('mythos.api.resources.FigureResource', 'related_figures', related_name='stories')
+	related_stories = fields.ManyToManyField('self', 'related_stories', related_name='stories',  blank=True, null=True)
+	related_cultures = fields.ManyToManyField(CultureResource, 'related_cultures', related_name='stories',  blank=True, null=True)
+	related_figures = fields.ManyToManyField('mythos.api.resources.FigureResource', 'related_figures', related_name='stories',  blank=True, null=True)
 
 	class Meta:
 		queryset = Story.objects.all()
@@ -28,9 +28,9 @@ class StoryResource(ModelResource):
 		serializer = PrettyJSONSerializer()
 
 class FigureResource(ModelResource):
-	related_figures = fields.ManyToManyField('self', 'related_figures', related_name='figures')
-	related_cultures = fields.ManyToManyField(CultureResource, 'related_cultures', related_name='figures')
-	related_stories = fields.ManyToManyField(StoryResource, 'related_stories', related_name='figures')
+	related_figures = fields.ManyToManyField('self', 'related_figures', related_name='figures',  blank=True, null=True)
+	related_cultures = fields.ManyToManyField(CultureResource, 'related_cultures', related_name='figures',  blank=True, null=True)
+	related_stories = fields.ManyToManyField(StoryResource, 'related_stories', related_name='figures',  blank=True, null=True)
 
 	class Meta:
 		queryset = Figure.objects.all()
