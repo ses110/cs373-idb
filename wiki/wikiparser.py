@@ -38,21 +38,21 @@ for id_dict in page_figures:
     this_figure["fields"]["biography"] = summary
     all_figures.append(this_figure)
 
-    pk += 1
-
     for i in range(min(media_limit, len(images))):
         img = images[i]
         if len(img) < 200:
-            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img, "figure" : [pk]}}
+            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img, "figure" : pk}}
             all_media.append(media)
             m_pk += 1
 
     for i in range(min(media_limit, len(references))):
         ref = references[i]
         if len(ref) < 200:
-            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref, "figure" : [pk]}}
+            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref, "figure" : pk}}
             all_media.append(media)
             m_pk += 1
+
+    pk += 1
 
 pk = 1
 for id_dict in page_stories:
@@ -70,22 +70,23 @@ for id_dict in page_stories:
     this_stories["fields"]["summary"] = summary
     all_stories.append(this_stories)
 
-    pk += 1
-
     for i in range(min(media_limit, len(images))):
         img = images[i]
         if len(img) < 200:
-            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img, "figure" : [pk]}}
+            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img, "story" : pk}}
             all_media.append(media)
             m_pk += 1
 
     for i in range(min(media_limit, len(references))):
         ref = references[i]
         if len(ref) < 200:
-            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref, "figure" : [pk]}}
+            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref, "story" : pk}}
             all_media.append(media)
             m_pk += 1
+    pk += 1
 
+
+pk = 1
 for id_dict in page_cultures:
     this_culture = {"pk" : pk, "model" : "mythos.culture", "fields" : {}}
     media = {}
@@ -101,21 +102,22 @@ for id_dict in page_cultures:
     this_culture["fields"]["history"] = summary
     all_cultures.append(this_culture)
 
-    pk += 1
+    
 
     for i in range(min(media_limit, len(images))):
         img = images[i]
         if len(img) < 200:
-            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img, "figure" : [pk]}}
+            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Image of " + title, "kind" : "image", "link" : img, "culture" : pk}}
             all_media.append(media)
             m_pk += 1
 
     for i in range(min(media_limit, len(references))):
         ref = references[i]
         if len(ref) < 200:
-            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref, "figure" : [pk]}}
+            media = {"pk" : m_pk, "model" : "mythos.media", "fields" : { "name" : "Reference", "kind" : "link", "link" : ref, "culture" : pk}}
             all_media.append(media)
             m_pk += 1
+    pk += 1
 
 #Kind
 all_figures[0]["fields"]["kind"] = "Olympian"
@@ -229,7 +231,7 @@ all_stories[3]["fields"]["related_cultures"] = [2]
 all_stories[3]["fields"]["related_stories"] = []
 #Ashvamedha
 all_stories[4]["fields"]["related_cultures"] = [5]
-all_stories[4]["fields"]["related_stories"] = [5]
+all_stories[4]["fields"]["related_stories"] = []
 #Flooding of the Nile
 all_stories[5]["fields"]["related_cultures"] = [6]
 all_stories[5]["fields"]["related_stories"] = []
@@ -259,7 +261,7 @@ all_stories[9]["fields"]["related_stories"] = [9]
 # for fig in all_media:
 #     print(json.dumps(fig, indent=4))
 
-output = open('models.json', "w")
+output = open('../fixtures/models.json', "w")
 output.write("[")
 for fig in all_figures:
     output.write(json.dumps(fig) + ",")
