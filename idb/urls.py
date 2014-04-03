@@ -18,5 +18,6 @@ urlpatterns = patterns('',
         url(r'^api/cultures/$', views.api_cultures, name='api_cultures'),
         url(r'^api/cultures/(\d+)/$', views.api_culture, name='api_culture'),
         url(r'^api/stories/$', views.api_stories, name='api_stories'),
-        url(r'^api/stories/(\d+)/$', views.api_story, name='api_story')
+        url(r'^api/stories/(\d+)/$', views.api_story, name='api_story'),
+        url(r'^(\w+)/$', views.not_found, name='not_found'),
 )
