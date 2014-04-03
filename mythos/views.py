@@ -14,6 +14,10 @@ def index(request):
     context = RequestContext(request)
     return render_to_response('mythos/index.html', None, context)
 
+def not_found(request, val):
+    context = RequestContext(request)
+    return render_to_response('mythos/404.html', None, context)
+
 def figure(request, id):
     context = RequestContext(request)
     try:
@@ -30,7 +34,7 @@ def figure(request, id):
         }
         return render_to_response('mythos/figure.html', figure_dict, context)
     except:
-        return render_to_response('mythos/404.html', None, context)
+        return not_found(request)
 
 def figures(request):
     context = RequestContext(request)
@@ -59,7 +63,7 @@ def culture(request, id):
         }
         return render_to_response('mythos/culture.html', culture_dict, context)
     except:
-        return render_to_response('mythos/404.html', None, context)
+        return not_found(request)
 
 def cultures(request):
     context = RequestContext(request)
@@ -86,7 +90,7 @@ def story(request, id):
         }
         return render_to_response('mythos/story.html', story_dict, context)
     except:
-        return render_to_response('mythos/404.html', None, context)
+        return not_found(request)
 
 def stories(request):
     context = RequestContext(request)
