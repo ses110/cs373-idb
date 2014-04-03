@@ -58,9 +58,6 @@ def stories(request):
 
     return render_to_response('mythos/stories.html', context_dict, context)
 
-def not_found_html
-
-
 # -----
 # Helper Methods
 # -----
