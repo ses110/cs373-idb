@@ -1,10 +1,20 @@
 {% extends "mythos/base.html" %}
 
-{% block title %}{{ 404 - Not Found }}{% endblock title %}
+{% block title %}404 - Not Found{% endblock title %}
 {% block body %}
 
     {{ block.super }}
 
-    <h1>404 - Are you dumb?</h1>
+
+    <div class="text-center">
+        <h1>#404</h1>
+        <h2>Lost? Maybe the NSA can help...</h2>
+
+        <a class="twitter-timeline" href="https://twitter.com/NSA_PAO" data-widget-id="451516737733668864">Tweets by @NSA_PAO</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+    </div>
+   
     
 {% endblock body %}

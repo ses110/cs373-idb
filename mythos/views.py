@@ -18,16 +18,24 @@ def figure(request, id):
     context = RequestContext(request)
     try:
         figure = Figure.objects.get(pk=id)
-        return render_to_response('mythos/figure.html', dict_from_figure(figure), context)
+        figure_dict = {
+            'title': figure.name,
+            'kind': figure.kind,
+            'biography': figure.biography,
+            'images': figure.media_set.filter(kind="image"),
+            'videos': figure.media_set.filter(kind="video"),
+            'related_figures': figure.related_figures.all(),
+            'related_cultures': figure.related_cultures.all(),
+            'related_stories': figure.related_stories.all()
+        }
+        return render_to_response('mythos/figure.html', figure_dict, context)
     except:
         return render_to_response('mythos/404.html', None, context)
 
 def figures(request):
     context = RequestContext(request)
 
-    # Get list of all figures
-
-    figures = models.p1_figures()
+    figures = Figure.objects.all()
     context_dict = {'title':'Figures', 'items':figures}
 
     return render_to_response('mythos/figures.html', context_dict, context)
@@ -35,12 +43,28 @@ def figures(request):
 
 def culture(request, id):
     context = RequestContext(request)
-    return render_to_response('mythos/culture.html', models.p1_culture(id), context)
+
+    try:
+        culture = Culture.objects.get(pk=id)
+        culture_dict = {
+            'title': culture.name,
+            'region': culture.region,
+            'language': culture.language,
+            'history': culture.history,
+            'images': culture.media_set.filter(kind="image"),
+            'videos': culture.media_set.filter(kind="video"),
+            'related_figures': Figure.objects.filter(related_cultures__pk=id),
+            'related_cultures': culture.related_cultures.all(),
+            'related_stories': Story.objects.filter(related_cultures__pk=id)
+        }
+        return render_to_response('mythos/culture.html', culture_dict, context)
+    except:
+        return render_to_response('mythos/404.html', None, context)
 
 def cultures(request):
     context = RequestContext(request)
 
-    cultures = models.p1_cultures()
+    cultures = Culture.objects.all()
     context_dict = {'title':'Cultures', 'items':cultures}
 
     return render_to_response('mythos/cultures.html', context_dict, context)
@@ -48,12 +72,26 @@ def cultures(request):
 
 def story(request, id):
     context = RequestContext(request)
-    return render_to_response('mythos/story.html', models.p1_story(id), context)
+
+    try:
+        story = Story.objects.get(pk=id)
+        story_dict = {
+            'title': story.name,
+            'summary': story.summary,
+            'images': story.media_set.filter(kind="image"),
+            'videos': story.media_set.filter(kind="video"),
+            'related_figures': Figure.objects.filter(related_stories__pk=id),
+            'related_cultures': story.related_cultures.all(),
+            'related_stories': story.related_stories.all()
+        }
+        return render_to_response('mythos/story.html', story_dict, context)
+    except:
+        return render_to_response('mythos/404.html', None, context)
 
 def stories(request):
     context = RequestContext(request)
 
-    stories = models.p1_stories()
+    stories = Story.objects.all()
     context_dict = {'title':'Stories', 'items':stories}
 
     return render_to_response('mythos/stories.html', context_dict, context)
@@ -62,17 +100,6 @@ def stories(request):
 # Helper Methods
 # -----
 
-def dict_from_figure(figure):
-    return {
-        'title': figure.name,
-        'kind': figure.kind,
-        'biography': figure.biography,
-        'images': figure.media_set.filter(kind="image"),
-        'videos': figure.media_set.filter(kind="video"),
-        'related_figures': figure.related_figures.all(),
-        'related_cultures': figure.related_cultures.all(),
-        'related_stories': figure.related_stories.all()
-    }
 
 
 # -----
