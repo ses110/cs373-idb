@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 class Media(models.Model):
     '''
@@ -24,6 +26,16 @@ class Media(models.Model):
     culture             = models.ForeignKey('Culture', blank=True, null=True)
     story               = models.ForeignKey('Story', blank=True, null=True)
 
+    def __unicode__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        # For automatic slug generation.
+        if not self.slug:
+            self.slug = slugify(self.title)[:50]
+
+        return super(Media, self).save(*args, **kwargs)
+
 class Figure(models.Model):
     '''
     figure Model represents an instance of a figure in mythology
@@ -48,6 +60,16 @@ class Figure(models.Model):
     related_cultures    = models.ManyToManyField('Culture')
     related_stories     = models.ManyToManyField('Story')
 
+    def __unicode__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        # For automatic slug generation.
+        if not self.slug:
+            self.slug = slugify(self.title)[:50]
+
+        return super(Figure, self).save(*args, **kwargs)
+
 class Story(models.Model):
     '''
     Story model represents an instance of a mythological event/story
@@ -67,6 +89,16 @@ class Story(models.Model):
     summary             = models.CharField(max_length=10000)
     related_stories     = models.ManyToManyField('self')
     related_cultures    = models.ManyToManyField('Culture')
+
+    def __unicode__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        # For automatic slug generation.
+        if not self.slug:
+            self.slug = slugify(self.title)[:50]
+
+        return super(Story, self).save(*args, **kwargs)
 
 class Culture(models.Model):
     '''
@@ -92,6 +124,16 @@ class Culture(models.Model):
     history             = models.CharField(max_length=10000)
     language            = models.CharField(max_length=200)
     related_cultures    = models.ManyToManyField('self')
+
+    def __unicode__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        # For automatic slug generation.
+        if not self.slug:
+            self.slug = slugify(self.title)[:50]
+
+        return super(Culture, self).save(*args, **kwargs)
 
 class P1_Models(object):
     cultures = None
