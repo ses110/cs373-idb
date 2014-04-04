@@ -11,47 +11,85 @@ Figure related resources of the **MDB API**
 ### List all figures [GET]
 + Response 200 (application/json)
         
-        [{
-            "id": 1,
-            "title":"Atlas",
-            "kind":"Titan",
-            "biography":"Long text description here."
-        }, {
-            "id": 2,
-            "title":"Athena",
-            "kind":"Olympian",
-            "biography":"Long text description here."
-        }, {
-            "id": 3,
-            "title":"Loki",
-            "kind":"God",
-            "biography":"Long text description here."
-        }]
+        {
+            "meta": {
+                "limit": 20, 
+                "next": null, 
+                "offset": 0, 
+                "previous": null, 
+                "total_count": 3
+            }, 
+            "objects": [{
+                "id": 1,
+                "name": "Atlas",
+                "kind": "Titan",
+                "biography": "Long text description here.",
+                "related_cultures": [
+                    "/api/cultures/1/", 
+                    "/api/cultures/2/"
+                ]
+                "related_figures": [
+                    "/api/figures/2/"
+                ], 
+                "related_stories": [
+                    "/api/stories/1/"
+                ], 
+                "resource_uri": "/api/figures/1/"
+            }, {
+                "id": 2,
+                "name": "Athena",
+                "kind": "Olympian",
+                "biography": "Long text description here.",
+                "related_cultures": [
+                    "/api/cultures/1/", 
+                    "/api/cultures/2/"
+                ]
+                "related_figures": [
+                    "/api/figures/2/"
+                ], 
+                "related_stories": [
+                    "/api/stories/1/"
+                ], 
+                "resource_uri": "/api/figures/2/"
+            }, {
+                "id": 3,
+                "name":"Loki",
+                "kind":"God",
+                "biography":"Long text description here.",
+                "related_cultures": [
+                    "/api/cultures/1/", 
+                    "/api/cultures/2/"
+                ]
+                "related_figures": [
+                    "/api/figures/2/"
+                ], 
+                "related_stories": [
+                    "/api/stories/1/"
+                ], 
+                "resource_uri": "/api/figures/3/"
+            }]
+        }
 
 ### Create a figure [POST]
 + Request (application/json)
 
         {
-            "title":"Loki",
+            "name":"Loki",
             "kind":"God",
             "biography":"Long text description here.",
-            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/4/40/Processed_SAM_loki.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/a/ac/Loki_taunts_Bragi.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/c/cb/Louis_Huard_-_The_Punishment_of_Loki.jpg"}],
-            "videos":[{"link":"http://www.youtube.com/embed/o43-oAL2ogY"}],
             "related_figures":[],
             "related_stories":[],
-            "related_cultures":[{"id":3, "name":"Nordic"}],
-            "external_links":[{"name":"Wikipedia: Loki", "link":"http://en.wikipedia.org/wiki/Loki"},
-                              {"name":"Pantheon.Org", "link":"http://www.pantheon.org/articles/l/loki.html"}]
+            "related_cultures":["/api/cultures/3/"],
         }
 
-+ Response 201 (application/json)
++ Response 201 (text/html)
 
-        {
-            "id": 3
-        }
-
+        Location: http://127.0.0.1:8000/api/figures/4/
+        
+## Figure [/figures/{id}]
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Figure to perform action with. Has example value.
+    
 ### Edit a figure [PUT]
 + Request (application/json)
 
@@ -59,21 +97,13 @@ Figure related resources of the **MDB API**
             "title":"Loki",
             "kind":"God",
             "biography":"Long text description here.",
-            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/4/40/Processed_SAM_loki.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/a/ac/Loki_taunts_Bragi.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/c/cb/Louis_Huard_-_The_Punishment_of_Loki.jpg"}],
-            "videos":[{"link":"http://www.youtube.com/embed/o43-oAL2ogY"}],
             "related_figures":[],
             "related_stories":[],
-            "related_cultures":[{"id":3, "name":"Nordic"}],
-            "external_links":[{"name":"Wikipedia: Loki", "link":"http://en.wikipedia.org/wiki/Loki"},
-                              {"name":"Pantheon.Org", "link":"http://www.pantheon.org/articles/l/loki.html"}]
+            "related_cultures":["/api/cultures/3/"],
         }
 
 + Response 204
 
-## Figure [/figures/{id}]
-A single figure object with all its details
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the Figure to perform action with. Has example value.
@@ -82,19 +112,14 @@ A single figure object with all its details
 + Response 200 (application/json)
 
         {
-            "id": 3,
-            "title":"Loki",
+            "id":4,
+            "name":"Loki",
             "kind":"God",
             "biography":"Long text description here.",
-            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/4/40/Processed_SAM_loki.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/a/ac/Loki_taunts_Bragi.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/c/cb/Louis_Huard_-_The_Punishment_of_Loki.jpg"}],
-            "videos":[{"link":"http://www.youtube.com/embed/o43-oAL2ogY"}],
             "related_figures":[],
             "related_stories":[],
-            "related_cultures":[{"id":3, "name":"Nordic"}],
-            "external_links":[{"name":"Wikipedia: Loki", "link":"http://en.wikipedia.org/wiki/Loki"},
-                              {"name":"Pantheon.Org", "link":"http://www.pantheon.org/articles/l/loki.html"}]
+            "related_cultures":["/api/cultures/3/"],
+            "resource_uri":"/api/figures/4/"
         }
 
 ### Remove a figure [DELETE]
@@ -106,61 +131,86 @@ Story related resources of the **MDB API**
 ## Stories [/stories]
 ### List all stories [GET]
 + Response 200 (application/json)
-
-        [{
-            "id": 1,
-            "title":"The Birth of Athena",
-            "summary":"Long text description here."
-        }, {
-            "id": 2,
-            "title":"The Punishment of Atlas",
-            "summary":"Long text description here."
-        }, {
-            "id": 3,
-            "title":"Reginsmál",
-            "summary":"Long text description here."
-        }]
+        
+        {
+          "meta": {
+            "limit": 20, 
+            "next": null, 
+            "offset": 0, 
+            "previous": null, 
+            "total_count": 3
+          }, 
+          "objects": [
+            {
+              "id": 9, 
+              "name": "Kamiumi", 
+              "related_cultures": [
+                "/api/cultures/10/"
+              ], 
+              "related_stories": [
+                "/api/stories/10/"
+              ], 
+              "resource_uri": "/api/stories/9/", 
+              "summary": "Long text description here."
+            }, 
+            {
+              "id": 2, 
+              "name": "Labours of Hercules", 
+              "related_cultures": [
+                "/api/cultures/1/"
+              ], 
+              "related_stories": [
+                "/api/stories/1/"
+              ], 
+              "resource_uri": "/api/stories/2/", 
+              "summary": "Long text description here."
+            }, 
+            {
+              "id": 3, 
+              "name": "RagnarÃ¶k", 
+              "related_cultures": [
+                "/api/cultures/4/"
+              ], 
+              "related_stories": [], 
+              "resource_uri": "/api/stories/3/", 
+              "summary": "Long text description here." 
+            }]
+        }
 
 ### Create a story [POST]
 + Request (application/json)
 
         {
-            "title":"The Punishment of Atlas",
-            "summary":"Long text description here.",
-            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/8/8c/MAN_Atlante_fronte_1040572.JPG"}],
-            "videos":[],
-            "related_figures":[{"id":1, "name":"Atlas"}, {"id":2, "name":"Athena"}],
-            "related_stories":[],
-            "related_cultures":[{"id":1, "name":"Greek"}, {"id":2, "name":"Roman"}],
-            "external_links":[{"name":"Wikipedia: Atlas", "link":"http://en.wikipedia.org/wiki/Atlas_(mythology)"},
-                            {"name":"Ancient History", "link":"http://ancienthistory.about.com/od/atlastitanmyth/f/081409WorldonShouders.htm"}]
+          "name": "Ashvamedha", 
+          "related_cultures": [
+            "/api/cultures/5/"
+          ], 
+          "related_stories": [], 
+          "summary": "Long text description here."
         }
 
-+ Response 201 (application/json)
++ Response 201 (text/html)
 
-        { 
-            "id": 2 
-        }
+        Location: http://127.0.0.1:8000/api/stories/4/
+
+## Story [/stories/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Story to perform action with. Has example value.
         
 ### Edit a story [PUT]
 + Request (application/json)
 
         {
-            "title":"The Punishment of Atlas",
-            "summary":"Long text description here.",
-            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/8/8c/MAN_Atlante_fronte_1040572.JPG"}],
-            "videos":[],
-            "related_figures":[{"id":1, "name":"Atlas"}, {"id":2, "name":"Athena"}],
-            "related_stories":[],
-            "related_cultures":[{"id":1, "name":"Greek"}, {"id":2, "name":"Roman"}],
-            "external_links":[{"name":"Wikipedia: Atlas", "link":"http://en.wikipedia.org/wiki/Atlas_(mythology)"},
-                            {"name":"Ancient History", "link":"http://ancienthistory.about.com/od/atlastitanmyth/f/081409WorldonShouders.htm"}]
+          "name": "Ashvamedha", 
+          "related_cultures": [
+            "/api/cultures/5/"
+          ], 
+          "related_stories": [], 
+          "summary": "Long text description here."
         }
 
 + Response 204
-
-## Story [/stories/{id}]
-A single story object with all its details
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the Story to perform action with. Has example value.
@@ -169,16 +219,14 @@ A single story object with all its details
 + Response 200 (application/json)
 
         {
-            "id": 2,
-            "title":"The Punishment of Atlas",
-            "summary":"Long text description here.",
-            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/8/8c/MAN_Atlante_fronte_1040572.JPG"}],
-            "videos":[],
-            "related_figures":[{"id":1, "name":"Atlas"}, {"id":2, "name":"Athena"}],
-            "related_stories":[],
-            "related_cultures":[{"id":1, "name":"Greek"}, {"id":2, "name":"Roman"}],
-            "external_links":[{"name":"Wikipedia: Atlas", "link":"http://en.wikipedia.org/wiki/Atlas_(mythology)"},
-                            {"name":"Ancient History", "link":"http://ancienthistory.about.com/od/atlastitanmyth/f/081409WorldonShouders.htm"}]
+          "id": 4,
+          "name": "Ashvamedha", 
+          "related_cultures": [
+            "/api/cultures/5/"
+          ], 
+          "related_stories": [], 
+          "summary": "Long text description here.",
+          "resource_uri": "/api/stories/4/"
         }
 
 ### Remove a story [DELETE]
@@ -191,94 +239,82 @@ Culture related resources of the **MDB API**
 ### List all cultures [GET]
 + Response 200 (application/json)
 
-        [{
-            "id": 1,
-            "title":"Greek",
-            "region":"Greece",
-            "language":"Greek",
-            "history":"Long text description here."
-        }, {
-            "id": 2,
-            "title":"Roman",
-            "region":"Mediterranean",
-            "language":"Latin",
-            "history":"Long text description here."
-        }, {
-            "id": 3,
-            "title":"Nordic",
-            "region":"Scandinavia",
-            "language":"Old Norse",
-            "history":"Long text description here."
-        }]
+        {
+          "meta": {
+            "limit": 20, 
+            "next": null, 
+            "offset": 0, 
+            "previous": null, 
+            "total_count": 3
+          }, 
+          "objects": [
+            {
+              "history": "Long text description here.",
+              "id": 3, 
+              "language": "Mayan", 
+              "name": "Maya mythology", 
+              "region": "Mesoamerica", 
+              "related_cultures": [], 
+              "resource_uri": "/api/cultures/3/"
+            }, 
+            {
+              "history": "Long text description here.",
+              "id": 4, 
+              "language": "Nordic", 
+              "name": "Norse mythology", 
+              "region": "Scandinavia", 
+              "related_cultures": [], 
+              "resource_uri": "/api/cultures/4/"
+            }, 
+            {
+              "history": "Long text description here.",
+              "id": 1, 
+              "language": "Greek", 
+              "name": "Greek mythology", 
+              "region": "Greece", 
+              "related_cultures": [
+                "/api/cultures/8/"
+              ], 
+              "resource_uri": "/api/cultures/1/"
+            }]
+        }
 
 ### Create a culture [POST]
 + Request (application/json)
 
         {
-            "title":"Greek",
-            "region":"Greece",
-            "language":"Greek",
-            "history":"Long text description here.",
-            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/a/ad/Parthenon_from_west.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/1/19/William_Faden._Composite_Mediterranean._1785.I.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/8/87/ArchaicGr.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/7/7c/Beginning_Odyssey.svg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/9/96/EarlyAthenianCoin.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/4/4a/Law_Code_Gortyn_Louvre_Ma703.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/a/a4/Socrates_Louvre.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/2/22/Greek-Persian_duel.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/1/1c/Homer_British_Museum.jpg"}],
-            "videos":[{"link":"http://www.youtube.com/embed/WptSXfvY-vs"},
-                      {"link":"http://www.youtube.com/embed/vHMu2gVzspA"}],
-            "related_figures":[{"id":1, "name":"Atlas"}, {"id":2, "name":"Athena"}],
-            "related_stories":[],
-            "related_cultures":[{"id":2, "name":"Roman"}],
-            "external_links":[{"name":"Wikipedia: Greeks", "link":"http://en.wikipedia.org/wiki/Greeks"},
-                              {"name":"Wikipedia: Ancient Greece", "link":"http://en.wikipedia.org/wiki/Ancient_Greece"},
-                              {"name":"ancientgreece.com", "link":"http://www.ancientgreece.com/s/Main_Page/"},
-                              {"name":"BBC: Ancient Greeks", "link":"http://www.bbc.co.uk/schools/primaryhistory/ancient_greeks/"},
-                              {"name":"History Channel: Ancient Greeks", "link":"http://www.history.com/topics/ancient-history/ancient-greece"}]
+          "history": "Long text description here.",
+          "language": "Greek", 
+          "name": "Greek mythology", 
+          "region": "Greece", 
+          "related_cultures": [
+            "/api/cultures/8/"
+          ], 
         }
 
-+ Response 201 (application/json)
++ Response 201 (text/html)
 
-        { 
-            "id": 1
-        }
+        Location: http://127.0.0.1:8000/api/cultures/4/
+        
+## Culture [/cultures/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Culture to perform action with. Has example value.
         
 ### Edit a culture [PUT]
 + Request (application/json)
 
         {
-            "title":"Greek",
-            "region":"Greece",
-            "language":"Greek",
-            "history":"Long text description here.",
-            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/a/ad/Parthenon_from_west.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/1/19/William_Faden._Composite_Mediterranean._1785.I.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/8/87/ArchaicGr.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/7/7c/Beginning_Odyssey.svg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/9/96/EarlyAthenianCoin.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/4/4a/Law_Code_Gortyn_Louvre_Ma703.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/a/a4/Socrates_Louvre.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/2/22/Greek-Persian_duel.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/1/1c/Homer_British_Museum.jpg"}],
-            "videos":[{"link":"http://www.youtube.com/embed/WptSXfvY-vs"},
-                      {"link":"http://www.youtube.com/embed/vHMu2gVzspA"}],
-            "related_figures":[{"id":1, "name":"Atlas"}, {"id":2, "name":"Athena"}],
-            "related_stories":[],
-            "related_cultures":[{"id":2, "name":"Roman"}],
-            "external_links":[{"name":"Wikipedia: Greeks", "link":"http://en.wikipedia.org/wiki/Greeks"},
-                              {"name":"Wikipedia: Ancient Greece", "link":"http://en.wikipedia.org/wiki/Ancient_Greece"},
-                              {"name":"ancientgreece.com", "link":"http://www.ancientgreece.com/s/Main_Page/"},
-                              {"name":"BBC: Ancient Greeks", "link":"http://www.bbc.co.uk/schools/primaryhistory/ancient_greeks/"},
-                              {"name":"History Channel: Ancient Greeks", "link":"http://www.history.com/topics/ancient-history/ancient-greece"}]
+          "history": "Long text description here.",
+          "language": "Greek", 
+          "name": "Greek mythology", 
+          "region": "Greece", 
+          "related_cultures": [
+            "/api/cultures/8/"
+          ], 
         }
 
 + Response 204
-
-## Culture [/cultures/{id}]
-A single culture object with all its details
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the Culture to perform action with. Has example value.
@@ -287,30 +323,15 @@ A single culture object with all its details
 + Response 200 (application/json)
 
         {
-            "id": 1,
-            "title":"Greek",
-            "region":"Greece",
-            "language":"Greek",
-            "history":"Long text description here.",
-            "images":[{"link":"http://upload.wikimedia.org/wikipedia/commons/a/ad/Parthenon_from_west.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/1/19/William_Faden._Composite_Mediterranean._1785.I.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/8/87/ArchaicGr.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/7/7c/Beginning_Odyssey.svg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/9/96/EarlyAthenianCoin.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/4/4a/Law_Code_Gortyn_Louvre_Ma703.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/a/a4/Socrates_Louvre.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/2/22/Greek-Persian_duel.jpg"},
-                      {"link":"http://upload.wikimedia.org/wikipedia/commons/1/1c/Homer_British_Museum.jpg"}],
-            "videos":[{"link":"http://www.youtube.com/embed/WptSXfvY-vs"},
-                      {"link":"http://www.youtube.com/embed/vHMu2gVzspA"}],
-            "related_figures":[{"id":1, "name":"Atlas"}, {"id":2, "name":"Athena"}],
-            "related_stories":[],
-            "related_cultures":[{"id":2, "name":"Roman"}],
-            "external_links":[{"name":"Wikipedia: Greeks", "link":"http://en.wikipedia.org/wiki/Greeks"},
-                              {"name":"Wikipedia: Ancient Greece", "link":"http://en.wikipedia.org/wiki/Ancient_Greece"},
-                              {"name":"ancientgreece.com", "link":"http://www.ancientgreece.com/s/Main_Page/"},
-                              {"name":"BBC: Ancient Greeks", "link":"http://www.bbc.co.uk/schools/primaryhistory/ancient_greeks/"},
-                              {"name":"History Channel: Ancient Greeks", "link":"http://www.history.com/topics/ancient-history/ancient-greece"}]
+          "history": "Long text description here",
+          "id": 4, 
+          "language": "Greek", 
+          "name": "Greek mythology", 
+          "region": "Greece", 
+          "related_cultures": [
+            "/api/cultures/8/"
+          ], 
+          "resource_uri": "/api/cultures/4/"
         }
 
 ### Remove a culture [DELETE]
