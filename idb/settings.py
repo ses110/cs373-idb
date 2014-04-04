@@ -108,3 +108,6 @@ if 'test' in sys.argv:
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# TastyPie configurations
+TASTYPIE_DEFAULT_FORMATS = ['json']
