@@ -13,7 +13,7 @@ import os
 import sys
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
+SITE_ID = 1
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -58,6 +58,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'mythos',
     'tastypie',
+)
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.messages.context_processors.messages',
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.csrf',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.html import format_html
 
 class Media(models.Model):
     '''
@@ -24,6 +25,13 @@ class Media(models.Model):
     figure              = models.ForeignKey('Figure', blank=True, null=True)
     culture             = models.ForeignKey('Culture', blank=True, null=True)
     story               = models.ForeignKey('Story', blank=True, null=True)
+
+    def media_thumbnail(self):
+        if(self.kind == "image"):
+            return format_html('<img src="%s" />' % (self.link))
+        else:
+            return "N/A"
+    media_thumbnail.allow_tags = True
 
     def __unicode__(self):
         return self.name

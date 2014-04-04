@@ -20,5 +20,6 @@ urlpatterns = patterns('',
         url(r'^api/', include(figure_resource.urls)),
         url(r'^api/', include(story_resource.urls)),
         url(r'^api/', include(culture_resource.urls)),
+        (r'^admin/', include(admin.site.urls)),
         url(r'^(\w+)/$', views.not_found, name='not_found')
 )
