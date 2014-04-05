@@ -3,7 +3,8 @@ from mythos.models import *
 # Register your models here.
 
 class MediaAdmin(admin.ModelAdmin):
-	list_display = ('name', 'kind', 'link', 'media_thumbnail')
+	list_display = ('name', 'kind', 'link', 'media_thumbnail', 'figure', 'culture', 'story')
+
 class FigureAdmin(admin.ModelAdmin):
 	list_display = ('name', 'kind')
 class StoryAdmin(admin.ModelAdmin):
