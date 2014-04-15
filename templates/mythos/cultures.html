@@ -5,10 +5,15 @@
 {% block header %}{{ title }}{% endblock header %}
 
 {% block body %}
-	<video autoplay loop poster="http://video-js.zencoder.com/oceans-clip.png" id="bgvid">
-		<source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm">
-		<source src="http://video-js.zencoder.com/oceans-clip.mp4" type="video/mp4">
-	</video>
+
+	<script type="text/javascript">
+		$(function() {
+		    var BV = new $.BigVideo();
+		    BV.init();
+		    BV.show('http://vjs.zencdn.net/v/oceans.mp4');
+		});
+	</script>
+	
 
     {{ block.super }}
 
