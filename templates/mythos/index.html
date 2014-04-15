@@ -6,42 +6,47 @@
 
     {{ block.super }}
     
+      <video autoplay loop poster="http://video-js.zencoder.com/oceans-clip.png" id="bgvid">
+        <source src="http://video-js.zencoder.com/oceans-clip.webm" type="video/webm">
+        <source src="http://video-js.zencoder.com/oceans-clip.mp4" type="video/mp4">
+      </video>
+
     <div class="container-fluid">
         <div class="text-center">
-            <h1>Mythos</h1>
-            <h4>by <a href="https://twitter.com/search?q=%23yoloswag">#yoloswag</a></h2>
+            <h1 style="color:#FFF">Mythos</h1>
+            <h4 style="color:#FFF">by <a href="https://twitter.com/search?q=%23yoloswag">#yoloswag</a></h2>
         </div>
 
         <div class="col-md-offset-2 col-md-8 col-lg-offset-4 col-lg-4" style="padding:5% 0 0 0">
 
-            <table class="table table-striped table-responsive">
+            <table class="table table-responsive">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Github</th>
-                  <th>Favorite Hashtag</th>
+                  <th class="list-th">Name</th>
+                  <th class="list-th">Github</th>
+                  <th class="list-th">Favorite Hashtag</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Comyar Zaheri</td>
-                  <td><a href="https://github.com/comyarzaheri">comyarzaheri</a></td>
-                  <td><a href="https://twitter.com/search?q=%23yolo">#yolo</a></td>
+                  <td class="list-td">Comyar Zaheri</td>
+                  <td class="list-td"><a href="https://github.com/comyarzaheri">comyarzaheri</a></td>
+                  <td class="list-td"><a href="https://twitter.com/search?q=%23yolo">#yolo</a></td>
                 </tr>
                 <tr>
-                  <td>Joshua Gutierrez</td>
-                  <td><a href="https://github.com/joshuagutierrez">joshuagutierrez</a></td>
-                  <td><a href="https://twitter.com/search?q=%23throwback">#throwback</a></td>
+                  <td class="list-td">Joshua Gutierrez</td>
+                  <td class="list-td"><a href="https://github.com/joshuagutierrez">joshuagutierrez</a></td>
+                  <td class="list-td"><a href="https://twitter.com/search?q=%23throwback">#throwback</a></td>
                 </tr>
                 <tr>
-                  <td>Steven Wilken</td>
-                  <td><a href="https://github.com/swilken">swilken</a></td>
-                  <td><a href="https://twitter.com/search?q=%23360noscope">#360noscope</a></td>
+                  <td class="list-td">Steven Wilken</td>
+                  <td class="list-td"><a href="https://github.com/swilken">swilken</a></td>
+                  <td class="list-td"><a href="https://twitter.com/search?q=%23360noscope">#360noscope</a></td>
                 </tr>
                 <tr>
-                  <td>Sergio Escoto</td>
-                  <td><a href="https://github.com/ses110">ses110</a></td>
-                  <td><a href="https://twitter.com/search?q=%23selfie">#selfie</a></td>
+                  <td class="list-td">Sergio Escoto</td>
+                  <td class="list-td"><a href="https://github.com/ses110">ses110</a></td>
+                  <td class="list-td"><a href="https://twitter.com/search?q=%23selfie">#selfie</a></td>
                 </tr>
               </tbody>
             </table>
