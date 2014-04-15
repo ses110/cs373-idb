@@ -7,10 +7,10 @@
     {{ block.super }}
 
     <div class="container-fluid">
-        <h1 class="col-sm-offset-2">{% block header %}{{ title }}{% endblock header %}</h1>
+        <h1 class="col-sm-offset-2" style="color:#FFF">{% block header %}{{ title }}{% endblock header %}</h1>
 
         <div class="row">
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-sm-offset-2 col-sm-6" style="color:#FFF">
 
                 <!-- Detail Content -->
                 {% block content %} Content {% endblock content %}
@@ -21,7 +21,7 @@
                         <table class="table">
                           <thead>
                             <tr>
-                              <th>Videos</th>
+                              <th style="color:#FFF">Videos</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -54,7 +54,7 @@
                 {% if related_figures %}
                     <table class="table">
                       <thead>
-                        <tr><th> {% block relatedFigureTitle %} Related Figures {% endblock relatedFigureTitle %}</th></tr>
+                        <tr><th style="color:#FFF"> {% block relatedFigureTitle %} Related Figures {% endblock relatedFigureTitle %}</th></tr>
                       </thead>
                       <tbody>
                         {% for figure in related_figures %}
@@ -69,7 +69,7 @@
                 {% if related_stories %}
                     <table class="table">
                       <thead>
-                        <tr><th> {% block relatedStoriesTitle %} Related Stories {% endblock relatedStoriesTitle %}</th></tr>
+                        <tr><th style="color:#FFF"> {% block relatedStoriesTitle %} Related Stories {% endblock relatedStoriesTitle %}</th></tr>
                       </thead>
                       <tbody>
                         {% for story in related_stories %}
@@ -84,7 +84,7 @@
                 {% if related_cultures %}
                     <table class="table">
                       <thead>
-                        <tr><th> {% block relatedCulturesTitle %} Related Cultures {% endblock relatedCulturesTitle %}</th></tr>
+                        <tr><th style="color:#FFF"> {% block relatedCulturesTitle %} Related Cultures {% endblock relatedCulturesTitle %}</th></tr>
                       </thead>
                       <tbody>
                         {% for culture in related_cultures %}
@@ -109,7 +109,7 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th>External Links</th>
+                          <th style="color:#FFF">External Links</th>
                         </tr>
                       </thead>
                       <tbody>
