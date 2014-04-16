@@ -9,6 +9,15 @@
 	background-size: cover;
 }
 
+.bgfigure
+{
+	position: fixed; top: 50px; right: 0; bottom: 0;
+	min-width: 100%; min-height: 100%;
+	width: 100%; height: auto; z-index: -100;
+	background:url(/static/300-1.gif) no-repeat;
+	background-size: cover;
+}
+
 .list-td-a
 {
 	color: #FFF;
