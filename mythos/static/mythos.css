@@ -9,13 +9,32 @@
 	background-size: cover;
 }
 
-.bgfigure
+#bgimg
 {
 	position: fixed; top: 50px; right: 0; bottom: 0;
 	min-width: 100%; min-height: 100%;
-	width: 100%; height: auto; z-index: -100;
-	background:url(/static/300-1.gif) no-repeat;
+	width: auto; height: auto; z-index: -100;
 	background-size: cover;
+}
+
+.bgfigure
+{
+	background:url(/static/300-1.gif) no-repeat;
+}
+
+.bgculture
+{
+	background:url(/static/culture.gif) no-repeat;
+}
+
+.bgindex
+{
+	background:url(/static/index-3.gif) no-repeat;
+}
+
+.bgstory
+{
+	background:url(/static/story-1.gif) no-repeat;
 }
 
 .list-td-a
@@ -38,5 +57,5 @@
 
 a
 {
-	color: #F00;
+	color: #EEE;
 }

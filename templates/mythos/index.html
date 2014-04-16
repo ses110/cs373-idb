@@ -6,10 +6,7 @@
 
     {{ block.super }}
     
-      <video autoplay loop poster="http://video-js.zencoder.com/oceans-clip.png" muted id="bgvid">
-        {% load staticfiles %}
-        <source src="{% static 'story.webm' %}" type="video/webm">
-    </video>
+    <div class="bgindex" id="bgimg"></div>
 
     <div class="container-fluid">
         <div class="text-center">
@@ -17,9 +14,9 @@
             <h4 style="color:#FFF">by <a href="https://twitter.com/search?q=%23yoloswag">#yoloswag</a></h2>
         </div>
 
-        <div class="col-md-offset-2 col-md-8 col-lg-offset-4 col-lg-4" style="padding:5% 0 0 0">
+        <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6" style="padding:5% 0 0 0">
 
-            <table class="table table-responsive">
+            <table class="table">
               <thead>
                 <tr>
                   <th class="list-th">Name</th>

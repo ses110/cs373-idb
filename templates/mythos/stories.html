@@ -4,10 +4,8 @@
 {% block header %}{{ title }}{% endblock header %}
 
 {% block body %}
-	<video autoplay loop muted id="bgvid">
-        {% load staticfiles %}
-        <source src="{% static 'story.webm' %}" type="video/webm">
-    </video>
+
+	<div class="bgstory" id="bgimg"></div>
 
     {{ block.super }}
 

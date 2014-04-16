@@ -6,12 +6,7 @@
 
 {% block body %}
 
-	<video autoplay loop muted id="bgvid">
-		{% load staticfiles %}
-		<source src="{% static 'culture.webm' %}" type="video/webm">
-	</video>
-
-	
+	<div class="bgculture" id="bgimg"></div>
 
     {{ block.super }}
 
