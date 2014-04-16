@@ -1,8 +1,10 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from mythos.models import *
+from mythos.search import *
 from json import dumps, loads
 
 #from django.shortcuts import get_object_or_404
@@ -99,3 +101,20 @@ def stories(request):
     context_dict = {'title':'Stories', 'items':stories}
 
     return render_to_response('mythos/stories.html', context_dict, context)
+
+def search_form(request):
+    return render(request, 'mythos/search_form.html')
+
+def search(request):
+    query_string = ''
+    found_entries = None
+    if ('q' in request.GET) and request.GET['q'].strip():
+        query_string = request.GET['q']
+        
+        entry_query = get_query(query_string, ['name'])
+        
+        figures = Figure.objects.filter(entry_query) #.order_by('-pub_date')
+
+    return render_to_response('mythos/search_results.html',
+                          { 'query_string': query_string, 'figures': figures },
+                          context_instance=RequestContext(request))
