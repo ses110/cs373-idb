@@ -9,7 +9,7 @@ a:hover
 	text-decoration: none;
 }
 
-.index-table-container
+.table-container
 {
 	background-color: rgba(0,0,0,0.3);
 }
@@ -62,7 +62,7 @@ a:hover
 	color: #FFF;
 }
 
-.index-title
+.title
 {
 	font-size:100px;
 	color:#EEE;
