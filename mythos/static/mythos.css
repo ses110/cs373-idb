@@ -1,0 +1,33 @@
+
+
+#bgvid
+{
+	position: fixed; right: 0; bottom: 0;
+	min-width: 100%; min-height: 100%;
+	width: auto; height: auto; z-index: -100;
+	background: url(http://video-js.zencoder.com/oceans-clip.png) no-repeat;
+	background-size: cover;
+}
+
+.list-td-a
+{
+	color: #FFF;
+	font-size:24px;
+}
+
+.list-td
+{
+	color: #FFF;
+}
+
+.list-th
+{
+	color: #FFF;
+	font-weight:100;
+	font-size:32px;
+}
+
+a
+{
+	color: #F00;
+}
