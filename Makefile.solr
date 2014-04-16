@@ -1,0 +1,28 @@
+SOLR_TGZ_URL ?= http://apache.claz.org/lucene/solr/4.7.0/solr-4.7.0.tgz
+PORT         ?= 8983
+IP           ?= 127.0.0.1
+
+CORENAME     ?= maincore
+
+export
+
+schema-xml:
+	python manage.py build_solr_schema --traceback -f solr/solr/${CORENAME}/conf/schema.xml
+
+solr-instance:
+	make -C solr/ $@
+
+run-solr: solr-instance schema-xml
+	make -C solr/ $@
+
+run-clean-solr: schema-xml
+	@test -f solr/start.jar || (echo 'Run `make solr-instance` before running this' && exit 1)
+	make -C solr/ run-solr
+
+clean:
+	make -C solr/ $@
+
+mrproper:
+	make -C solr/ $@
+
+.PHONY: schema-xml solr-instance clean mrproper run-solr
