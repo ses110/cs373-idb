@@ -8,7 +8,12 @@
     
     <div class"container-fluid">
       {% load staticfiles %}
-      <div class="bgimg" style="background:url({% static 'index-3.gif' %}) no-repeat"></div>
+      <div class="bgimg" style="background:url({% static 'index-3.gif' %}) no-repeat" id="bg"></div>
+      <script type="text/javascript">
+        if($(document).width() < 768) {
+          document.getElementById('bg').style.background='black';
+        }
+      </script>
 
         <div class="text-center">
             <h1 class="title">Mythos</h1>
