@@ -8,6 +8,7 @@ admin.autodiscover()
 figure_resource = FigureResource()
 story_resource = StoryResource()
 culture_resource = CultureResource()
+media_resource = MediaResource()
 
 urlpatterns = patterns('',
         url(r'^$', views.index, name='index'),
@@ -20,6 +21,7 @@ urlpatterns = patterns('',
         url(r'^api/', include(figure_resource.urls)),
         url(r'^api/', include(story_resource.urls)),
         url(r'^api/', include(culture_resource.urls)),
+        url(r'^api/', include(media_resource.urls)),
         url(r'^search/', include('haystack.urls')),
         url(r'^search/autocomplete/$', views.autocomplete, name='autocomplete'),
         url(r'^queries/$', views.queries, name ='queries'),
