@@ -6,7 +6,8 @@
 
 {% block body %}
 
-	<div class="bgculture" id="bgimg"></div>
+	{% load staticfiles %}
+	<div class="bgimg" style="background:url({% static 'culture.gif' %}) no-repeat"></div>
 
     {{ block.super }}
 

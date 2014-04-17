@@ -23,32 +23,12 @@ a:hover
 	background-size: cover;
 }
 
-#bgimg
+.bgimg
 {
 	position: fixed; top: 50px; right: 0; bottom: 0;
 	min-width: 100%; min-height: 100%;
 	width: auto; height: auto; z-index: -100;
-	background-size: cover;
-}
-
-.bgfigure
-{
-	background:url(/static/300-1.gif) no-repeat;
-}
-
-.bgculture
-{
-	background:url(/static/culture.gif) no-repeat;
-}
-
-.bgindex
-{
-	background:url(/static/index-3.gif) no-repeat;
-}
-
-.bgstory
-{
-	background:url(/static/story-1.gif) no-repeat;
+	background-size: cover !important;
 }
 
 .list-td-a
@@ -96,3 +76,12 @@ a:hover
 	font-size:32px;
 }
 
+.index-btn {
+	width:128px;
+	height:48px;
+}
+
+.index-btn:hover {
+	color: black;
+	background-color: white;
+}
