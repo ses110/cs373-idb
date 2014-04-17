@@ -115,3 +115,6 @@ def autocomplete(request):
         'results': suggestions,
     })
     return HttpResponse(the_data, content_type='application/json')
+
+def queries(request):
+    return render_to_response('mythos/queries.html')

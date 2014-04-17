@@ -22,6 +22,7 @@ urlpatterns = patterns('',
         url(r'^api/', include(culture_resource.urls)),
         url(r'^search/', include('haystack.urls')),
         url(r'^search/autocomplete/$', views.autocomplete, name='autocomplete'),
+        url(r'^queries/$', views.queries, name ='queries'),
         url(r'^admin/', include(admin.site.urls)),
         url(r'^(\w+)/$', views.not_found, name='not_found')
 )
