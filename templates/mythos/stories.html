@@ -6,8 +6,12 @@
 {% block body %}
 
     {% load staticfiles %}
-	<div class="bgimg" style="background:url({% static 'story-1.gif' %}) no-repeat" ></div>
-
+	<div class="bgimg" style="background:url({% static 'story-1.gif' %}) no-repeat" id="bg"></div>
+	<script type="text/javascript">
+      if($(document).width() < 768) {
+        document.getElementById('bg').style.background='black';
+      }
+    </script>
 
     {{ block.super }}
 

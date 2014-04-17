@@ -29,7 +29,7 @@ a:hover
 	min-width: 100%; min-height: 100%;
 	width: auto; height: auto; z-index: -100;
 	background-size: cover !important;
-	-webkit-background-size: cove !importantr;
+	-webkit-background-size: cover !importantr;
   	-moz-background-size: cover !important;
   	-o-background-size: cover !important;
 
