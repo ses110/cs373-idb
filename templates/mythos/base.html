@@ -62,11 +62,9 @@
                   'q': query
                 }
               , success: function(data) {
-                    console.log(data.results);
-                    
                     $("#id_q").autocomplete({
                       source: data.results,
-                      select: function(event, ui) { doRedirect(ui.item.label, ui.item.value ); }
+                      select: function(event, ui) { doRedirect(ui.item.label, ui.item.value); }
                     });
                 }
               })

@@ -1,11 +1,11 @@
 {% extends "mythos/base.html" %}
 
-{% block title %}Mythos search{% endblock title %}
+{% block title %}Mythos Search{% endblock title %}
 
 {% block body %}
 
     {{ block.super }}
-    <div class="container-fluid">
+    <div class="container-fluid" style="background:#DDD">
 
         <div class="text-center">
             <h2>Search</h2>
@@ -17,21 +17,21 @@
                     {{ form.as_table }}
                     <tr>
                         <td>&nbsp;</td>
-                        <td>
+                        <td style="color:#000">
                             <input type="submit" value="Search">
                         </td>
                     </tr>
                 </table>
 
                 {% if query %}
-                    <h3>Results</h3>
+                    <h3 style="color:#fff">Results</h3>
 
                     {% for result in page.object_list %}
                         <p>
-                            <a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a>
+                            <a style="color:#fff" href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a>
                         </p>
                     {% empty %}
-                        <p>No results found.</p>
+                        <p style="color:#fff">No results found.</p>
                     {% endfor %}
 
                     {% if page.has_previous or page.has_next %}
