@@ -9,7 +9,7 @@ from json import dumps, loads
 from haystack.query import SearchQuerySet
 import simplejson as json
 from django.core import urlresolvers
-#from urllib.request import urlopen, Request
+from urllib2 import *
 
 #from django.shortcuts import get_object_or_404
 #thepost = get_object_or_404(Content, name='test')
@@ -119,11 +119,27 @@ def autocomplete(request):
 def queries(request):
     return render_to_response('mythos/queries.html')
 
-"""def pictures(request):
-    req = Request("http://127.0.0.1:8000/api/media/?format=json")
+def pictures(request):
+    url = "http://127.0.0.1:8000"
+    context = RequestContext(request)
+    req = Request(url+"/api/media/?format=json")
     response = urlopen(req)
     response_body = response.read().decode("utf-8")
     response_data = loads(response_body)
     response_objects = response_data["objects"]
+    l = []
+    for media in response_objects:
+        if media['kind'] == 'image':
+            l.append(media['link'])
+    while response_data["meta"]["next"] != None :
+        req = Request(url+response_data["meta"]["next"])
+        response = urlopen(req)
+        response_body = response.read().decode("utf-8")
+        response_data = loads(response_body)
+        response_objects = response_data["objects"]
+        for media in response_objects:
+            if media['kind'] == 'image':
+                l.append(media['link'])
 
-    return render_to_response('mythos/pictures.html')"""
+
+    return render_to_response('mythos/pictures.html', {"l":l}, context)

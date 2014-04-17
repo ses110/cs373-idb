@@ -6,6 +6,12 @@
   
   {{ block.super }}
 
-
+{% block tableBody %}
+  {% for item in l %}
+        <tr>
+          <td class="text-center list-td" style="border-top:none"><a class="list-td-a" > {{ item }} </a></td>
+        </tr>
+    {% endfor %}
+{% endblock tableBody %}
 
   {% endblock body %}
