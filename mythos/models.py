@@ -25,13 +25,14 @@ class Media(models.Model):
     figure              = models.ForeignKey('Figure', blank=True, null=True)
     culture             = models.ForeignKey('Culture', blank=True, null=True)
     story               = models.ForeignKey('Story', blank=True, null=True)
-
+    
     def media_thumbnail(self):
         if(self.kind == "image"):
             return format_html('<img src="%s" />' % (self.link))
         else:
             return "N/A"
     media_thumbnail.allow_tags = True
+
 
     def __unicode__(self):
         return self.name
@@ -60,6 +61,9 @@ class Figure(models.Model):
     related_cultures    = models.ManyToManyField('Culture')
     related_stories     = models.ManyToManyField('Story')
 
+    def get_absolute_url(self):
+        return "/figures/%i/" % self.id
+
     def __unicode__(self):
         return self.name
 
@@ -82,6 +86,9 @@ class Story(models.Model):
     summary             = models.CharField(max_length=10000)
     related_stories     = models.ManyToManyField('self')
     related_cultures    = models.ManyToManyField('Culture')
+
+    def get_absolute_url(self):
+        return "/stories/%i/" % self.id
 
     def __unicode__(self):
         return self.name
@@ -111,6 +118,9 @@ class Culture(models.Model):
     history             = models.CharField(max_length=10000)
     language            = models.CharField(max_length=200)
     related_cultures    = models.ManyToManyField('self')
+
+    def get_absolute_url(self):
+        return "/cultures/%i/" % self.id
 
     def __unicode__(self):
         return self.name
