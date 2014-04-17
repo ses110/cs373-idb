@@ -6,6 +6,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from mythos.models import *
 from mythos.search import *
 from json import dumps, loads
+from haystack.query import SearchQuerySet
+import simplejson as json
+from django.core import urlresolvers
+
 
 #from django.shortcuts import get_object_or_404
 #thepost = get_object_or_404(Content, name='test')
@@ -102,19 +106,12 @@ def stories(request):
 
     return render_to_response('mythos/stories.html', context_dict, context)
 
-def search_form(request):
-    return render(request, 'mythos/search_form.html')
-
-def search(request):
-    query_string = ''
-    found_entries = None
-    if ('q' in request.GET) and request.GET['q'].strip():
-        query_string = request.GET['q']
-        
-        entry_query = get_query(query_string, ['name'])
-        
-        figures = Figure.objects.filter(entry_query) #.order_by('-pub_date')
-
-    return render_to_response('mythos/search_results.html',
-                          { 'query_string': query_string, 'figures': figures },
-                          context_instance=RequestContext(request))
+def autocomplete(request):
+    sqs = SearchQuerySet().autocomplete(name_auto=request.GET.get('q', ''))[:5]
+    suggestions = [{"label": result.name, "value": result.id} for result in sqs]
+    # Make sure you return a JSON object, not a bare list.
+    # Otherwise, you could be vulnerable to an XSS attack.
+    the_data = json.dumps({
+        'results': suggestions,
+    })
+    return HttpResponse(the_data, content_type='application/json')
