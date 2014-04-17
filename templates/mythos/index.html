@@ -6,17 +6,18 @@
 
     {{ block.super }}
     
-    <div class="container-fluid">
+    <div class="container container-fluid">
       {% load staticfiles %}
       <div class="bgimg" style="background:url({% static 'index-3.gif' %}) no-repeat" id="bg"></div>
       <script type="text/javascript">
         if($(document).width() < 768) {
+
           document.getElementById('bg').style.background='black';
         }
       </script>
 
         <div class="text-center">
-            <h1 class="title">Mythos</h1>
+            <h1 class="title" id="title">Mythos</h1>
             <h4 style="color:#FFF">by <a href="https://twitter.com/search?q=%23yoloswag">#yoloswag</a></h2>
         </div>
 
@@ -26,32 +27,32 @@
 
                 <thead>
                   <tr>
-                    <th class="index-th text-center">Name</th>
-                    <th class="index-th text-center">Github</th>
-                    <th class="index-th text-center">Favorite Hashtag</th>
+                    <th class="index-th text-center"><p>Name</p></th>
+                    <th class="index-th text-center"><p>Github</p></th>
+                    <th class="index-th text-center"><p>Favorite Hashtag</p></th>
                   </tr>
                 </thead>
 
                 <tbody>
                   <tr >
-                    <td class="list-td index-td" style="border-top:none">Comyar Zaheri</td>
-                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://github.com/comyarzaheri">comyarzaheri</a></td>
-                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://twitter.com/search?q=%23yolo">#yolo</a></td>
+                    <td class="list-td index-td" style="border-top:none"><p>Comyar Zaheri</p></td>
+                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://github.com/comyarzaheri"><p>comyarzaheri</p></a></td>
+                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://twitter.com/search?q=%23yolo"><p>#yolo</p></a></td>
                   </tr>
                   <tr style="border-top:none">
-                    <td class="list-td index-td" style="border-top:none">Joshua Gutierrez</td>
-                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://github.com/joshuagutierrez">joshuagutierrez</a></td>
-                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://twitter.com/search?q=%23throwback">#throwback</a></td>
+                    <td class="list-td index-td" style="border-top:none"><p>Joshua Gutierrez</td>
+                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://github.com/joshuagutierrez"><p>joshuagutierrez</p></a></td>
+                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://twitter.com/search?q=%23throwback"><p>#throwback</p></a></td>
                   </tr>
                   <tr style="border-top:none">
-                    <td class="list-td index-td" style="border-top:none">Steven Wilken</td>
-                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://github.com/swilken">swilken</a></td>
-                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://twitter.com/search?q=%23360noscope">#360noscope</a></td>
+                    <td class="list-td index-td" style="border-top:none"><p>Steven Wilken</td>
+                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://github.com/swilken"><p>swilken</p></a></td>
+                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://twitter.com/search?q=%23360noscope"><p>#360noscope</p></a></td>
                   </tr>
                   <tr style="border-top:none">
-                    <td class="list-td index-td" style="border-top:none">Sergio Escoto</td>
-                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://github.com/ses110">ses110</a></td>
-                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://twitter.com/search?q=%23selfie">#selfie</a></td>
+                    <td class="list-td index-td" style="border-top:none"><p>Sergio Escoto</td>
+                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://github.com/ses110"><p>ses110</p></a></td>
+                    <td class="list-td index-td index-td-a" style="border-top:none"><a href="https://twitter.com/search?q=%23selfie"><p>#selfie</p></a></td>
                   </tr>
                 </tbody>
 
