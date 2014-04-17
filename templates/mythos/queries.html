@@ -1,0 +1,75 @@
+<html>
+<head><title>Interesting Queries</title></head>
+  <p><b>Interesting Query 1</b></p>
+<p>/* Get all figures who are in Greek and Roman mythology */</p>
+<p></p>
+<p>
+SELECT distinct mythos_figure.name FROM mythos_figure join mythos_figure_related_cultures on mythos_figure.id = mythos_figure_related_cultures.figure_id join mythos_culture on mythos_culture.id = mythos_figure_related_cultures.culture_id where mythos_figure.name 
+  in (SELECT mythos_figure.name FROM mythos_figure join mythos_figure_related_cultures on mythos_figure.id = mythos_figure_related_cultures.figure_id join mythos_culture on mythos_culture.id = mythos_figure_related_cultures.culture_id where mythos_culture.name = 'Greek mythology')
+  and mythos_figure.name
+  in (SELECT mythos_figure.name FROM mythos_figure join mythos_figure_related_cultures on mythos_figure.id = mythos_figure_related_cultures.figure_id join mythos_culture on mythos_culture.id = mythos_figure_related_cultures.culture_id where mythos_culture.name = 'Roman mythology')</p>
+  <p></p>
+  <title>Result</title>
+  <p>{"fields":["name"],"values":[["Athena"],["Zeus"]]}</p>
+
+   <p><b>Interesting Query 2</b></p>
+<p>/* Cultures with more than 1 story */</p>
+<p></p>
+<p>
+select mythos_culture.name from mythos_culture join mythos_story_related_cultures on mythos_culture.id = mythos_story_related_cultures.culture_id join mythos_story on mythos_story.id = mythos_story_related_cultures.story_id group by mythos_culture.name having count(mythos_story.id) > 1</p>
+  <p></p>
+  <title>Result</title>
+  <p>{"fields":["name"],"values":[["Japanese mythology"],["Greek mythology"]]}</p>
+
+    <p><b>Interesting Query 3</b></p>
+<p>/* Find all stories that have a relation between at least one figure, one culture, and one other story */</p>
+<p></p>
+<p>
+
+select distinct mythos_story.name from mythos_story join mythos_figure_related_stories on mythos_story.id = mythos_figure_related_stories.story_id join mythos_story_related_stories on mythos_story.id = mythos_story_related_stories.from_story_id join mythos_story_related_cultures on mythos_story.id = mythos_story_related_cultures.story_id</p>
+  <p></p>
+  <title>Result</title>
+  <p>{"fields":["name"],"values":[["Labours of Hercules"],["Trojan War"]]}</p>
+
+    <p><b>Interesting Query 4</b></p>
+<p>/* return count of figures, stories, and cultures related to each culture */</p>
+<p></p>
+<p>
+SELECT mythos_culture.name,
+  count(distinct mythos_figure_related_cultures.figure_id) as "#figures",
+  count(distinct mythos_story_related_cultures.story_id) as "#stories",
+  count(distinct mythos_culture_related_cultures.to_culture_id) as "#cultures"
+FROM mythos_culture 
+left outer join mythos_figure_related_cultures 
+on mythos_culture.id = mythos_figure_related_cultures.culture_id 
+
+left outer join mythos_story_related_cultures
+on mythos_culture.id = mythos_story_related_cultures.culture_id
+
+left outer join mythos_culture_related_cultures
+on mythos_culture_related_cultures.from_culture_id = mythos_culture.id
+
+GROUP BY mythos_culture.name
+order by mythos_culture.name asc</p>
+  <p></p>
+  <title>Result</title>
+  <p>{"fields":["name","#figures","#stories","#cultures"],"values":[["Celtic mythology","2","1","0"],["Egyptian mythology","1","1","0"],["Greek mythology","2","2","1"],["Hindu mythology","2","1","0"],["Japanese mythology","0","2","0"],["Jewish mythology","0","1","0"],["Maya mythology","1","0","0"],["Norse mythology","2","1","0"],["Roman mythology","2","1","1"],["Slavic mythology","0","0","0"]]}</p>
+
+  <p><b>Interesting Query 5</b></p>
+<p>/* Figures that are related to only 1 culture */</p>
+<p></p>
+<p>
+
+select mythos_figure.name
+from mythos_figure
+join mythos_figure_related_cultures
+on mythos_figure.id = mythos_figure_related_cultures.figure_id
+
+group by mythos_figure.name having count(mythos_figure_related_cultures.figure_id) = 1
+order by mythos_figure.name asc</p>
+  <p></p>
+  <title>Result</title>
+  <p>{"fields":["name"],"values":[["HÃ¡ma"],["Ixchel"],["Odin"],["Osiris"],["Shiva"],["The Dagda"],["The MorrÃ­gan"],["Vishnu"]]}</p>
+
+
+</html>
