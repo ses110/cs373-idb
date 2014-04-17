@@ -33,7 +33,7 @@ PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
 PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 FIXTURE_PATH = os.path.join(PROJECT_PATH, 'fixtures')
-
+STATIC_PATH = os.path.join(PROJECT_PATH, 'mythos/static/')
 
 FIXTURE_DIRS = (
     FIXTURE_PATH,
@@ -123,7 +123,7 @@ if 'test' in sys.argv:
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = STATIC_PATH
 
 # TastyPie configurations
 TASTYPIE_DEFAULT_FORMATS = ['json']

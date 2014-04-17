@@ -6,7 +6,8 @@
 
 {% block body %}
 
-    <div class="bgfigure" id="bgimg"></div>
+    {% load staticfiles %}
+    <div class="bgimg" style="background:url({% static '300-1.gif' %}) no-repeat"></div>
 
     {{ block.super }}
 

@@ -6,7 +6,8 @@
 
     {{ block.super }}
     
-    <div class="bgindex" id="bgimg">
+    {% load staticfiles %}
+    <div class="bgimg" style="background:url({% static 'index-3.gif' %}) no-repeat">
 
       <div class="text-center">
           <h1 class="title">Mythos</h1>
@@ -52,11 +53,11 @@
         </div>
       </div>
 
-      <div class="text-center">
+      <div class="text-center" style="padding-top:64px">
         <ul class="list-inline">
-          <li><a href="/cultures"><button type="button" class="btn btn-lg btn-success">Cultures</button></a></li>
-          <li><a href="/stories"><button type="button" class="btn btn-lg btn-success">Stories</button></a></li>
-          <li><a href="/figures"><button type="button" class="btn btn-lg btn-success">Figures</button></a></li>
+          <li style="padding-top:64px"><a href="/cultures"><button type="button" class="index-btn btn btn-lg btn-success">Cultures</button></a></li>
+          <li style="padding-top:64px"><a href="/stories"><button type="button" class="index-btn btn btn-lg btn-success">Stories</button></a></li>
+          <li style="padding-top:64px"><a href="/figures"><button type="button" class="index-btn btn btn-lg btn-success">Figures</button></a></li>
         </ul>
       </div>
 

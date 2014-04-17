@@ -2,10 +2,36 @@
 
 import wikipedia, json
 
-
-page_figures = [{"title":"Athena"}, {"title" : "Zeus"}, {"title": "Odin"}, {"title": "Háma"}, {"title" : "The_Dagda"}, {"title" : "The_Morrígan"}, {"title" : "Shiva"}, {"title" : "Vishnu"}, {"title" : "Osiris"}, {"title" : "Ixchel"}]
-page_stories = [{"title": "Trojan_war"}, {"title": "Labours_of_Hercules"}, {"title": "Ragnarök"}, {"title": "Beltane"}, {"title": "Ashvamedha"}, {"title": "Flooding_of_the_Nile"}, {"title": "Hannibalic_War"}, {"title": "Garden_of_Eden"}, {"title": "Kamiumi"}, {"title": "Kuniumi"}]
-page_cultures = [{"title": "Greek_mythos"}, {"title": "Celtic_mythology"}, {"title": "Maya_mythology"},{"title": "Norse_mythology"}, {"title": "Hindu_mythology"}, {"title": "Egyptian_mythology"}, {"title": "Slavic_mythology"}, {"title": "Roman_mythology"}, {"title": "Jewish_mythology  "}, {"title": "Japanese_mythology"}]
+list_figures = ["Athena", 
+                "Zeus" , 
+                "Odin", 
+                "Háma", "The_Dagda",
+                "The_Dagda",
+                "The_Morrígan",
+                "Shiva",
+                "Vishnu",
+                "Osiris",
+                "Ixchel"]
+list_stories =["Trojan_war",
+               "Labours_of_Hercules",
+               "Ragnarök",
+               "Beltane",
+               "Ashvamedha",
+               "Flooding_of_the_Nile",
+               "Hannibalic_War",
+               "Garden_of_Eden",
+               "Kamiumi",
+               "Kuniumi"]
+list_cultures = ["Greek_mythos",
+                 "Celtic_mythology",
+                 "Maya_mythology",
+                 "Norse_mythology",
+                 "Hindu_mythology",
+                 "Egyptian_mythology", 
+                 "Slavic_mythology", 
+                 "Roman_mythology", 
+                 "Jewish_mythology", 
+                 "Japanese_mythology"]
 
 all_media = []
 all_figures = []
