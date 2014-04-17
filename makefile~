@@ -14,4 +14,4 @@ runserver: manage.py
 	python manage.py runserver
 
 run_elastic:
-	./elasticsearch-1.1.1/bin/elasticsearch &
+    ./elasticsearch-1.1.1/elasticsearch
