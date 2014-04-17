@@ -24,7 +24,8 @@ urlpatterns = patterns('',
         url(r'^api/', include(media_resource.urls)),
         url(r'^search/', include('haystack.urls')),
         url(r'^search/autocomplete/$', views.autocomplete, name='autocomplete'),
-        url(r'^queries/$', views.queries, name ='queries'),
+        url(r'^queries/$', views.queries, name='queries'),
+        #url(r'^pictures/$', views.pictures, name='pictures'),
         url(r'^admin/', include(admin.site.urls)),
         url(r'^(\w+)/$', views.not_found, name='not_found')
 )

@@ -9,7 +9,7 @@ from json import dumps, loads
 from haystack.query import SearchQuerySet
 import simplejson as json
 from django.core import urlresolvers
-
+#from urllib.request import urlopen, Request
 
 #from django.shortcuts import get_object_or_404
 #thepost = get_object_or_404(Content, name='test')
@@ -118,3 +118,12 @@ def autocomplete(request):
 
 def queries(request):
     return render_to_response('mythos/queries.html')
+
+"""def pictures(request):
+    req = Request("http://127.0.0.1:8000/api/media/?format=json")
+    response = urlopen(req)
+    response_body = response.read().decode("utf-8")
+    response_data = loads(response_body)
+    response_objects = response_data["objects"]
+
+    return render_to_response('mythos/pictures.html')"""
