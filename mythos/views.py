@@ -9,7 +9,7 @@ from json import dumps, loads
 from haystack.query import SearchQuerySet
 import simplejson as json
 from django.core import urlresolvers
-from urllib2 import *
+# from urllib2 import *
 
 #from django.shortcuts import get_object_or_404
 #thepost = get_object_or_404(Content, name='test')
