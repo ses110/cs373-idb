@@ -4,6 +4,17 @@
 {% block relatedStoriesTitle %} Related Stories {% endblock relatedStoriesTitle %}
 {% block relatedCulturesTitle %} Cultures {% endblock relatedCulturesTitle %}
 
+
+{% block body %}
+
+  {% load staticfiles %}
+  <div class="bgimg" style="background:url({% static 'story.png' %}) no-repeat"></div>
+
+    {{ block.super }}
+
+{% endblock body %}
+
+
 {% block content %}
     <div>
         <table class="table">

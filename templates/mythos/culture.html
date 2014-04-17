@@ -4,6 +4,15 @@
 {% block relatedStoriesTitle %} Notable Stories {% endblock relatedStoriesTitle %}
 {% block relatedCulturesTitle %} Related Cultures {% endblock relatedCulturesTitle %}
 
+{% block body %}
+
+  {% load staticfiles %}
+  <div class="bgimg" style="background:url({% static 'culture.png' %}) no-repeat"></div>
+
+    {{ block.super }}
+
+{% endblock body %}
+
 {% block content %}
     <ul class="list-inline">
         <li style="color:#888">Region: {{ region }} </li>

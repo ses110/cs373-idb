@@ -4,6 +4,15 @@
 {% block relatedStoriesTitle %} Stories {% endblock relatedStoriesTitle %}
 {% block relatedCulturesTitle %} Cultures {% endblock relatedCulturesTitle %}
 
+{% block body %}
+
+  {% load staticfiles %}
+  <div class="bgimg" style="background:url({% static 'figure.png' %}) no-repeat"></div>
+
+    {{ block.super }}
+
+{% endblock body %}
+
 {% block content %}
     <ul class="list-inline">
         <li style="color:#888">{{ kind }} </li>
