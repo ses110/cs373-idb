@@ -33,7 +33,7 @@ a:hover
   	-moz-background-size: cover !important;
   	-o-background-size: cover !important;
 
-	@media (max-width: @iphone-screen) {
+	@media (max-width: @screen-xs-max) {
         background-attachment: scroll;
     }
 }
