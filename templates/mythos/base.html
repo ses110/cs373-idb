@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html style="background-color:#111">
     <head>
         <title>{% block title %} Base Title {% endblock title %}</title>
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=1">
@@ -21,76 +21,16 @@
         <!-- Mythos -->
         {% load staticfiles %}
         <link href= "{% static 'mythos.css' %}" rel="stylesheet">
-        <script type="text/javascript">
-            // In a perfect world, this would be its own library file that got included
-            // on the page and only the ``$(document).ready(...)`` below would be present.
-            // But this is an example.
-            var Autocomplete = function(options) {
-              this.form_selector = options.form_selector
-              this.url = options.url || '/search/autocomplete/'
-              this.delay = parseInt(options.delay || 300)
-              this.minimum_length = parseInt(options.minimum_length || 3)
-              this.form_elem = null
-              this.query_box = null
-            }
-
-            Autocomplete.prototype.setup = function() {
-              var self = this
-
-              this.form_elem = $(this.form_selector)
-              this.query_box = this.form_elem.find('input[name=q]')
-
-              // Watch the input box.
-              this.query_box.on('keyup', function() {
-                var query = self.query_box.val()
-
-                if(query.length < self.minimum_length) {
-                  return false
-                }
-
-                self.fetch(query)
-              })
-
-            }
-
-            Autocomplete.prototype.fetch = function(query) {
-              var self = this
-
-              $.ajax({
-                url: '/search/autocomplete/'
-              , data: {
-                  'q': query
-                }
-              , success: function(data) {
-                    console.log(data.results);
-                    
-                    $("#id_q").autocomplete({
-                      source: data.results,
-                      select: function(event, ui) { doRedirect(ui.item.label, ui.item.value ); }
-                    });
-                }
-              })
-            }
-            function doRedirect(term, value) {
-                console.log(term + " : " + value)
-            }
-            
-            $(document).ready(function() {
-              window.autocomplete = new Autocomplete({
-                form_selector: '.autocomplete-me'
-              })
-              window.autocomplete.setup()
-            })
-        </script>
         <link href="{% static 'lightbox/css/screen.css' %}" rel="stylesheet"></link>
         <link href="{% static 'lightbox/css/lightbox.css' %}" rel="stylesheet"></link>
         <script src="{% static 'lightbox/js/jquery-1.11.0.min.js' %}"></script>
         <script src="{% static 'lightbox/js/lightbox.js' %}"></script>
+
     </head>
   
-    <body style="background-color:#111">
+    <body style="background-color:#111;padding-top:32px">
       {% block body %}
-       <nav class="navbar navbar-default" role="navigation">
+       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -103,8 +43,10 @@
           </div>
 
             <div class="autocomplete-me ui-widget navbar-form navbar-right">
-                <label for="id_q">Search: </label>
-                <input type="text" id="id_q" name="q">
+                <form action="/search">
+                  <input name="q" value="{{request.GET.q}}">
+                  <input type="submit" value="Go">
+              </form>
             </div>
 
           <div class="collapse navbar-collapse">

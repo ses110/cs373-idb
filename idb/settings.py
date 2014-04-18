@@ -62,7 +62,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'mythos',
     'tastypie',
-    'haystack',
+    'watson'
 )
 HAYSTACK_CONNECTIONS = {
     'default': {

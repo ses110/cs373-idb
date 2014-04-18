@@ -4,11 +4,11 @@ from django.shortcuts import render_to_response
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from mythos.models import *
-from mythos.search import *
 from json import dumps, loads
 from haystack.query import SearchQuerySet
 import simplejson as json
 from django.core import urlresolvers
+import watson
 from urllib2 import *
 
 #from django.shortcuts import get_object_or_404
@@ -19,6 +19,18 @@ from mythos import models
 def index(request):
     context = RequestContext(request)
     return render_to_response('mythos/index.html', None, context)
+
+def search(request):
+    context = RequestContext(request)
+    query = ""
+
+    if ('q' in request.GET) and request.GET['q'].strip():
+        query = request.GET['q']
+    
+    results = watson.search(query, ranking=True)
+    for r in results:
+        print(r)
+    return render_to_response('mythos/search.html', {"results":results}, context)
 
 def not_found(request, val):
     context = RequestContext(request)
@@ -49,7 +61,6 @@ def figures(request):
     context_dict = {'title':'Figures', 'items':figures}
 
     return render_to_response('mythos/figures.html', context_dict, context)
-
 
 def culture(request, id):
     context = RequestContext(request)
@@ -105,16 +116,6 @@ def stories(request):
     context_dict = {'title':'Stories', 'items':stories}
 
     return render_to_response('mythos/stories.html', context_dict, context)
-
-def autocomplete(request):
-    sqs = SearchQuerySet().autocomplete(name_auto=request.GET.get('q', ''))[:5]
-    suggestions = [{"label": result.name, "value": result.id} for result in sqs]
-    # Make sure you return a JSON object, not a bare list.
-    # Otherwise, you could be vulnerable to an XSS attack.
-    the_data = json.dumps({
-        'results': suggestions,
-    })
-    return HttpResponse(the_data, content_type='application/json')
 
 def queries(request):
     return render_to_response('mythos/queries.html')

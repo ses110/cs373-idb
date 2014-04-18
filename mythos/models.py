@@ -124,3 +124,14 @@ class Culture(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+# -----
+# Watson
+# -----
+
+import watson
+
+watson.register(Figure)
+watson.register(Culture)
+watson.register(Story)
