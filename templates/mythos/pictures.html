@@ -19,10 +19,18 @@
   
   {{ block.super }}
 
+
+  
+
+
   <div style="padding: 64px 8px 8px 8px">
+  		<div class="text-center">
+		<div style="color:#FFF;font-size:24px">Random Mythology Gallery!</div>
+  </div>
+
 	{% for item in l %}
         	<a href="{{item}}" data-lightbox="blurb">
-        	<img src="{{item}}" height="100" width="100">
+        	<img src="{{item}}" height="200" width="200">
         	 </a>
     {% endfor %}
   </div>

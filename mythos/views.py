@@ -132,7 +132,7 @@ def pictures(request):
     for media in response_objects:
         if media['kind'] == 'image':
             l.append(media['link'])
-    """while response_data["meta"]["next"] != None :
+    while response_data["meta"]["next"] != None and len(l) < 20:
         req = Request(url+response_data["meta"]["next"])
         response = urlopen(req)
         response_body = response.read().decode("utf-8")
@@ -140,7 +140,7 @@ def pictures(request):
         response_objects = response_data["objects"]
         for media in response_objects:
             if media['kind'] == 'image':
-                l.append(media['link'])"""
+                l.append(media['link'])
 
 
     return render_to_response('mythos/pictures.html', {"l":l}, context)
