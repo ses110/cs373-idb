@@ -13,18 +13,12 @@
         <!-- VideoJS -->
         <link href="http://vjs.zencdn.net/4.5/video-js.css" rel="stylesheet">
         <script src="http://vjs.zencdn.net/4.5/video.js"></script>
-
-        <!-- Autocomplete (jQuery UI, a separate library that is NOT jQuery-we need both) -->
-        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.22/jquery-ui.min.js"></script>
         
         <!-- Mythos -->
-        {% load staticfiles %}
-        <link href="{% static 'lightbox/css/screen.css' %}" rel="stylesheet"></link>
-        <link href="{% static 'lightbox/css/lightbox.css' %}" rel="stylesheet"></link>
-        <script src="{% static 'lightbox/js/jquery-1.11.0.min.js' %}"></script>
-        <script src="{% static 'lightbox/js/lightbox.js' %}"></script>
-        <link href= "{% static 'mythos.css' %}" rel="stylesheet">
+        {% block head %}
+         {% load staticfiles %}
+          <link href= "{% static 'mythos.css' %}" rel="stylesheet">
+        {% endblock head %}
         
 
     </head>
