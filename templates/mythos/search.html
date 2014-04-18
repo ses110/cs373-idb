@@ -17,7 +17,7 @@
           	{% if results %}
 	        	{% for result in results %}
 			        <tr>
-			          <td style="border-top:none;color:#FFF"><a class="list-td-a" href="#"  > {{ result }} </a></td>
+			          <td class="text-center list-td" style="border-top:none"><a class="list-td-a" href="{{ result.url }}"  > {{ result }} </a></td>
 			        </tr>
 			    {% endfor %}
 			{% else %}
