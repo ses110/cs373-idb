@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html id="html">
     <head>
         <title>{% block title %} Base Title {% endblock title %}</title>
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=1">
@@ -16,7 +16,7 @@
         
         <!-- Mythos -->
         {% block head %}
-         {% load staticfiles %}
+          {% load staticfiles %}
           <link href= "{% static 'mythos.css' %}" rel="stylesheet">
         {% endblock head %}
         

@@ -2,17 +2,6 @@
 
 {% block title %}Search{% endblock title %}
 
-
-{% block head %}
-	{{ block.super }}
-	
-      {% load staticfiles %}
-    <link href="{% static 'lightbox/css/screen.css' %}" rel="stylesheet"></link>
-    <link href="{% static 'lightbox/css/lightbox.css' %}" rel="stylesheet"></link>
-    <script src="{% static 'lightbox/js/jquery-1.11.0.min.js' %}"></script>
-    <script src="{% static 'lightbox/js/lightbox.js' %}"></script>
-{% endblock head %}
-
 {% block body %}
 
     {{ block.super }}
