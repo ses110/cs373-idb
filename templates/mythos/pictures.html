@@ -39,7 +39,7 @@
 
     var load = function() {
       $.when(
-        $.getJSON("/api/media/?limit=100", function(data){
+        $.getJSON("/api/media/?limit=95", function(data){
           media = data['objects'];
         })
       ).then(function() {
