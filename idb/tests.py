@@ -1,9 +1,30 @@
+# -*- coding: UTF-8 -*-
+
 from django.test import TestCase
 from django.http import HttpResponse
-from urllib.request import urlopen, Request
+
 from json import dumps, loads
+
 import watson
 
+try:
+	from urllib.request import urlopen, Request
+except Exception, e:
+	from urllib2 import *
+
+
+class SearchTests(TestCase):
+
+	def search_test_1(self):
+		query = "greek"
+		results = watson.search(query)
+		self.assertTrue(results == ["Greek mythology", "Roman mythology", "Zeus", "Trojan War", "Labours of Hercules", "Athena", "Osiris"])
+		
+	def search_test_2(self):
+		query = "adfasdfasdf"
+		results = watson.search(query)
+		self.assertTrue(len(results) == 0)
+		
 
 class APItests(TestCase) :
 	url = "http://127.0.0.1:8000"

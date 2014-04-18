@@ -64,15 +64,6 @@ INSTALLED_APPS = (
     'tastypie',
     'watson'
 )
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://3zd5pmgr:qmrd7x1vw8yn5ugv@apricot-2171612.us-east-1.bonsai.io/',
-        'INDEX_NAME': 'haystack',
-    },
-}
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
-
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
