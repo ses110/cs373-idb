@@ -9,7 +9,7 @@ from haystack.query import SearchQuerySet
 import simplejson as json
 from django.core import urlresolvers
 import watson
-from urllib.request import *
+# from urllib.request import *
 # from urllib import *
 
 #from django.shortcuts import get_object_or_404

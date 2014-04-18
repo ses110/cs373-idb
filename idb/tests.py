@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.http import HttpResponse
 from urllib.request import urlopen, Request
 from json import dumps, loads
+import watson
 
 
 class APItests(TestCase) :
