@@ -45,20 +45,22 @@ def search(request):
         sentences = splitParagraph(results[i].content)
 
         #First highlight terms in sentences matching the phrase
-        for s in sentences:
+        for s in list(sentences):
             if(s.lower().find(query.lower()) != -1):
-                sentences.pop(0)
+                sentences.remove(s)
                 s = s.lower().replace(query.lower(), "<B class='search_term'>"+query.lower()+"</B>")
                 final_sentence += "..." + s
+                print("Found a phrase")
                 break
 
         #Then highlight the separate words of a query separately
         for q_wd in query_words:
-            for s in sentences:
-                sentences.pop(0)
+            for s in list(sentences):
                 if (s.lower().find(q_wd.lower()) != -1):
+                    sentences.remove(s)
                     s = s.lower().replace(q_wd.lower(), "<B class='search_term'>"+q_wd.lower()+"</B>")
                     final_sentence += "..." + s
+                    print("Found a word")
                     break
 
         print(final_sentence)
@@ -69,8 +71,9 @@ def search(request):
     zipped = None
     if len(results) > 0:
         zipped = zip(results, snippets)
+    length_results = len(results)
 
-    return render_to_response('mythos/search.html', {"query": query, "results": zipped}, context)
+    return render_to_response('mythos/search.html', {"query": query, "length_results": length_results, "results": zipped}, context)
 
 
 def not_found(request, val):

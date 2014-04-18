@@ -105,3 +105,9 @@ a:hover
 .panel-heading {
     background-color: rgb(255, 0, 0);
 }
+.list-group {
+
+}
+.list-group-item {
+    border: 1px solid black;
+}

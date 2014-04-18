@@ -1,5 +1,6 @@
 {% extends "mythos/base.html" %}
 
+{% load watson %}
 {% block title %}Search{% endblock title %}
 
 {% block body %}
@@ -15,13 +16,23 @@
           </thead>
           <tbody>
           	{% if results %}
+                <tr>
+                    <td style="color:#fff; font-size: 1.3em;">Your search for "{{ query }}" returned {{ length_results }} results.</td>
+                </tr>
 	        	{% for result, snippet in results %}
-			        <tr>
-			          <td class="list-td" style="border-top:none"><a class="list-td-a" href="{{ result.url }}"  > {{ result }} </a></td>
-			        </tr>
-              <tr>
-                <td class="list-td" style="border-top:none">{{ snippet|safe }}</td>
-              </tr>
+                    <tr>
+                        <td style="border-top:none">
+
+        			        <tr>
+        			            <td class="list-td" style="border-top:none">
+                                    <a class="list-td-a" href="{{ result.url }}"> {{ result }} </a>
+                                </td>
+        			        </tr>
+                            <tr>
+                                <td class="list-td" style="border-top:none">{{ snippet|safe }}</td>
+                            </tr>
+                        </td>
+                    </tr>
 			    {% endfor %}
 			{% else %}
 					<tr>
