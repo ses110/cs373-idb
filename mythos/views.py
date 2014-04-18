@@ -124,7 +124,7 @@ def queries(request):
     return render_to_response('mythos/queries.html')
 
 def pictures(request):
-    url = "http://127.0.0.1:8000"
+    url = "http://cs373-mythos.herokuapp.com"
     context = RequestContext(request)
     req = Request(url+"/api/media/?format=json")
     response = urlopen(req)
