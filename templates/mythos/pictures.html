@@ -7,24 +7,11 @@
 
 	{{ block.super }}
 
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <style>
-
-      .group text {
-        font: 11px sans-serif;
-        pointer-events: none;
-      }
-
-      .group path {
-        stroke: #000;
-      }
-
-      path.chord {
-        stroke-width: .75;
-        fill-opacity: .75;
-      }
-
-    </style>
+    {% load staticfiles %}
+    <link href="{% static 'lightbox/css/screen.css' %}" rel="stylesheet"></link>
+    <link href="{% static 'lightbox/css/lightbox.css' %}" rel="stylesheet"></link>
+    <script src="{% static 'lightbox/js/jquery-1.11.0.min.js' %}"></script>
+    <script src="{% static 'lightbox/js/lightbox.js' %}"></script>
 
 {% endblock head %}
 
@@ -33,37 +20,38 @@
   
   {{ block.super }}
  
- <div class="text-center">
-    <script type="text/javascript">
-    var figures = [],
-        cultures = [],
-        stories = []
+ <div id="images" style="padding:64px 32px 32px 32px">
+    <h1 class="text-center title">Mythology Lightbox Gallery!</h1>
+ </div>
+
+<script type="text/javascript">
+    var media = []
 
     var build = function() {
-      
+      alert('building...');
+      $.each(media, function (index, value) {
+        
+          if(value['kind'] == "image") {
+            $("#images").append("<a href='" + value['link'] + "' data-lightbox='blurb'><img src='" +  value['link'] + "' height=100 width=100></a>");
+          }
+      });
     }
 
     var load = function() {
       $.when(
-        $.getJSON("/api/figures", function(data){
-          figures = data['objects'];
-        }),
-        $.getJSON("/api/cultures", function(data){
-          cultures = data['objects'];
-        }),
-        $.getJSON("/api/stories", function(data){
-          stories = data['objects'];
+        $.getJSON("/api/media/?limit=100", function(data){
+          media = data['objects'];
+          alert('loaded');
         })
       ).then(function() {
         build()
       });
     }
 
-
+    document.getElementById("html").style.background="#111"
     load();
 
     </script>
- </div>
   
 
 {% endblock body %}
