@@ -1,5 +1,6 @@
 {% extends "mythos/base.html" %}
 
+
 {% block title %}Pictures{% endblock title %}
 
 {% block body %}
@@ -8,10 +9,11 @@
 
 {% block tableBody %}
   {% for item in l %}
-        <tr>
-          <td class="text-center list-td" style="border-top:none"><a class="list-td-a" > {{ item }} </a></td>
-        </tr>
+        	<a href="{{item}}" data-lightbox="blurb">
+        	<img src="{{item}}" height="100" width="100">
+        	 </a>
     {% endfor %}
+
 {% endblock tableBody %}
 
   {% endblock body %}
