@@ -6,11 +6,11 @@ from django.http import HttpResponse
 from json import dumps, loads
 
 import watson
-from urllib.request import urlopen, Request
+# from urllib.request import urlopen, Request
 # try:
 # 	from urllib.request import urlopen, Request
 # except Exception, e:
-# 	from urllib2 import *
+	from urllib2 import *
 
 
 class SearchTests(TestCase):
