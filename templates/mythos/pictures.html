@@ -7,35 +7,63 @@
 
 	{{ block.super }}
 
-    {% load staticfiles %}
-    <link href="{% static 'lightbox/css/screen.css' %}" rel="stylesheet"></link>
-    <link href="{% static 'lightbox/css/lightbox.css' %}" rel="stylesheet"></link>
-    <script src="{% static 'lightbox/js/jquery-1.11.0.min.js' %}"></script>
-    <script src="{% static 'lightbox/js/lightbox.js' %}"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <style>
+
+      .group text {
+        font: 11px sans-serif;
+        pointer-events: none;
+      }
+
+      .group path {
+        stroke: #000;
+      }
+
+      path.chord {
+        stroke-width: .75;
+        fill-opacity: .75;
+      }
+
+    </style>
 
 {% endblock head %}
+
 
 {% block body %}
   
   {{ block.super }}
  
-  <div style="padding: 64px 8px 8px 8px">
+ <div class="text-center">
+    <script type="text/javascript">
+    var figures = [],
+        cultures = [],
+        stories = []
 
-  		<div class="text-center">
-		    <div style="color:#FFF;font-size:24px">Random Mythology Gallery!</div>
-      </div>
+    var build = function() {
+      
+    }
+
+    var load = function() {
+      $.when(
+        $.getJSON("/api/figures", function(data){
+          figures = data['objects'];
+        }),
+        $.getJSON("/api/cultures", function(data){
+          cultures = data['objects'];
+        }),
+        $.getJSON("/api/stories", function(data){
+          stories = data['objects'];
+        })
+      ).then(function() {
+        build()
+      });
+    }
 
 
-      <script type="text/javascript">
+    load();
 
-        var getURLs = function() {
-          $.getJSON('http://cs373-mythos.herokuapp.com/api/media/?callback=',
-             function(data) {
-               alert(data);         
-            });
-        };
-      </script>
-
-  </div>
+    </script>
+ </div>
+  
 
 {% endblock body %}
