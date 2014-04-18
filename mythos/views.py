@@ -8,11 +8,11 @@ from json import dumps, loads
 import simplejson as json
 from django.core import urlresolvers
 import watson
-
-try:
-    from urllib.request import urlopen, Request
-except Exception, e:
-    from urllib2 import *
+from urllib.request import urlopen, Request
+# try:
+#     from urllib.request import urlopen, Request
+# except Exception, e:
+#     from urllib2 import *
 
 #from django.shortcuts import get_object_or_404
 #thepost = get_object_or_404(Content, name='test')
