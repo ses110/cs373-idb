@@ -1,0 +1,33 @@
+{% extends "mythos/base.html" %}
+
+{% block title %}Search{% endblock title %}
+
+{% block body %}
+
+    {{ block.super }}
+
+    <div class="col-md-offset-4 col-md-4" style="padding:2% 0 0 0">
+        <table class="table ">
+          <thead>
+            <tr>
+              <th class="text-center" style="color:#fff;font-size:24px">{% block tableHeader %} Search Results{% endblock tableHeader %}</th>
+            </tr>
+          </thead>
+          <tbody>
+          	{% if results %}
+	        	{% for result in results %}
+			        <tr>
+			          <td style="border-top:none;color:#FFF"><a class="list-td-a" href="#"  > {{ result }} </a></td>
+			        </tr>
+			    {% endfor %}
+			{% else %}
+					<tr>
+			          <td class="text-center list-td" style="border-top:none">No Results</td>
+			    	</tr>
+			{% endif%}
+          </tbody>
+        </table>
+    </div>
+
+
+{% endblock body %}

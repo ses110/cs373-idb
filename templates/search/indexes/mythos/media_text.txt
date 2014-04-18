@@ -1,3 +1,0 @@
-{{ object.name }}
-{{ object.kind }}
-{{ object.biography }}
