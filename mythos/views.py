@@ -162,26 +162,6 @@ def queries(request):
     return render_to_response('mythos/queries.html')
 
 def pictures(request):
-    url = "http://cs373-mythos.herokuapp.com"
     context = RequestContext(request)
-    req = Request(url+"/api/media/?format=json")
-    response = urlopen(req)
-    response_body = response.read().decode("utf-8")
-    response_data = loads(response_body)
-    response_objects = response_data["objects"]
-    l = []
-    for media in response_objects:
-        if media['kind'] == 'image':
-            l.append(media['link'])
-    while response_data["meta"]["next"] != None and len(l) < 20:
-        req = Request(url+response_data["meta"]["next"])
-        response = urlopen(req)
-        response_body = response.read().decode("utf-8")
-        response_data = loads(response_body)
-        response_objects = response_data["objects"]
-        for media in response_objects:
-            if media['kind'] == 'image':
-                l.append(media['link'])
 
-
-    return render_to_response('mythos/pictures.html', {"l":l}, context)
+    return render_to_response('mythos/pictures.html', None, context)
