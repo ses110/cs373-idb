@@ -31,7 +31,7 @@
     var build = function() {
       $.each(media, function (index, value) {
           if(value['kind'] == "image") {
-            $("#images").append("<a href='" + value['link'] + "' data-lightbox='blurb'><img src='" +  value['link'] + "' height=100 width=100></a>");
+            $("#images").append("<a href='" + value['link'] + "' data-lightbox='blurb'><img src='" +  value['link'] + "' height=200 width=200></a>");
             $('#loading').remove();
           }
       });
