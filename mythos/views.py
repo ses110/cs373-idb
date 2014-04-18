@@ -150,7 +150,7 @@ def queries(request):
 
 def pictures(request):
     # url = "http://cs373-mythos.herokuapp.com"
-    # context = RequestContext(request)
+    context = RequestContext(request)
     # req = Request(url+"/api/media/?format=json")
     # response = urlopen(req)
     # response_body = response.read().decode("utf-8")
