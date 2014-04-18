@@ -5,19 +5,17 @@ from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from mythos.models import *
 from json import dumps, loads
-import simplejson as json
 from django.core import urlresolvers
 import watson
-# from urllib.request import urlopen, Request
-# try:
-#     from urllib.request import urlopen, Request
-# except Exception, e:
-from urllib2 import *
 
-#from django.shortcuts import get_object_or_404
-#thepost = get_object_or_404(Content, name='test')
+try:
+    from urllib.request import urlopen, Request
+except:
+    from urllib2 import *
 
 from mythos import models
+
+
 
 def index(request):
     context = RequestContext(request)
@@ -27,7 +25,6 @@ def splitParagraph(paragraph):
     sentenceEnders = re.compile('[.!?]')
     sentenceList = sentenceEnders.split(paragraph)
     return sentenceList
-
 
 def search(request):
     context = RequestContext(request)

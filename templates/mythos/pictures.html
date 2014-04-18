@@ -21,14 +21,26 @@
  
   <div style="padding: 64px 8px 8px 8px">
   		<div class="text-center">
-		<div style="color:#FFF;font-size:24px">Random Mythology Gallery!</div>
-  </div>
+		    <div style="color:#FFF;font-size:24px">Random Mythology Gallery!</div>
+      </div>
 
-	{% for item in l %}
+
+  <script type="text/javascript">
+
+    var getURLs = function() {
+      $.getJSON('http://cs373-mythos.herokuapp.com/api/media/?callback=',
+         function(data) {
+           alert(data);         
+        });
+    };
+  </script>
+
+
+<!-- 	{% for item in l %}
         	<a href="{{item}}" data-lightbox="blurb">
         	<img src="{{item}}" height="200" width="200">
         	 </a>
-    {% endfor %}
+    {% endfor %} -->
   </div>
 
   <script type="text/javascript">
