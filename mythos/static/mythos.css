@@ -98,3 +98,10 @@ a:hover
 	background-color: white;
 }
 
+.search_term {
+    color: #DD0;
+    font-size: 1.1em;
+}
+.panel-heading {
+    background-color: rgb(255, 0, 0);
+}
