@@ -7,80 +7,196 @@
   
   {{ block.super }}
 
-  <div class="container-fluid" style="color:#FFF">
-    <br><p><b>Interesting Query 1</b></p>
-  <p>/* Get all figures who are in Greek and Roman mythology */</p>
-  <p></p>
-  <p>
-  SELECT distinct mythos_figure.name FROM mythos_figure join mythos_figure_related_cultures on mythos_figure.id = mythos_figure_related_cultures.figure_id join mythos_culture on mythos_culture.id = mythos_figure_related_cultures.culture_id where mythos_figure.name 
-    in (SELECT mythos_figure.name FROM mythos_figure join mythos_figure_related_cultures on mythos_figure.id = mythos_figure_related_cultures.figure_id join mythos_culture on mythos_culture.id = mythos_figure_related_cultures.culture_id where mythos_culture.name = 'Greek mythology')
-    and mythos_figure.name
-    in (SELECT mythos_figure.name FROM mythos_figure join mythos_figure_related_cultures on mythos_figure.id = mythos_figure_related_cultures.figure_id join mythos_culture on mythos_culture.id = mythos_figure_related_cultures.culture_id where mythos_culture.name = 'Roman mythology')</p>
-    <p></p>
-    <title>Result</title>
-    <p>{"fields":["name"],"values":[["Athena"],["Zeus"]]}</p>
+  <div class="container-fluid">
+    <h2 style="color: #fff;">Interesting Queries</h2>
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-info">
 
-     <br><p><b>Interesting Query 2</b></p>
-  <p>/* Cultures with more than 1 story */</p>
-  <p></p>
-  <p>
-  select mythos_culture.name from mythos_culture join mythos_story_related_cultures on mythos_culture.id = mythos_story_related_cultures.culture_id join mythos_story on mythos_story.id = mythos_story_related_cultures.story_id group by mythos_culture.name having count(mythos_story.id) > 1</p>
-    <p></p>
-    <title>Result</title>
-    <p>{"fields":["name"],"values":[["Japanese mythology"],["Greek mythology"]]}</p>
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    <h3>Get all figures who are in Greek and Roman mythology</h3>
+                </a>
+            </div>
 
-      <p><b>Interesting Query 3</b></p>
-  <p>/* Find all stories that have a relation between at least one figure, one culture, and one other story */</p>
-  <p></p>
-  <p>
 
-  select distinct mythos_story.name from mythos_story join mythos_figure_related_stories on mythos_story.id = mythos_figure_related_stories.story_id join mythos_story_related_stories on mythos_story.id = mythos_story_related_stories.from_story_id join mythos_story_related_cultures on mythos_story.id = mythos_story_related_cultures.story_id</p>
-    <p></p>
-    <title>Result</title>
-    <p>{"fields":["name"],"values":[["Labours of Hercules"],["Trojan War"]]}</p>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <h4>Query 1</h4>
+                    <pre>
+        SELECT distinct mythos_figure.name 
+        FROM mythos_figure 
+            join mythos_figure_related_cultures 
+                on mythos_figure.id = mythos_figure_related_cultures.figure_id 
+            join mythos_culture 
+                on mythos_culture.id = mythos_figure_related_cultures.culture_id 
+            where mythos_figure.name 
+                in 
+                    (SELECT mythos_figure.name 
+                     FROM mythos_figure 
+                        join mythos_figure_related_cultures 
+                            on mythos_figure.id = mythos_figure_related_cultures.figure_id 
+                        join mythos_culture 
+                            on mythos_culture.id = mythos_figure_related_cultures.culture_id 
+                        where mythos_culture.name = 'Greek mythology')
+                and mythos_figure.name
+                    in 
+                        (SELECT mythos_figure.name 
+                        FROM mythos_figure 
+                        join mythos_figure_related_cultures 
+                            on mythos_figure.id = mythos_figure_related_cultures.figure_id 
+                        join mythos_culture 
+                            on mythos_culture.id = mythos_figure_related_cultures.culture_id 
+                        where mythos_culture.name = 'Roman mythology')
+                    </pre>
+                </div>
+                <h4>Result:</h4>
+                <ul class="list-group">
+                    <li group="list-group-item">Figure: Athena</li>
+                    <li group="list-group-item">Figure: Zeus</li>
+                </ul>
+            </div>
 
-      <br><p><b>Interesting Query 4</b></p>
-  <p>/* return count of figures, stories, and cultures related to each culture */</p>
-  <p></p>
-  <p>
-  SELECT mythos_culture.name,
-    count(distinct mythos_figure_related_cultures.figure_id) as "#figures",
-    count(distinct mythos_story_related_cultures.story_id) as "#stories",
-    count(distinct mythos_culture_related_cultures.to_culture_id) as "#cultures"
-  FROM mythos_culture 
-  left outer join mythos_figure_related_cultures 
-  on mythos_culture.id = mythos_figure_related_cultures.culture_id 
+        </div>
 
-  left outer join mythos_story_related_cultures
-  on mythos_culture.id = mythos_story_related_cultures.culture_id
 
-  left outer join mythos_culture_related_cultures
-  on mythos_culture_related_cultures.from_culture_id = mythos_culture.id
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                    <h3>Cultures with more than 1 story </h3>
+                </a>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <h4>Query 2</h4>
+                    <pre>
+        select mythos_culture.name 
+        from mythos_culture 
+            join mythos_story_related_cultures 
+                on mythos_culture.id = mythos_story_related_cultures.culture_id 
+            join mythos_story 
+                on mythos_story.id = mythos_story_related_cultures.story_id 
+        group by mythos_culture.name 
+        having count(mythos_story.id) > 1
+                    </pre>
+                </div>
+                <h4>Result:</h4>
+                <ul class="list-group">
+                    <li group="list-group-item">Culture: Japanese mythology</li>
+                    <li group="list-group-item">Culture: Greek mythology</li>
+                </ul>
+            </div>
+        </div>
 
-  GROUP BY mythos_culture.name
-  order by mythos_culture.name asc</p>
-    <p></p>
-    <title>Result</title>
-    <p>{"fields":["name","#figures","#stories","#cultures"],"values":[["Celtic mythology","2","1","0"],["Egyptian mythology","1","1","0"],["Greek mythology","2","2","1"],["Hindu mythology","2","1","0"],["Japanese mythology","0","2","0"],["Jewish mythology","0","1","0"],["Maya mythology","1","0","0"],["Norse mythology","2","1","0"],["Roman mythology","2","1","1"],["Slavic mythology","0","0","0"]]}</p>
 
-    <br><p><b>Interesting Query 5</b></p>
-  <p>/* Figures that are related to only 1 culture */</p>
-  <p></p>
-  <p>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                    <h3>Find all stories that have a relation between at least one figure, one culture, and one other story </h3>
+                </a>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <h4>Query 3</h4>
+                    <pre>
+        select distinct mythos_story.name 
+        from mythos_story 
+        join mythos_figure_related_stories 
+                on mythos_story.id = mythos_figure_related_stories.story_id 
+            join mythos_story_related_stories 
+                on mythos_story.id = mythos_story_related_stories.from_story_id 
+            join mythos_story_related_cultures 
+                on mythos_story.id = mythos_story_related_cultures.story_id
+                    </pre>
+                </div>
+                <h4>Result:</h4>
+                <ul class="list-group">
+                    <li group="list-group-item">Stories: Labours of Hercules</li>
+                    <li group="list-group-item">Stories: Trojan War</li>
+                </ul>
+            </div>
+        </div>
 
-  select mythos_figure.name
-  from mythos_figure
-  join mythos_figure_related_cultures
-  on mythos_figure.id = mythos_figure_related_cultures.figure_id
 
-  group by mythos_figure.name having count(mythos_figure_related_cultures.figure_id) = 1
-  order by mythos_figure.name asc</p>
-    <p></p>
-    <title>Result</title>
-    <p>{"fields":["name"],"values":[["HÃ¡ma"],["Ixchel"],["Odin"],["Osiris"],["Shiva"],["The Dagda"],["The MorrÃ­gan"],["Vishnu"]]}</p>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                    <h3>Return count of figures, stories, and cultures related to each culture </h3>
+                </a>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <h4>Query 4</h4>
+                    <pre>
+        SELECT mythos_culture.name,
+            count(distinct mythos_figure_related_cultures.figure_id) as "#figures",
+            count(distinct mythos_story_related_cultures.story_id) as "#stories",
+            count(distinct mythos_culture_related_cultures.to_culture_id) as "#cultures"
+        FROM mythos_culture 
+            left outer join mythos_figure_related_cultures 
+                on mythos_culture.id = mythos_figure_related_cultures.culture_id 
+            left outer join mythos_story_related_cultures
+                on mythos_culture.id = mythos_story_related_cultures.culture_id
+            left outer join mythos_culture_related_cultures
+                on mythos_culture_related_cultures.from_culture_id = mythos_culture.id
+        GROUP BY mythos_culture.name
+        order by mythos_culture.name asc
+                    </pre>
+                </div>
+                <h4>Result:</h4>
+                <ul class="list-group">
+                    <li group="list-group-item">Fields: [Name | Figures | Stories | Cultures]</li>
+                    <li group="list-group-item">["Celtic mythology","2","1","0"]</li>
+                    <li group="list-group-item">["Egyptian mythology","1","1","0"]</li>
+                    <li group="list-group-item">["Greek mythology","2","2","1"]</li>
+                    <li group="list-group-item">["Hindu mythology","2","1","0"]</li>
+                    <li group="list-group-item">["Japanese mythology","0","2","0"]</li>
+                    <li group="list-group-item">["Jewish mythology","0","1","0"]</li>
+                    <li group="list-group-item">["Maya mythology","1","0","0"]</li>
+                    <li group="list-group-item">["Norse mythology","2","1","0"]</li>
+                    <li group="list-group-item">["Roman mythology","2","1","1"]/li>
+                    <li group="list-group-item">["Slavic mythology","0","0","0"]</li>
+                </ul>
+            </div>
+        </div>
 
-  <br>
-  </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                    <h3>Figures that are related to only 1 culture</h3>
+                </a>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <h4>Query 5</h4>
+                    <pre>
+        select mythos_figure.name
+        from mythos_figure
+            join mythos_figure_related_cultures
+                on mythos_figure.id = mythos_figure_related_cultures.figure_id
+        group by mythos_figure.name 
+            having count(mythos_figure_related_cultures.figure_id) = 1
+        order by mythos_figure.name asc
+                    </pre>
+                </div>
+                <h4>Result:</h4>
+                <ul class="list-group">
+                    <li group="list-group-item">Field(s): [Name]</li>
+                    <li group="list-group-item">HÃ¡ma</li>
+                    <li group="list-group-item">Ixchel</li>
+                    <li group="list-group-item">Odin</li>
+                    <li group="list-group-item">Osiris</li>
+                    <li group="list-group-item">Shiva</li>
+                    <li group="list-group-item">The Dagda</li>
+                    <li group="list-group-item">The MorrÃ­gan</li>
+                    <li group="list-group-item">Vishnu</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</div>
     
 
 {% endblock body %}

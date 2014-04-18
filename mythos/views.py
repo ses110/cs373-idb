@@ -7,6 +7,7 @@ from mythos.models import *
 from json import dumps, loads
 from django.core import urlresolvers
 import watson
+import re
 
 try:
     from urllib.request import urlopen, Request
@@ -34,7 +35,7 @@ def search(request):
         query = request.GET['q']
     
     results = watson.search(query, ranking=True)
-    snippets = {}
+    snippets = []
     
     for i in range(0, len(results)):
         query_words = query.split()
@@ -43,21 +44,33 @@ def search(request):
 
         sentences = splitParagraph(results[i].content)
 
+        #First highlight terms in sentences matching the phrase
+        for s in sentences:
+            if(s.lower().find(query.lower()) != -1):
+                sentences.pop(0)
+                s = s.lower().replace(query.lower(), "<B class='search_term'>"+query.lower()+"</B>")
+                final_sentence += "..." + s
+                break
+
+        #Then highlight the separate words of a query separately
         for q_wd in query_words:
             for s in sentences:
                 sentences.pop(0)
                 if (s.lower().find(q_wd.lower()) != -1):
-                    s = s.lower().replace(q_wd.lower(), "<B style='color:#DD0'>"+q_wd.lower()+"</B>")
+                    s = s.lower().replace(q_wd.lower(), "<B class='search_term'>"+q_wd.lower()+"</B>")
                     final_sentence += "..." + s
                     break
+
+        print(final_sentence)
+        print()
         final_sentence += "..."
-        snippets[results[i]] = final_sentence
+        snippets.append(final_sentence)
 
     zipped = None
     if len(results) > 0:
-        zipped = zip(results, snippets.values())
+        zipped = zip(results, snippets)
 
-    return render_to_response('mythos/search.html', {"query": query, "results":zipped}, context)
+    return render_to_response('mythos/search.html', {"query": query, "results": zipped}, context)
 
 
 def not_found(request, val):
