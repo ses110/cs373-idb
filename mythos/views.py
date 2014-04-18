@@ -23,6 +23,12 @@ def index(request):
     context = RequestContext(request)
     return render_to_response('mythos/index.html', None, context)
 
+def splitParagraph(paragraph):
+    sentenceEnders = re.compile('[.!?]')
+    sentenceList = sentenceEnders.split(paragraph)
+    return sentenceList
+
+
 def search(request):
     context = RequestContext(request)
     query = ""
@@ -31,9 +37,31 @@ def search(request):
         query = request.GET['q']
     
     results = watson.search(query, ranking=True)
-    for r in results:
-        print(r)
-    return render_to_response('mythos/search.html', {"results":results}, context)
+    snippets = {}
+    
+    for i in range(0, len(results)):
+        query_words = query.split()
+        
+        final_sentence = ""
+
+        sentences = splitParagraph(results[i].content)
+
+        for q_wd in query_words:
+            for s in sentences:
+                sentences.pop(0)
+                if (s.lower().find(q_wd.lower()) != -1):
+                    s = s.lower().replace(q_wd.lower(), "<B style='color:#DD0'>"+q_wd.lower()+"</B>")
+                    final_sentence += "..." + s
+                    break
+        final_sentence += "..."
+        snippets[results[i]] = final_sentence
+
+    zipped = None
+    if len(results) > 0:
+        zipped = zip(results, snippets.values())
+
+    return render_to_response('mythos/search.html', {"query": query, "results":zipped}, context)
+
 
 def not_found(request, val):
     context = RequestContext(request)

@@ -15,10 +15,13 @@
           </thead>
           <tbody>
           	{% if results %}
-	        	{% for result in results %}
+	        	{% for result, snippet in results %}
 			        <tr>
-			          <td class="text-center list-td" style="border-top:none"><a class="list-td-a" href="{{ result.url }}"  > {{ result }} </a></td>
+			          <td class="list-td" style="border-top:none"><a class="list-td-a" href="{{ result.url }}"  > {{ result }} </a></td>
 			        </tr>
+              <tr>
+                <td class="list-td" style="border-top:none">{{ snippet|safe }}</td>
+              </tr>
 			    {% endfor %}
 			{% else %}
 					<tr>
