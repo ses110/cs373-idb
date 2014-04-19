@@ -30,16 +30,24 @@ def splitParagraph(paragraph):
 def search(request):
     context = RequestContext(request)
     query = ""
-
+    query_words = []
     if ('q' in request.GET) and request.GET['q'].strip():
         query = request.GET['q']
     
-    results = watson.search(query, ranking=True)
+    query_words = query.split()
+    
+    and_results = watson.search(query, ranking=True)
+    results = list(and_results)
+
+    for wd in query_words:
+        or_results = list(watson.search(wd, ranking=True))
+        for r in or_results:
+            if not r in results:
+                results.append(r)
+    
     snippets = []
     
     for i in range(0, len(results)):
-        query_words = query.split()
-        
         final_sentence = ""
 
         sentences = splitParagraph(results[i].content)
@@ -50,7 +58,6 @@ def search(request):
                 sentences.remove(s)
                 s = s.lower().replace(query.lower(), "<B class='search_term'>"+query.lower()+"</B>")
                 final_sentence += "..." + s
-                print("Found a phrase")
                 break
 
         #Then highlight the separate words of a query separately
@@ -60,11 +67,8 @@ def search(request):
                     sentences.remove(s)
                     s = s.lower().replace(q_wd.lower(), "<B class='search_term'>"+q_wd.lower()+"</B>")
                     final_sentence += "..." + s
-                    print("Found a word")
                     break
 
-        print(final_sentence)
-        print()
         final_sentence += "..."
         snippets.append(final_sentence)
 
