@@ -35,6 +35,8 @@ def search(request):
         query = request.GET['q']
     
     results = watson.search(query, ranking=True)
+    print(results[0].title)
+
     snippets = []
     
     for i in range(0, len(results)):
