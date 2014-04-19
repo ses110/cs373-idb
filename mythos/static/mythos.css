@@ -102,9 +102,11 @@ a:hover
     color: #DD0;
     font-size: 1.1em;
 }
-.panel-heading {
-    background-color: rgb(255, 0, 0);
+.panel-info>.panel-heading {
+    background-color: rgb(143,143,143);
+    color: (0,0,0);
 }
+
 .list-group {
 
 }
