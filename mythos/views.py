@@ -47,6 +47,7 @@ def search(request):
     
     snippets = []
     
+    
     for i in range(0, len(results)):
         final_sentence = ""
 

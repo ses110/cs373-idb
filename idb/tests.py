@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-
+from django.utils import unittest
 from django.test import TestCase
 from django.http import HttpResponse
 
@@ -13,20 +13,33 @@ except:
 	from urllib2 import *
 
 
-class SearchTests(TestCase):
+class SearchTests(unittest.TestCase):
 
-	def search_test_1(self):
+	def test_search_1(self):
 		query = "greek"
-		results = watson.search(query)
-		self.assertTrue(results == ["Greek mythology", "Roman mythology", "Zeus", "Trojan War", "Labours of Hercules", "Athena", "Osiris"])
+		results = watson.search(query, ranking=True)
+		if len(results) > 0:
+			self.assertTrue([x.title for x in results] == ['Greek mythology', 'Roman mythology', 'Trojan War', 'Zeus', 'Labours of Hercules', 'Osiris', 'Athena'])
+
+	def test_search_2(self):
+		query = "greek mythology"
+		results = watson.search(query, ranking=True)
+		if len(results) > 0:
+			self.assertTrue([x.title for x in results] == ['Greek mythology','Trojan War', 'Roman mythology', 'Zeus', 'Athena'])
 		
-	def search_test_2(self):
+	def test_search_3(self):
+		query = "norse"
+		results = watson.search(query, ranking=True)
+		if len(results) > 0:
+			self.assertTrue([x.title for x in results] == ['Norse mythology','Odin', 'Ragnarök', 'Háma'])
+
+	def test_search_4(self):
 		query = "adfasdfasdf"
-		results = watson.search(query)
+		results = watson.search(query, ranking=True)
 		self.assertTrue(len(results) == 0)
 		
 
-class APItests(TestCase) :
+class APItests(unittest.TestCase) :
 	url = "http://127.0.0.1:8000"
 
 	#Figures
